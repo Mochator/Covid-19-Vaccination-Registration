@@ -18,7 +18,6 @@ public class General {
     public static String vaccineFileName = "Vaccine.txt";
     public static String stockFileName = "Stock.txt";
     public static String stockAuditFileName = "StockAudit.txt";
-    public static String pendingStockAuditFileName = "PendingStockAudit.txt";
 
     //Prefix
     public static String PrefixPeople = "PP";

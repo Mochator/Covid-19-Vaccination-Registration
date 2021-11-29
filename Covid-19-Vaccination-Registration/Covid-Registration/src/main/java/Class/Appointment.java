@@ -108,7 +108,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return Code + "\t" + Ppl.Username + "\t" + Vacc.getVacCode() + "\t" + Status + "\t" + HandledBy.Username + "\t" + RegisterDate + "\t" + VaccinationDate + "\t" + Location.getVacCode() + "\t" + stockAudit.getId() + "\t" + VaccinatedBy.Username + "\t" + RejectReason + "\t" + Remarks;
+        return Code + "\t" + Ppl + "\t" + Vacc + "\t" + Status + "\t" + HandledBy + "\t" + RegisterDate + "\t" + VaccinationDate + "\t" + Location + "\t" + stockAudit + "\t" + VaccinatedBy + "\t" + RejectReason + "\t" + Remarks;
     }
     
     enum AppointmentStatus {

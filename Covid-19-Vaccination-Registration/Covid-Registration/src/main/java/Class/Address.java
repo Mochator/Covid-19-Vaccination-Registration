@@ -17,13 +17,15 @@ public class Address implements Serializable {
     private String Postcode;
     private String City;
     private String State;
+    private String Country;
 
-    public Address(String No, String Street, String Postcode, String City, String State) {
+    public Address(String No, String Street, String Postcode, String City, String State, String Country) {
         this.No = No;
         this.Street = Street;
         this.Postcode = Postcode;
         this.City = City;
         this.State = State;
+        this.Country = Country;
     }
 
     public void setNo(String No) {
@@ -46,6 +48,10 @@ public class Address implements Serializable {
         this.State = State;
     }
 
+    public void setCountry(String Country) {
+        this.Country = Country;
+    }
+
     public String getNo() {
         return No;
     }
@@ -66,13 +72,17 @@ public class Address implements Serializable {
         return State;
     }
 
+    public String getCountry() {
+        return Country;
+    }
+
     @Override
     public String toString() {
-        return this.No + "\t" + this.Street + "\t" + this.City + "\t" + this.Postcode + "\t" + this.State;
+        return this.No + "\t" + this.Street + "\t" + this.City + "\t" + this.Postcode + "\t" + this.State + "\t" + this.Country;
     }   
     
     public String getFullAddress(){
-        return this.No + ", " + this.Street + ", " + this.City + " " + this.Postcode + ", " + this.State;
+        return this.No + ", " + this.Street + ", " + this.City + " " + this.Postcode + ", " + this.State + ", " + this.Country;
     }
     
 }

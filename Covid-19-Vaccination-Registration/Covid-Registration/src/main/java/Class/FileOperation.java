@@ -28,19 +28,10 @@ public class FileOperation {
     private String FileName;
 
     public FileOperation() {
-    };
-    
-    //Read based on ID (String)
-    public FileOperation(String id, String fileName){
-        
     }
+
+    ;
     
-    //Read based on ID (int)
-    public FileOperation(int id, String fileName){
-        
-    }
-    
-    //Save as plaintext
     public void SaveToFile(Object obj, String fileName) {
 
         try {
@@ -188,13 +179,7 @@ public class FileOperation {
                 }
             }
 
-            //Duplicated ID Check
-            if(!FileOperation.AnyDuplicatedSerializableId(existingData, filename)){
-                out.writeObject(obj);
-            } else {
-                JOptionPane.showMessageDialog(null, "Please try again later", "Error!", JOptionPane.ERROR_MESSAGE);
-            }
-            
+            out.writeObject(obj);
 
             out.close();
             file.close();
@@ -203,6 +188,4 @@ public class FileOperation {
             System.out.println(ex);
         }
     }
-   
 }
-

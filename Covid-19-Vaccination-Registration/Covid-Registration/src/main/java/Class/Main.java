@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Address add = new Address("123", "Street", "City", "11600", "penang");
+        Address add = new Address("123", "Street", "City", "11600", "penang", "mal");
         MyDateTime mdt = new MyDateTime(2000, 10, 26);
         MyDateTime passportExp = new MyDateTime(2022, 12, 12);
         User citizen = new NonCitizen("123123", passportExp, add, People.VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123");

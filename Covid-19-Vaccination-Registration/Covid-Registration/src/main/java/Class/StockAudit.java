@@ -11,150 +11,53 @@ import java.util.ArrayList;
  *
  * @author Mocha
  */
-public interface StockAudit{
-    MyDateTime CreateDate = new MyDateTime();
-    
-    public int GenerateId();
-    
-    public void AddQuantity();
-    
-    public void MinusQuantity();
-    
-    public int getId();
-
-}
-
-//Adjust actual stock
-class ActualStock implements StockAudit {
+public class StockAudit {
     private int Id;
-    private Stock VacStock;
-    private int Quantity;
-    private MyDateTime CreateDate;
-    private Personnel CreatedBy;
+    protected Stock VacStock;
+    private int Quatity;
+    protected MyDateTime CreateDate;
+    protected Stockist CreatedBy;
     private String Remarks;
 
-    //For stockist
-    public ActualStock(Stock VacStock, int Quantity, Stockist CreatedBy, String Remarks) {
+    //Add stock or adjust stock
+    public StockAudit(Stock VacStock, int Quatity, MyDateTime CreateDate, Stockist CreatedBy, String Remarks) {
         this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = Remarks;
-        
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
-    
-    //For doctor after vaccination
-     public ActualStock(Stock VacStock, int Quantity, Doctor CreatedBy, Appointment Appointment) {
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = "Vaccinatation - " + Appointment.getCode();
-        
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
-
-    public ActualStock(int Id, Stock VacStock, int Quantity, MyDateTime CreateDate, Personnel CreatedBy, String Remarks) {
-        this.Id = Id;
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
+        this.Quatity = Quatity;
         this.CreateDate = CreateDate;
         this.CreatedBy = CreatedBy;
         this.Remarks = Remarks;
+        this.Id = this.GenerateId();
+    }
+    
+    
+    //Vaccinated deduct stock
+    public StockAudit(Stock VacStock, int Quatity, MyDateTime CreateDate) {
+        this.VacStock = VacStock;
+        this.Quatity = Quatity;
+        this.CreateDate = CreateDate;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public int getQuatity() {
+        return Quatity;
     }
 
     public String getRemarks() {
         return Remarks;
     }
-
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
-    }
     
-
-    public void AddQuantity(){
-        ///todo
-        
-    }
-
-    public void MinusQuantity() {
-        //todo
-    }
-       
-    public int GenerateId(){
+    private int GenerateId(){
         //todo
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockAuditFileName);       
         return Integer.parseInt(FileOperation.GenerateNewId(allObj, ""));
     }
 
-    public int getId() {
-        return Id;
-    }
-    
-
     @Override
     public String toString() {
-        return  Id + "\t" + VacStock.getId() + "\t" + Quantity + "\t" + CreateDate + "\t" + CreatedBy.Username + "\t" ;
-    }
-}
-
-
-//Adjust pending stock
-class PendingStock implements StockAudit {
-    private int Id;
-    private Stock VacStock;
-    private int Quantity;
-    protected Personnel CreatedBy;
-    private static String Remarks = "Vaccinatation - ";
-    private MyDateTime CreateDate;
-
-    //For admin after assign vaccine
-    public PendingStock(Stock VacStock, int Quantity, Admin CreatedBy, Appointment Appointment) {
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks += Appointment.getCode();
-        
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
+        return Id + "\t" + VacStock + "\t" + Quatity + "\t" + CreateDate + "\t" + CreatedBy + "\t" + Remarks;
+    }  
     
-    //For doctor after vaccination
-     public PendingStock(Stock VacStock, int Quantity, Doctor CreatedBy, Appointment Appointment) {
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = Appointment.getCode();
-        
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
-
-    @Override
-    public void AddQuantity() {
-        int newQty = this.VacStock.getQuantity() + this.Quantity;
-        this.VacStock.setQuantity(newQty);
-    }
-
-    @Override
-    public void MinusQuantity() {
-        
-    }
-
-    public int getId() {
-        return Id;
-    }
-    
-       
-    public int GenerateId(){
-        //todo
-        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.pendingStockAuditFileName);       
-        return Integer.parseInt(FileOperation.GenerateNewId(allObj, ""));
-    }
-
-    @Override
-    public String toString() {
-        return  Id + "\t" + VacStock.getId() + "\t" + Quantity + "\t" + CreateDate + "\t" + CreatedBy.Username + "\t" ;
-    }
 }

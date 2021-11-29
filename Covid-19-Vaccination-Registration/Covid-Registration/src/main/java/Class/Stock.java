@@ -21,6 +21,7 @@ public class Stock {
     protected VaccineCentre VacCentre;
     
     
+
     public Stock(Vaccine VacType, int Dose, int Quantity, int PendingQuantity, VaccineCentre VacCentre) {
         this.VacType = VacType;
         this.Dose = Dose;
@@ -28,11 +29,6 @@ public class Stock {
         this.PendingQuantity = PendingQuantity;
         this.VacCentre = VacCentre;
         this.Id = this.GenerateId();
-    }
-    
-    public Stock(int Id){
-        //TODO:: Read from file then input the object
-        
     }
 
     public int getId() {
@@ -67,7 +63,7 @@ public class Stock {
         this.VacCentre = VacCentre;
     }
     
-    private int GenerateId(){
+    public int GenerateId(){
         //TODO
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockFileName);    
         return Integer.parseInt(FileOperation.GenerateNewId(allObj, ""));
@@ -75,7 +71,7 @@ public class Stock {
 
     @Override
     public String toString() {
-        return Id + "\t" + VacType.getVacCode() + "\t" + Dose + "\t" + Quantity + "\t" + PendingQuantity + "\t" + VacCentre.getVacCode();
+        return Id + "\t" + VacType + "\t" + Dose + "\t" + Quantity + "\t" + PendingQuantity + "\t" + VacCentre;
     }
     
     
