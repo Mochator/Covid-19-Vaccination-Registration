@@ -6,6 +6,7 @@
 package Class;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -24,9 +25,14 @@ public class VaccineCentre {
         this.VacAddress = VacAddress;
     }
 
-    public VaccineCentre(String VacCode, String Name) {
-        this.VacCode = VacCode;
+    public VaccineCentre(String Name, Address VacAddress) {
         this.Name = Name;
+        this.VacAddress = VacAddress;
+        this.VacCode = this.GenerateCode();
+    }
+    
+    public VaccineCentre(String VacCode){
+        FileOperation fo = new FileOperation();
     }
 
     public String getName() {
@@ -44,9 +50,16 @@ public class VaccineCentre {
     public void setName(String Name) {
         this.Name = Name;
     }
+
+    @Override
+    public String toString() {
+        return VacCode + "\t" + Name + "\t" + VacAddress;
+    }
     
-    public void GenerateCode() {
-        this.VacCode = FileOperation.GenerateRecordId(General.vaccineCentreFileName, General.PrefixVac);
+    private String GenerateCode() {
+        //TODO
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.vaccineCentreFileName);
+        return FileOperation.GenerateNewId(allObj, General.PrefixVaccineCentre);
     }  
-    
+   
 }

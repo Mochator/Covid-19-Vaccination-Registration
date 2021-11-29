@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -54,69 +55,137 @@ public class FileOperation {
 
     }
 
-    public static String GenerateRecordId(String filename, String prefix) {
-        int lastid = 0;
+    //Static Methods
+    public static boolean AnyDuplicatedId(String filename, String reference) {
+        //Check first data of each row
+
+        boolean noDup = true;
 
         try {
+
             File file = new File(filename);
             Scanner sc = new Scanner(file);
 
-            while (sc.hasNextLine()) {
-                String row = sc.nextLine();
-                
-                String tempId = row.split("\t")[0];
-                
-                if(tempId.startsWith(prefix)){
-                    int tempLastId = Integer.parseInt(tempId.replace(prefix, ""));
-                    if(tempLastId > lastid) lastid = tempLastId;
-                }                
-            }
-            
-            lastid ++;
-            String stringLastId = prefix + String.format("%04d", lastid);
-            
-            while(FileOperation.AnyDuplicatedId(filename, stringLastId)){
-                lastid ++;
-                stringLastId = prefix + String.format("%04d", lastid);
-            }                     
-            
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }   
-        
-        return prefix + String.format("%04d", lastid);
-    }
-    
-    //Static Methods
-    public static boolean AnyDuplicatedId(String filename, String reference){
-        //Check first data of each row
-        
-        boolean noDup = true;
-        
-        try{
-            
-            File file = new File(filename);
-            Scanner sc = new Scanner(file);
-            
-            
-            while(sc.hasNextLine() && noDup){
-                
+            while (sc.hasNextLine() && noDup) {
+
                 String row = sc.nextLine();
                 String id = row.split("\t")[0];
-                
-                if(id == reference){
+
+                if (id == reference) {
                     noDup = false;
                 }
             }
-            
-        } catch (Exception ex){
-            
+
+        } catch (Exception ex) {
+
         }
-        
+
         return !noDup;
     }
 
-//    public ArrayList<User> ReadAllFromFile(String fileName, String className) {
-//        
-//    }
+    public static boolean AnyDuplicatedSerializableId(ArrayList<Object> arrayList, String reference) {
+        //Check first data of each row
+
+        boolean anyDup = false;
+
+        try {
+
+            ListIterator li = arrayList.listIterator();
+
+            while (li.hasNext() && !anyDup) {
+                Object element = li.next();
+
+                if (element != null) {
+
+                    String code = String.valueOf(element).trim().split("\t")[0];
+                    System.out.println("Check Code: " + code);
+                    anyDup = code.equals(reference);
+                    System.out.println(anyDup);
+                }
+            }
+
+        } catch (Exception ex) {
+
+        }
+
+        return anyDup;
+    }
+    
+    public static String GenerateNewId(ArrayList<Object> arrayList, String prefix){
+        int count = 1;
+
+        String newUsername = prefix + String.format("%04d", count);
+
+        while (FileOperation.AnyDuplicatedSerializableId(arrayList, newUsername)) {
+            count++;
+            newUsername = prefix + String.format("%04d", count);
+        }
+        
+        return newUsername;
+    }
+
+    public static ArrayList<Object> DeserializeObject(String filename) {
+        ArrayList<Object> arrayList = new ArrayList<Object>();
+
+        try {
+
+            boolean s = true;
+
+            File fileName = new File(filename);
+            FileInputStream file = new FileInputStream(fileName);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            while (s) {
+
+                Object temp = new Object();
+                temp = in.readObject();
+
+                if (temp != null) {
+                    arrayList.add(temp);
+                } else {
+                    s = false;
+                }
+
+            }
+
+            in.close();
+            file.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+        return arrayList;
+    }
+
+    public static void SerializeObject(String filename, Object obj) {
+
+        ArrayList<Object> existingData = new ArrayList<Object>();
+        existingData = DeserializeObject(filename);
+
+        try {
+
+            File fileName = new File(filename);
+            FileOutputStream file = new FileOutputStream(fileName);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            ListIterator li = existingData.listIterator();
+
+            while (li.hasNext()) {
+                Object element = li.next();
+
+                if (element != null) {
+                    out.writeObject(element);
+                }
+            }
+
+            out.writeObject(obj);
+
+            out.close();
+            file.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
 }

@@ -5,6 +5,7 @@
  */
 package Class;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Date;
  *
  * @author Mocha
  */
-public class MyDateTime {
+public class MyDateTime implements Serializable {
 
    private Calendar cal = Calendar.getInstance();
 
@@ -60,5 +61,12 @@ public class MyDateTime {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss");
         return sdf.format(cal.getTime());
     }
+
+    @Override
+    public String toString() {
+        return cal.getTime().toString();
+    }
+    
+    
 
 }

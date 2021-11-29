@@ -5,11 +5,13 @@
  */
 package Class;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mocha
  */
-public class Address {
+public class Address implements Serializable {
     private String No;
     private String Street;
     private String Postcode;
@@ -76,7 +78,11 @@ public class Address {
 
     @Override
     public String toString() {
-        return this.No + ", " + this.Street + ", " + this.City + " " + this.Postcode + ", " + this.State + ", " + this.Country;
+        return this.No + "\t" + this.Street + "\t" + this.City + "\t" + this.Postcode + "\t" + this.State + "\t" + this.Country;
     }   
+    
+    public String getFullAddress(){
+        return this.No + ", " + this.Street + ", " + this.City + " " + this.Postcode + ", " + this.State + ", " + this.Country;
+    }
     
 }
