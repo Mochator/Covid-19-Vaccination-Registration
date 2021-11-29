@@ -259,7 +259,7 @@ class Doctor extends Personnel {
 
     @Override
     public String toString() {
-        return "\t" + super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
+        return "\t" + super.toString() + "\t" + PersonnelRole + "\t" + VacCentre.getVacCode();
     }
     
 }
@@ -303,7 +303,7 @@ class Stockist extends Personnel {
 
     @Override
     public String toString() {
-        return "\t" + super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
+        return "\t" + super.toString() + "\t" + PersonnelRole + "\t" + VacCentre.getVacCode();
     }
 
     

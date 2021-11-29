@@ -58,7 +58,7 @@ public class Vaccine {
         return VacCode + "\t" + Name + "\t" + DoseCount + "\t" + Interval;
     }    
 
-    public String GenerateCode() {
+    private String GenerateCode() {
         //TODO
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.vaccineFileName);
         return FileOperation.GenerateNewId(allObj, General.PrefixVaccine);
