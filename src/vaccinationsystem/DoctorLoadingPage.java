@@ -45,17 +45,17 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        txtAdPUser = new javax.swing.JTextField();
-        txtAdPName = new javax.swing.JTextField();
-        txtAdPIC = new javax.swing.JTextField();
-        txtAdPDob = new javax.swing.JTextField();
-        txtAdPNat = new javax.swing.JTextField();
-        txtAdPNo = new javax.swing.JTextField();
+        txtDrUser = new javax.swing.JTextField();
+        txtDrName = new javax.swing.JTextField();
+        txtDrIC = new javax.swing.JTextField();
+        txtDrDob = new javax.swing.JTextField();
+        txtDrNat = new javax.swing.JTextField();
+        txtDrNo = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtAdPAdd = new javax.swing.JTextArea();
-        btnAdPInfoEdit = new javax.swing.JButton();
-        btnAdPSave = new javax.swing.JButton();
-        cboAdPGender = new javax.swing.JComboBox<>();
+        txtDrAdd = new javax.swing.JTextArea();
+        btnDrInfoEdit = new javax.swing.JButton();
+        btnDrSave = new javax.swing.JButton();
+        cboDrGender = new javax.swing.JComboBox<>();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -180,87 +180,87 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel58.setText("Username:");
 
-        txtAdPUser.setEditable(false);
-        txtAdPUser.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPUser.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPUser.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrUser.setEditable(false);
+        txtDrUser.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrUser.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrUser.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        txtAdPName.setEditable(false);
-        txtAdPName.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPName.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPName.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtAdPName.addActionListener(new java.awt.event.ActionListener() {
+        txtDrName.setEditable(false);
+        txtDrName.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrName.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrName.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAdPNameActionPerformed(evt);
+                txtDrNameActionPerformed(evt);
             }
         });
 
-        txtAdPIC.setEditable(false);
-        txtAdPIC.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPIC.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPIC.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPIC.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrIC.setEditable(false);
+        txtDrIC.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrIC.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrIC.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrIC.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        txtAdPDob.setEditable(false);
-        txtAdPDob.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPDob.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPDob.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPDob.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrDob.setEditable(false);
+        txtDrDob.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrDob.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrDob.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrDob.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        txtAdPNat.setEditable(false);
-        txtAdPNat.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPNat.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPNat.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPNat.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrNat.setEditable(false);
+        txtDrNat.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrNat.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrNat.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrNat.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        txtAdPNo.setEditable(false);
-        txtAdPNo.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPNo.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtAdPNo.setForeground(new java.awt.Color(0, 0, 0));
-        txtAdPNo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDrNo.setEditable(false);
+        txtDrNo.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrNo.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtDrNo.setForeground(new java.awt.Color(0, 0, 0));
+        txtDrNo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        txtAdPAdd.setEditable(false);
-        txtAdPAdd.setBackground(new java.awt.Color(204, 204, 204));
-        txtAdPAdd.setColumns(20);
-        txtAdPAdd.setRows(5);
-        txtAdPAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane2.setViewportView(txtAdPAdd);
+        txtDrAdd.setEditable(false);
+        txtDrAdd.setBackground(new java.awt.Color(204, 204, 204));
+        txtDrAdd.setColumns(20);
+        txtDrAdd.setRows(5);
+        txtDrAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane2.setViewportView(txtDrAdd);
 
-        btnAdPInfoEdit.setBackground(new java.awt.Color(102, 255, 102));
-        btnAdPInfoEdit.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        btnAdPInfoEdit.setForeground(new java.awt.Color(0, 0, 0));
-        btnAdPInfoEdit.setText("Edit Profile");
-        btnAdPInfoEdit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnAdPInfoEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAdPInfoEdit.setOpaque(true);
-        btnAdPInfoEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnDrInfoEdit.setBackground(new java.awt.Color(102, 255, 102));
+        btnDrInfoEdit.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btnDrInfoEdit.setForeground(new java.awt.Color(0, 0, 0));
+        btnDrInfoEdit.setText("Edit Profile");
+        btnDrInfoEdit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnDrInfoEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDrInfoEdit.setOpaque(true);
+        btnDrInfoEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdPInfoEditActionPerformed(evt);
+                btnDrInfoEditActionPerformed(evt);
             }
         });
 
-        btnAdPSave.setBackground(new java.awt.Color(51, 102, 255));
-        btnAdPSave.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        btnAdPSave.setForeground(new java.awt.Color(0, 0, 0));
-        btnAdPSave.setText("Save");
-        btnAdPSave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnAdPSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAdPSave.setEnabled(false);
-        btnAdPSave.setOpaque(true);
-        btnAdPSave.addActionListener(new java.awt.event.ActionListener() {
+        btnDrSave.setBackground(new java.awt.Color(51, 102, 255));
+        btnDrSave.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btnDrSave.setForeground(new java.awt.Color(0, 0, 0));
+        btnDrSave.setText("Save");
+        btnDrSave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnDrSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDrSave.setEnabled(false);
+        btnDrSave.setOpaque(true);
+        btnDrSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdPSaveActionPerformed(evt);
+                btnDrSaveActionPerformed(evt);
             }
         });
 
-        cboAdPGender.setBackground(new java.awt.Color(204, 204, 204));
-        cboAdPGender.setForeground(new java.awt.Color(0, 0, 0));
-        cboAdPGender.setMaximumRowCount(2);
-        cboAdPGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female" }));
-        cboAdPGender.setEnabled(false);
-        cboAdPGender.setOpaque(true);
+        cboDrGender.setBackground(new java.awt.Color(204, 204, 204));
+        cboDrGender.setForeground(new java.awt.Color(0, 0, 0));
+        cboDrGender.setMaximumRowCount(2);
+        cboDrGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female" }));
+        cboDrGender.setEnabled(false);
+        cboDrGender.setOpaque(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -284,33 +284,33 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAdPNo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDrNo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAdPNat, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDrNat, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAdPDob, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDrDob, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAdPIC, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDrIC, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnAdPSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnDrSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAdPInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnDrInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtAdPUser, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDrUser, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtAdPName, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboAdPGender, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtDrName, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboDrGender, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -321,39 +321,39 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58)
-                    .addComponent(txtAdPUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
-                    .addComponent(txtAdPName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
-                    .addComponent(cboAdPGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboDrGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel53)
-                    .addComponent(txtAdPIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
-                    .addComponent(txtAdPDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel55)
-                    .addComponent(txtAdPNat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrNat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel56)
-                    .addComponent(txtAdPNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDrNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel57)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdPInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdPSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDrInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDrSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(237, Short.MAX_VALUE))
         );
 
@@ -638,40 +638,40 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void txtAdPNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdPNameActionPerformed
+    private void txtDrNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDrNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdPNameActionPerformed
+    }//GEN-LAST:event_txtDrNameActionPerformed
 
-    private void btnAdPInfoEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdPInfoEditActionPerformed
-        txtAdPName.setEditable(true);
-        txtAdPName.setBackground(Color.white);
-        txtAdPNo.setEditable(true);
-        txtAdPNo.setBackground(Color.white);
-        txtAdPAdd.setEditable(true);
-        txtAdPAdd.setBackground(Color.white);
-        btnAdPSave.setEnabled(true);
-        btnAdPInfoEdit.setEnabled(false);
-        btnAdPInfoEdit.setVisible(false);
-    }//GEN-LAST:event_btnAdPInfoEditActionPerformed
+    private void btnDrInfoEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrInfoEditActionPerformed
+        txtDrName.setEditable(true);
+        txtDrName.setBackground(Color.white);
+        txtDrNo.setEditable(true);
+        txtDrNo.setBackground(Color.white);
+        txtDrAdd.setEditable(true);
+        txtDrAdd.setBackground(Color.white);
+        btnDrSave.setEnabled(true);
+        btnDrInfoEdit.setEnabled(false);
+        btnDrInfoEdit.setVisible(false);
+    }//GEN-LAST:event_btnDrInfoEditActionPerformed
 
-    private void btnAdPSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdPSaveActionPerformed
+    private void btnDrSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrSaveActionPerformed
         /**
         Update Data Back end
         **/
-        txtAdPName.setEditable(false);
-        txtAdPName.setBackground(Color.gray);
-        txtAdPNo.setEditable(false);
-        txtAdPNo.setBackground(Color.gray);
-        txtAdPAdd.setEditable(false);
-        txtAdPAdd.setBackground(Color.gray);
-        btnAdPSave.setEnabled(false);
-        btnAdPInfoEdit.setEnabled(true);
-        btnAdPInfoEdit.setVisible(true);
+        txtDrName.setEditable(false);
+        txtDrName.setBackground(Color.gray);
+        txtDrNo.setEditable(false);
+        txtDrNo.setBackground(Color.gray);
+        txtDrAdd.setEditable(false);
+        txtDrAdd.setBackground(Color.gray);
+        btnDrSave.setEnabled(false);
+        btnDrInfoEdit.setEnabled(true);
+        btnDrInfoEdit.setVisible(true);
 
         /** Prompt Message to alert update
         JOptionPane.showMessageDialog(this,"");
         **/
-    }//GEN-LAST:event_btnAdPSaveActionPerformed
+    }//GEN-LAST:event_btnDrSaveActionPerformed
 
     private void tblTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTAMouseClicked
         DefaultTableModel Tmode = (DefaultTableModel)tblTA.getModel();
@@ -745,12 +745,12 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdPInfoEdit;
-    private javax.swing.JButton btnAdPSave;
+    private javax.swing.JButton btnDrInfoEdit;
+    private javax.swing.JButton btnDrSave;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnTASearch;
     private javax.swing.JButton btnTaMark;
-    private javax.swing.JComboBox<String> cboAdPGender;
+    private javax.swing.JComboBox<String> cboDrGender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -779,13 +779,13 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable tblTA;
-    private javax.swing.JTextArea txtAdPAdd;
-    private javax.swing.JTextField txtAdPDob;
-    private javax.swing.JTextField txtAdPIC;
-    private javax.swing.JTextField txtAdPName;
-    private javax.swing.JTextField txtAdPNat;
-    private javax.swing.JTextField txtAdPNo;
-    private javax.swing.JTextField txtAdPUser;
+    private javax.swing.JTextArea txtDrAdd;
+    private javax.swing.JTextField txtDrDob;
+    private javax.swing.JTextField txtDrIC;
+    private javax.swing.JTextField txtDrName;
+    private javax.swing.JTextField txtDrNat;
+    private javax.swing.JTextField txtDrNo;
+    private javax.swing.JTextField txtDrUser;
     private javax.swing.JTextField txtTaCentre;
     private javax.swing.JTextField txtTaDate;
     private javax.swing.JTextField txtTaGender;
