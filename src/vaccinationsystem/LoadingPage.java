@@ -142,14 +142,6 @@ public class LoadingPage extends javax.swing.JFrame {
         pnlRejectReason = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         txtVAReason = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtVADesc = new javax.swing.JTextArea();
-        btnDecline = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -868,94 +860,6 @@ public class LoadingPage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vaccination Registration", jTabbedPane3);
 
-        jPanel7.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel7.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel30.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 30)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Vaccination Appointment");
-
-        jLabel34.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("Vaccine Type:");
-
-        jLabel36.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel36.setText("Description:");
-
-        txtVADesc.setEditable(false);
-        txtVADesc.setBackground(new java.awt.Color(204, 204, 204));
-        txtVADesc.setColumns(20);
-        txtVADesc.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
-        txtVADesc.setForeground(new java.awt.Color(0, 0, 0));
-        txtVADesc.setRows(5);
-        jScrollPane1.setViewportView(txtVADesc);
-
-        btnDecline.setBackground(new java.awt.Color(255, 51, 51));
-        btnDecline.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        btnDecline.setForeground(new java.awt.Color(0, 0, 0));
-        btnDecline.setText("Decline");
-        btnDecline.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnDecline.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(352, 352, 352)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2423, Short.MAX_VALUE)
-                .addComponent(jLabel34)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel36)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208))
-        );
-
-        jTabbedPane1.addTab("Vaccination Appointment", jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel8.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2904, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Vaccination Status", jPanel8);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1288,7 +1192,6 @@ public class LoadingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDecline;
     private javax.swing.JButton btnEditProfile;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSave;
@@ -1309,13 +1212,10 @@ public class LoadingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1332,10 +1232,7 @@ public class LoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1364,7 +1261,6 @@ public class LoadingPage extends javax.swing.JFrame {
     private javax.swing.JTextField txtPUsername;
     private javax.swing.JTextArea txtVAAddress;
     private javax.swing.JTextField txtVACode;
-    private javax.swing.JTextArea txtVADesc;
     private javax.swing.JTextField txtVAReason;
     // End of variables declaration//GEN-END:variables
 }
