@@ -8,6 +8,7 @@ package vaccinationsystem;
 import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -606,17 +607,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
         tblMA.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblMA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMAMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMA);
-        if (tblMA.getColumnModel().getColumnCount() > 0) {
-            tblMA.getColumnModel().getColumn(0).setResizable(false);
-            tblMA.getColumnModel().getColumn(1).setResizable(false);
-            tblMA.getColumnModel().getColumn(2).setResizable(false);
-            tblMA.getColumnModel().getColumn(2).setHeaderValue("IC/Passport");
-            tblMA.getColumnModel().getColumn(3).setResizable(false);
-            tblMA.getColumnModel().getColumn(3).setHeaderValue("Nationality");
-            tblMA.getColumnModel().getColumn(4).setResizable(false);
-            tblMA.getColumnModel().getColumn(4).setHeaderValue("Status");
-        }
 
         jLabel59.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
@@ -975,17 +971,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
         tblRA.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblRA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRAMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblRA);
-        if (tblRA.getColumnModel().getColumnCount() > 0) {
-            tblRA.getColumnModel().getColumn(0).setResizable(false);
-            tblRA.getColumnModel().getColumn(1).setResizable(false);
-            tblRA.getColumnModel().getColumn(2).setResizable(false);
-            tblRA.getColumnModel().getColumn(2).setHeaderValue("IC/Passport");
-            tblRA.getColumnModel().getColumn(3).setResizable(false);
-            tblRA.getColumnModel().getColumn(3).setHeaderValue("Nationality");
-            tblRA.getColumnModel().getColumn(4).setResizable(false);
-            tblRA.getColumnModel().getColumn(4).setHeaderValue("Status");
-        }
 
         jLabel66.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(255, 255, 255));
@@ -1365,18 +1356,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         });
         tblRA1.setSelectionBackground(new java.awt.Color(51, 51, 51));
         jScrollPane4.setViewportView(tblRA1);
-        if (tblRA1.getColumnModel().getColumnCount() > 0) {
-            tblRA1.getColumnModel().getColumn(0).setResizable(false);
-            tblRA1.getColumnModel().getColumn(1).setResizable(false);
-            tblRA1.getColumnModel().getColumn(2).setResizable(false);
-            tblRA1.getColumnModel().getColumn(2).setHeaderValue("IC/Passport");
-            tblRA1.getColumnModel().getColumn(3).setResizable(false);
-            tblRA1.getColumnModel().getColumn(4).setResizable(false);
-            tblRA1.getColumnModel().getColumn(5).setResizable(false);
-            tblRA1.getColumnModel().getColumn(6).setResizable(false);
-            tblRA1.getColumnModel().getColumn(7).setResizable(false);
-            tblRA1.getColumnModel().getColumn(7).setHeaderValue("Status");
-        }
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1422,17 +1401,17 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         tblVM.setForeground(new java.awt.Color(204, 204, 204));
         tblVM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Address"
+                "ID", "Code", "Name", "Dose Count", "Interval"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1440,12 +1419,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
         tblVM.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblVM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblVMKeyPressed(evt);
+            }
+        });
         jScrollPane6.setViewportView(tblVM);
-        if (tblVM.getColumnModel().getColumnCount() > 0) {
-            tblVM.getColumnModel().getColumn(0).setResizable(false);
-            tblVM.getColumnModel().getColumn(1).setResizable(false);
-            tblVM.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         jLabel86.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel86.setForeground(new java.awt.Color(255, 255, 255));
@@ -1566,22 +1545,23 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnAnvAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel93, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtAnvCode, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel98)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(txtAnvInterval, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel96, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel95, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAnvDose)
-                            .addComponent(txtAnvName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addComponent(jLabel93, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtAnvCode, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel96, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel95, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAnvDose)
+                                    .addComponent(txtAnvName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(1, 1, 1)))
                 .addContainerGap())
         );
@@ -1729,22 +1709,23 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnMevUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel109, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtMevCode, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
                         .addComponent(jLabel113)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(txtMevInterval, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel110, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMevDose)
-                            .addComponent(txtMevName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel109, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtMevCode, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel110, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMevDose)
+                                    .addComponent(txtMevName, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(1, 1, 1)))
                 .addContainerGap())
         );
@@ -1847,17 +1828,17 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         tblCM.setForeground(new java.awt.Color(204, 204, 204));
         tblCM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Address"
+                "ID", "Name", "No", "Street", "Postcode", "City", "States"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1865,12 +1846,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
         tblCM.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblCM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblCMKeyPressed(evt);
+            }
+        });
         jScrollPane7.setViewportView(tblCM);
-        if (tblCM.getColumnModel().getColumnCount() > 0) {
-            tblCM.getColumnModel().getColumn(0).setResizable(false);
-            tblCM.getColumnModel().getColumn(1).setResizable(false);
-            tblCM.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         jLabel87.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel87.setForeground(new java.awt.Color(255, 255, 255));
@@ -3141,6 +3122,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
         tblPp.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblPp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblPpKeyPressed(evt);
+            }
+        });
         jScrollPane5.setViewportView(tblPp);
         if (tblPp.getColumnModel().getColumnCount() > 0) {
             tblPp.getColumnModel().getColumn(0).setResizable(false);
@@ -3576,6 +3562,145 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnvAddActionPerformed
 
+    private void tblRAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRAMouseClicked
+        DefaultTableModel Tmodel = (DefaultTableModel)tblRA.getModel();
+
+        //Display data into text field when the specific row is selected
+        String JTbName;
+        String JTbGender;
+        String JTbIC;
+        String JTbNat;
+        String JTbStats;       
+        
+        
+        JTbName = Tmodel.getValueAt(tblRA.getSelectedRow(), 1).toString();
+        JTbGender = Tmodel.getValueAt(tblRA.getSelectedRow(), 2).toString();
+        JTbIC = Tmodel.getValueAt(tblRA.getSelectedRow(), 3).toString();
+        JTbNat = Tmodel.getValueAt(tblRA.getSelectedRow(), 4).toString();
+        JTbStats = Tmodel.getValueAt(tblRA.getSelectedRow(), 5).toString();
+        
+        
+        txtRaName.setText(JTbName);
+        txtRaGender.setText(JTbGender);
+        txtRaIC.setText(JTbIC);
+        txtRaNat.setText(JTbNat);
+        txtRaStats.setText(JTbStats);        
+        
+    }//GEN-LAST:event_tblRAMouseClicked
+
+    private void tblMAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMAMouseClicked
+        DefaultTableModel Tmode2 = (DefaultTableModel)tblRA.getModel();
+
+        //Display data into text field when the specific row is selected
+        String JTbName1;
+        String JTbGender1;
+        String JTbIC1;
+        String JTbNat1;
+        String JTbStats1;       
+        
+        
+        JTbName1 = Tmode2.getValueAt(tblRA.getSelectedRow(), 1).toString();
+        JTbGender1 = Tmode2.getValueAt(tblRA.getSelectedRow(), 2).toString();
+        JTbIC1 = Tmode2.getValueAt(tblRA.getSelectedRow(), 3).toString();
+        JTbNat1 = Tmode2.getValueAt(tblRA.getSelectedRow(), 4).toString();
+        JTbStats1 = Tmode2.getValueAt(tblRA.getSelectedRow(), 5).toString();
+        
+        
+        txtRaName.setText(JTbName1);
+        txtRaGender.setText(JTbGender1);
+        txtRaIC.setText(JTbIC1);
+        txtRaNat.setText(JTbNat1);
+        txtRaStats.setText(JTbStats1); 
+    }//GEN-LAST:event_tblMAMouseClicked
+
+    private void tblVMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblVMKeyPressed
+        DefaultTableModel Tmode3 = (DefaultTableModel)tblRA.getModel();
+
+        //Display data into text field when the specific row is selected
+        String JTbID2;
+        String JTbCode2;
+        String JTbName2;
+        String JTbDose2;
+        String JTbInterval2;       
+        
+        
+        JTbID2 = Tmode3.getValueAt(tblVM.getSelectedRow(), 1).toString();
+        JTbCode2 = Tmode3.getValueAt(tblVM.getSelectedRow(), 2).toString();
+        JTbName2 = Tmode3.getValueAt(tblVM.getSelectedRow(), 3).toString();
+        JTbDose2 = Tmode3.getValueAt(tblVM.getSelectedRow(), 4).toString();
+        JTbInterval2 = Tmode3.getValueAt(tblVM.getSelectedRow(), 5).toString();
+        
+        
+        txtMevID.setText(JTbID2);
+        txtMevCode.setText(JTbCode2);
+        txtMevName.setText(JTbName2);
+        txtMevDose.setText(JTbDose2);
+        txtMevInterval.setText(JTbInterval2); 
+    }//GEN-LAST:event_tblVMKeyPressed
+
+    private void tblCMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCMKeyPressed
+        DefaultTableModel Tmode4 = (DefaultTableModel)tblRA.getModel();
+
+        //Display data into text field when the specific row is selected
+        String JTbID3;
+        String JTbName3;
+        String JTbNo3;
+        String JTbStreet3;
+        String JTbPostcode3;
+        String JTbCity3;
+        String JTbStates3;      
+        
+        
+        
+        JTbID3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 1).toString();
+        JTbName3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 2).toString();
+        JTbNo3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 3).toString();
+        JTbStreet3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 4).toString();
+        JTbPostcode3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 5).toString();
+        JTbCity3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 6).toString();
+        JTbStates3 = Tmode4.getValueAt(tblCM.getSelectedRow(), 7).toString();        
+        
+        
+        txtMecID.setText(JTbID3);
+        txtMecName.setText(JTbName3);
+        txtMecNo.setText(JTbNo3);
+        txtMecStreet.setText(JTbStreet3);
+        txtMecPost.setText(JTbPostcode3); 
+        txtMecCity.setText(JTbCity3);
+        txtMecStates.setText(JTbStates3);        
+    }//GEN-LAST:event_tblCMKeyPressed
+
+    private void tblPpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPpKeyPressed
+        DefaultTableModel Tmode4 = (DefaultTableModel)tblRA.getModel();
+
+        //Display data into text field when the specific row is selected
+        String JTbName4;
+        String JTbIC4;
+        String JTbNat4;
+        String JTbStatus4;
+        String JTbEmail4;
+        String JTbPass4;
+        
+        
+        JTbName4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 1).toString();
+        JTbIC4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 2).toString();
+        JTbNat4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 3).toString();
+        JTbStatus4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 4).toString();
+        JTbEmail4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 5).toString();
+        JTbPass4 = Tmode4.getValueAt(tblPp.getSelectedRow(), 6).toString();      
+        
+        
+        txtPpName.setText(JTbName4);
+        txtPpIC.setText(JTbIC4);
+        txtPpNat.setText(JTbNat4);
+        cboPpStatus.setSelectedItem(JTbStatus4);
+        txtPpEmail.setText(JTbEmail4); 
+        txtPpNPass.setText(JTbPass4);
+    }//GEN-LAST:event_tblPpKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        
+    }    
     /**
      * @param args the command line arguments
      */
@@ -3632,7 +3757,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JButton btnPpUpdate;
     private javax.swing.JButton btnRASearch;
     private javax.swing.JButton btnRaApprove;
-    private javax.swing.JButton btnRaApprove2;
     private javax.swing.JButton btnRaDecline;
     private javax.swing.JButton btnRaSubmit;
     private javax.swing.JButton btnSRegister;
@@ -3647,13 +3771,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
@@ -3755,7 +3872,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
@@ -3769,7 +3885,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
@@ -3794,7 +3909,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
@@ -3873,20 +3987,13 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JTextField txtPpName;
     private javax.swing.JTextField txtPpNat;
     private javax.swing.JTextField txtRaGender;
-    private javax.swing.JTextField txtRaGender2;
     private javax.swing.JTextField txtRaIC;
     private javax.swing.JTextField txtRaName;
-    private javax.swing.JTextField txtRaName2;
     private javax.swing.JTextField txtRaNat;
-    private javax.swing.JTextField txtRaNat3;
-    private javax.swing.JTextField txtRaNat4;
     private javax.swing.JTextField txtRaRemarks;
     private javax.swing.JTextField txtRaSearch;
     private javax.swing.JTextField txtRaSearch1;
     private javax.swing.JTextField txtRaStats;
-    private javax.swing.JTextField txtRaStats4;
-    private javax.swing.JTextField txtRaStats5;
-    private javax.swing.JTextField txtRaStats6;
     private javax.swing.JTextField txtRaVC;
     private javax.swing.JTextField txtRaVN;
     private javax.swing.JTextField txtSCPass;
