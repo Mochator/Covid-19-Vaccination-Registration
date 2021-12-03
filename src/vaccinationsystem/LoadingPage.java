@@ -326,7 +326,7 @@ public class LoadingPage extends javax.swing.JFrame {
         lblVaccinatedStatus.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 25)); // NOI18N
         lblVaccinatedStatus.setForeground(new java.awt.Color(0, 0, 0));
         lblVaccinatedStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVaccinatedStatus.setText("Vaccinated");
+        lblVaccinatedStatus.setText("Not");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -379,7 +379,7 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -408,6 +408,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPFullName.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPFullName.setForeground(new java.awt.Color(0, 0, 0));
         txtPFullName.setEnabled(false);
+        txtPFullName.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPFullName.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         jLabel19.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -420,6 +421,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPIC.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPIC.setForeground(new java.awt.Color(0, 0, 0));
         txtPIC.setEnabled(false);
+        txtPIC.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPIC.setSelectionColor(new java.awt.Color(255, 255, 51));
         txtPIC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -441,6 +443,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPPhone.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPPhone.setForeground(new java.awt.Color(0, 0, 0));
         txtPPhone.setEnabled(false);
+        txtPPhone.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPPhone.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         jLabel29.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -468,6 +471,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPAddNo.setForeground(new java.awt.Color(0, 0, 0));
         txtPAddNo.setToolTipText("No.");
         txtPAddNo.setEnabled(false);
+        txtPAddNo.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPAddNo.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         txtPAddStreet.setBackground(new java.awt.Color(204, 204, 204));
@@ -475,6 +479,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPAddStreet.setForeground(new java.awt.Color(0, 0, 0));
         txtPAddStreet.setToolTipText("Street");
         txtPAddStreet.setEnabled(false);
+        txtPAddStreet.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPAddStreet.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         txtPAddCity.setBackground(new java.awt.Color(204, 204, 204));
@@ -482,6 +487,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPAddCity.setForeground(new java.awt.Color(0, 0, 0));
         txtPAddCity.setToolTipText("Postcode");
         txtPAddCity.setEnabled(false);
+        txtPAddCity.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPAddCity.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         cmbPState.setEnabled(false);
@@ -507,8 +513,10 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtPEmail.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtPEmail.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPEmail.setSelectionColor(new java.awt.Color(255, 255, 51));
 
+        txtPNewPw.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPNewPw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPNewPwKeyReleased(evt);
@@ -519,6 +527,7 @@ public class LoadingPage extends javax.swing.JFrame {
         });
 
         txtPCfmPw.setEnabled(false);
+        txtPCfmPw.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPCfmPw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPCfmPwKeyReleased(evt);
@@ -550,7 +559,7 @@ public class LoadingPage extends javax.swing.JFrame {
                             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlCredentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPwNoMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -602,6 +611,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPAddPostcode.setForeground(new java.awt.Color(0, 0, 0));
         txtPAddPostcode.setToolTipText("Postcode");
         txtPAddPostcode.setEnabled(false);
+        txtPAddPostcode.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPAddPostcode.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         jDob.setBackground(new java.awt.Color(255, 255, 255));
@@ -613,6 +623,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPGender.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPGender.setForeground(new java.awt.Color(0, 0, 0));
         txtPGender.setEnabled(false);
+        txtPGender.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPGender.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         txtPNationality.setEditable(false);
@@ -620,6 +631,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPNationality.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPNationality.setForeground(new java.awt.Color(0, 0, 0));
         txtPNationality.setEnabled(false);
+        txtPNationality.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPNationality.setSelectionColor(new java.awt.Color(255, 255, 51));
         txtPNationality.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -632,6 +644,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPUsername.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPUsername.setForeground(new java.awt.Color(0, 0, 0));
         txtPUsername.setEnabled(false);
+        txtPUsername.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txtPUsername.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -668,7 +681,7 @@ public class LoadingPage extends javax.swing.JFrame {
                                                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 97, Short.MAX_VALUE)))
+                                                .addGap(0, 77, Short.MAX_VALUE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -794,7 +807,7 @@ public class LoadingPage extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -805,7 +818,7 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2548, Short.MAX_VALUE))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Enroll", jPanel4);
@@ -920,7 +933,7 @@ public class LoadingPage extends javax.swing.JFrame {
                         .addComponent(btnVAAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVAReject, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         pnlVALayout.setVerticalGroup(
             pnlVALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -993,9 +1006,9 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addGroup(pnlRejectReasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtVAReason, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(btnVAReject1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -1006,7 +1019,7 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlVA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(pnlRejectReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1019,7 +1032,7 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addComponent(pnlVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRejectReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2083, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("View Appointment", jPanel6);
@@ -1033,12 +1046,12 @@ public class LoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
