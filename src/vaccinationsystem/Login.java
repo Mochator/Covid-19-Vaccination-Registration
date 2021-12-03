@@ -58,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         txtUsername.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(0, 0, 0));
         txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsername.setText("PP0001");
+        txtUsername.setText("PSN0001");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -156,13 +156,16 @@ public class Login extends javax.swing.JFrame {
             General.AlertMsgError("Username and password must not leave blank!", "Login Failed");
             return;
         }
+        
+        FileOperation fo = new FileOperation(username, General.userFileName);
+        fo.ReadFile();
+        System.out.println(fo.getReadResult());
 
-        ArrayList<Object> allUsers = FileOperation.DeserializeObject(General.userFileName);
-        Hashtable<String, Object> allUsersHt = FileOperation.ConvertToHashTable(allUsers);
+//        ArrayList<Object> allUsers = FileOperation.DeserializeObject(General.userFileName);
+//        Hashtable<String, Object> allUsersHt = FileOperation.ConvertToHashTable(allUsers);
 
-        System.out.println(allUsers);
-        if (allUsersHt.containsKey(username)) {
-            Object ob = allUsersHt.get(username);
+        if (fo.getReadResult() != null) {
+            Object ob = fo.getReadResult();
 
             System.out.println(ob.toString());
             Class objClass = ob.getClass();
@@ -170,6 +173,7 @@ public class Login extends javax.swing.JFrame {
             User user = null;
 
             if (objClass.equals(Citizen.class)) {
+                //People - Citizen
                 Citizen u = (Citizen) ob;
                 System.out.println(u);
                 if (u.LoginVerification(password)) {
@@ -184,6 +188,7 @@ public class Login extends javax.swing.JFrame {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
             } else if (objClass.equals(NonCitizen.class)) {
+                //People - Non-Citizen
                 NonCitizen u = (NonCitizen) ob;
 
                 if (u.LoginVerification(password)) {
@@ -198,26 +203,34 @@ public class Login extends javax.swing.JFrame {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
             } else if (objClass.equals(Admin.class)) {
+                //Personnel - Admin
                 Admin u = (Admin) ob;
 
-                if (user.LoginVerification(password)) {
+                if (u.LoginVerification(password)) {
+                    AdminLoadingPage lp = new AdminLoadingPage();
+                    lp.setCurrentUser(u);
+                    lp.StartUp();
 
+                    lp.setVisible(true);
+                    this.setVisible(false);
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
             } else if (objClass.equals(Doctor.class)) {
+                //Personnel - Doctor
                 Doctor u = (Doctor) ob;
 
-                if (user.LoginVerification(password)) {
+                if (u.LoginVerification(password)) {
 
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
 
             } else if (objClass.equals(Stockist.class)) {
+                //Personnel - Stockist
                 Stockist u = (Stockist) ob;
 
-                if (user.LoginVerification(password)) {
+                if (u.LoginVerification(password)) {
 
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
@@ -234,12 +247,12 @@ public class Login extends javax.swing.JFrame {
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnLoginActionPerformed(null);
         }
     }//GEN-LAST:event_txtUsernameKeyPressed
@@ -277,7 +290,7 @@ public class Login extends javax.swing.JFrame {
                 new Login().setVisible(true);
             }
         });
-        
+
         //Schedule task
         General.scheduleAtFixedRate();
     }

@@ -6,6 +6,7 @@
 package vaccinationsystem;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Mocha
  */
-public class VaccineCentre {
+public class VaccineCentre implements Serializable {
     
     private String VacCode;
     private String Name;
@@ -62,9 +63,10 @@ public class VaccineCentre {
     
     private String GenerateCode() {
         
-        GenerateId genId = new GenerateId(General.vaccineCentreFileName, General.PrefixVaccineCentre);
-        
-        //TODO
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.vaccineCentreFileName);
+
+        GenerateId genId = new GenerateId(allObj, General.PrefixVaccineCentre);
+
         return genId.returnId();
         
     }  

@@ -21,6 +21,10 @@ public class MyDateTime implements Serializable {
     public MyDateTime() {
 
     }
+    
+    public MyDateTime(Calendar cal){
+        this.cal = cal;
+    }
 
     public MyDateTime(int Year, int Month, int Day) {
         cal.set(Year, Month, Day);

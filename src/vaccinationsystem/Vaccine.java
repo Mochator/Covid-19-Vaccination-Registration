@@ -5,13 +5,15 @@
  */
 package vaccinationsystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mocha
  */
-public class Vaccine {
+public class Vaccine implements Serializable {
+
     private String VacCode;
     private String Name;
     private int DoseCount;
@@ -23,6 +25,13 @@ public class Vaccine {
         this.DoseCount = DoseCount;
         this.Interval = Interval;
         this.VacCode = this.GenerateCode();
+    }
+
+    public Vaccine(String VacCode, String Name, int DoseCount, int Interval) {
+        this.VacCode = VacCode;
+        this.Name = Name;
+        this.DoseCount = DoseCount;
+        this.Interval = Interval;
     }
 
     public String getVacCode() {
@@ -52,22 +61,23 @@ public class Vaccine {
     public void setInterval(int Interval) {
         this.Interval = Interval;
     }
-    
-    public void CreateStockForAllVaccineCentre(){
+
+    public void CreateStockForAllVaccineCentre() {
         //todo
     }
 
     @Override
     public String toString() {
         return VacCode + "\t" + Name + "\t" + DoseCount + "\t" + Interval;
-    }    
+    }
 
     private String GenerateCode() {
-        
-        GenerateId genId = new GenerateId(General.vaccineFileName, General.PrefixVaccine);
-        
-        //TODO
+
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.vaccineFileName);
+
+        GenerateId genId = new GenerateId(allObj, General.PrefixVaccine);
+
         return genId.returnId();
-    }  
-       
+    }
+
 }

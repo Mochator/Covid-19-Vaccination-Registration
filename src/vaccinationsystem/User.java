@@ -216,19 +216,16 @@ class Citizen extends People {
 class NonCitizen extends People {
 
     private String Passport;
-    protected MyDateTime PassportExpiry;
     private static boolean IsCitizen = false;
 
-    public NonCitizen(String Passport, MyDateTime PassportExpiry, Address Address, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
+    public NonCitizen(String Passport, Address Address, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Address, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.Passport = Passport;
-        this.PassportExpiry = PassportExpiry;
     }
 
-    public NonCitizen(String Passport, MyDateTime PassportExpiry, Address Address, MyDateTime RegistrationDate, VaccinationStatus VacStatus, boolean IsCitizen, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
+    public NonCitizen(String Passport, Address Address, MyDateTime RegistrationDate, VaccinationStatus VacStatus, boolean IsCitizen, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
         super(Address, RegistrationDate, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
         this.Passport = Passport;
-        this.PassportExpiry = PassportExpiry;
     }
 
     public String getPassport() {
@@ -239,17 +236,10 @@ class NonCitizen extends People {
         this.Passport = Passport;
     }
 
-    public MyDateTime getPassportExpiry() {
-        return PassportExpiry;
-    }
-
-    public void setPassportExpiry(MyDateTime PassportExpiry) {
-        this.PassportExpiry = PassportExpiry;
-    }
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + IsCitizen + "\t" + Passport + "\t" + PassportExpiry;
+        return super.toString() + "\t" + IsCitizen + "\t" + Passport;
     }
     
     
@@ -259,7 +249,7 @@ class NonCitizen extends People {
 class Personnel extends User {
 
     private static String UserRole = General.UserRolePersonnel;
-    protected MyDateTime HiredDate;
+    protected static MyDateTime HiredDate = new MyDateTime();
     private PersonnelStatus Status;
 
     //Create

@@ -30,8 +30,10 @@ import javax.swing.JOptionPane;
  */
 public class FileOperation {
 
+    private String Id;
     private String FileName; //for plain text file
     private ArrayList<Object> arrayList = new ArrayList<Object>(); //For serialized file
+    private Hashtable<String, Object> ht = new Hashtable<String, Object>();
     private Object result;
 
     public FileOperation() {
@@ -39,24 +41,31 @@ public class FileOperation {
 
     ;
     
+    public FileOperation(String fileName) {
+        this.FileName = fileName;
+    }
 
     //Read based on ID (int)
     public FileOperation(int id, String fileName) {
-
+        this.Id = String.valueOf(id);
+        this.FileName = fileName;
     }
 
     //Read based on Serialized ID (String)
     public FileOperation(String id, String fileName) {
-        Object result = null;
+        this.Id = id;
         this.FileName = fileName;
+    }
+
+    public void ReadFile() {
+        Object result = null;
 
         this.arrayList = FileOperation.DeserializeObject(FileName);
-        Hashtable<String, Object> ht = FileOperation.ConvertToHashTable(arrayList);
+        this.ht = FileOperation.ConvertToHashTable(arrayList);
 
-        if (ht.containsKey(id)) {
-            this.result = ht.get(id);
+        if (ht.containsKey(Id)) {
+            this.result = ht.get(Id);
         }
-
     }
 
     public Object getReadResult() {
@@ -64,10 +73,12 @@ public class FileOperation {
     }
 
     //Save as plaintext
-    public void SaveToFile(Object obj, String fileName) {
+    public boolean SaveToFile(Object obj) {
+        boolean success = false;
+        this.result = obj;
 
         try {
-            FileWriter fw = new FileWriter(fileName, true);
+            FileWriter fw = new FileWriter(this.FileName, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
@@ -76,23 +87,26 @@ public class FileOperation {
             pw.close();
             bw.close();
             fw.close();
-            JOptionPane.showMessageDialog(null, "Data has been saved!", "Successful", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Data wasn't saved!", "Failed", JOptionPane.WARNING_MESSAGE);
+            success = false;
         }
+
+        return success;
     }
 
-    //TODO::Serialization will be used
-    public boolean ModifyRecord(Object newRecord, Object referenceData, String filename) {
+    //Modify existing data
+    public boolean ModifyRecord(Object newRecord) {
 
         boolean success = false;
-        this.FileName = filename;
-        this.arrayList = DeserializeObject(this.FileName);
-        Hashtable<String, Object> ht = ConvertToHashTable(arrayList);
+        this.result = newRecord;
 
-        if (ht.containsKey(referenceData)) {
-            ht.replace(String.valueOf(referenceData), newRecord);
+        arrayList = DeserializeObject(this.FileName);
+        ht = ConvertToHashTable(arrayList);
+
+        if (ht.containsKey(this.Id)) {
+            ht.replace(String.valueOf(this.Id), newRecord);
         } else {
             return success;
         }
@@ -133,6 +147,43 @@ public class FileOperation {
 
     }
 
+    //Mass modify record
+    public boolean ModifyRecords() {
+
+        boolean success = false;
+
+        try {
+            //existing file
+            File file = new File(this.FileName);
+            String tempFilename = "temp.ser";
+            File tempFile = new File(tempFilename);
+
+            if (tempFile.exists()) {
+                tempFile.delete();
+            }
+
+            for (Object x : ht.values()) {
+                if (!SerializeObject(tempFilename, x)) {
+                    System.out.println("Update data serialization error!");
+                    break;
+                }
+            }
+
+            if (file.delete()) {
+                tempFile.renameTo(file);
+                success = true;
+            } else {
+                System.out.println("Fail to delete");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return success;
+        }
+
+        return success;
+    }
+
+    //Static methods
     public static ArrayList<Object> DeserializeObject(String filename) {
         ArrayList<Object> arrayList = new ArrayList<Object>();
 
@@ -169,8 +220,8 @@ public class FileOperation {
     public static boolean SerializeObject(String filename, Object obj) {
 
         boolean success = false;
-        ArrayList<Object> existingData = new ArrayList<Object>();
-        existingData = DeserializeObject(filename);
+        ArrayList<Object> al = new ArrayList<Object>();
+        al = FileOperation.DeserializeObject(filename);
 
         try {
 
@@ -178,7 +229,7 @@ public class FileOperation {
             FileOutputStream file = new FileOutputStream(fileName);
             ObjectOutputStream out = new ObjectOutputStream(file);
 
-            ListIterator li = existingData.listIterator();
+            ListIterator li = al.listIterator();
 
             while (li.hasNext()) {
                 Object element = li.next();
@@ -200,11 +251,11 @@ public class FileOperation {
         return success;
     }
 
-    public static Hashtable<String, Object> ConvertToHashTable(ArrayList<Object> arrayList) {
-        Hashtable<String, Object> ht = new Hashtable<String, Object>();
+    public static Hashtable<String, Object> ConvertToHashTable(ArrayList<Object> al) {
 
         //Get first element as key for hash table
-        ListIterator li = arrayList.listIterator();
+        ListIterator li = al.listIterator();
+        Hashtable<String, Object> hashtable = new Hashtable<String, Object>();
 
         try {
             while (li.hasNext()) {
@@ -212,15 +263,40 @@ public class FileOperation {
 
                 String firstIndexAsKey = String.valueOf(obj).trim().split("\t")[0];
 
-                ht.put(firstIndexAsKey, obj);
+                hashtable.put(firstIndexAsKey, obj);
             }
         } catch (Exception ex) {
             System.out.println(ex);
         }
 
+        return hashtable;
+    }
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String FileName) {
+        this.FileName = FileName;
+    }
+
+    public ArrayList<Object> getArrayList() {
+        return arrayList;
+    }
+
+    public void setArrayList(ArrayList<Object> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    public Hashtable<String, Object> getHt() {
         return ht;
     }
 
+    public void setHt(Hashtable<String, Object> ht) {
+        this.ht = ht;
+    }
+
+    
 }
 
 class GenerateId {
@@ -318,9 +394,7 @@ class GenerateId {
                 if (element != null) {
 
                     String code = String.valueOf(element).trim().split("\t")[0];
-                    System.out.println("Check Code: " + code);
                     anyDup = code.equals(this.newId);
-                    System.out.println(anyDup);
                 }
             }
 

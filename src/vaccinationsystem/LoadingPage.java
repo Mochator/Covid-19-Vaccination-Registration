@@ -32,15 +32,14 @@ import vaccinationsystem.Appointment.AppointmentStatus;
 public class LoadingPage extends javax.swing.JFrame {
 
     private static People currentUser;
+    private static Hashtable<String, Object> htAppointment;
 
     /**
      * Creates new form LoadingPage
      */
     public LoadingPage() {
         initComponents();
-        pnlCredential.setVisible(false);
-        pnlRejectReason.setVisible(false);
-        pnlVA.setVisible(false);
+        ComponentReset();
 
         //---Profile Tab---
         //Init state combo
@@ -61,6 +60,138 @@ public class LoadingPage extends javax.swing.JFrame {
             cmbVACentre.addItem(v.getVacCode() + " - " + v.getName());
         }
 
+    }
+
+    private void ComponentReset() {
+        pnlCredential.setVisible(false);
+        lblPwNoMatch.setVisible(false);
+        btnSave.setVisible(false);
+
+        pnlRejectReason.setVisible(false);
+        pnlVA.setVisible(false);
+    }
+
+    private void editProfile(boolean b) {
+        btnSave.setVisible(b);
+        btnEditProfile.setVisible(!b);
+        pnlCredential.setVisible(b);
+        for (Component x : jPanel9.getComponents()) {
+
+            if (x instanceof JTextField) {
+                JTextField j = (JTextField) x;
+                j.setEnabled(j.isEditable() && b);
+            } else if (x instanceof JComboBox) {
+                JComboBox j = (JComboBox) x;
+                j.setEnabled(b);
+
+            } else if (x instanceof JPasswordField) {
+                JPasswordField j = (JPasswordField) x;
+                j.setEnabled(b);
+                j.setText("");
+            }
+        }
+    }
+
+    private void ClearVAFields() {
+        txtVACode.setText("");
+        dateVADate.setCalendar(null);
+        cmbVACentre.setSelectedIndex(-1);
+        cmbVAVaccine.setSelectedIndex(-1);
+        txtVAAddress.setText("");
+        txtVAReason.setText("");
+
+        ComponentReset();
+    }
+
+    public void PopulateUserData() {
+        //---Profile Tab---
+        txtPFullName.setText(currentUser.getFullName());
+
+        txtPGender.setText(currentUser.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString);
+
+        jDob.setCalendar(currentUser.Dob.getCal());
+
+        if (currentUser.getClass().equals(Citizen.class
+        )) {
+            Citizen c = (Citizen) currentUser;
+            txtPIC.setText(c.getIcNo());
+            txtPNationality.setText(General.NationalityMalaysian);
+
+        } else {
+            NonCitizen c = (NonCitizen) currentUser;
+            txtPIC.setText(c.getPassport());
+            txtPNationality.setText(General.NationalityNonMalaysian);
+
+        }
+
+        txtPPhone.setText(currentUser.getContact());
+
+        txtPAddNo.setText(currentUser.Address.getNo());
+        txtPAddStreet.setText(currentUser.Address.getStreet());
+        txtPAddCity.setText(currentUser.Address.getCity());
+        txtPAddPostcode.setText(currentUser.Address.getPostcode());
+        cmbPState.setSelectedItem(currentUser.Address.getState());
+        txtPEmail.setText(currentUser.getEmail());
+        txtPUsername.setText(currentUser.Username);
+
+        lblVaccinatedStatus.setText(currentUser.getVacStatus());
+
+        txtPNewPw.setText("");
+        txtPCfmPw.setText("");
+
+        //---Vaccination Appointment Tab---
+        //Enroll disable
+        ArrayList<Object> allUserAppointments = FileOperation.DeserializeObject(General.appointmentFileName);
+        Hashtable<String, Object> ht = FileOperation.ConvertToHashTable(allUserAppointments);
+
+        //Appointment List
+        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
+
+        dtm.setRowCount(0);
+        
+        for (Object x : ht.keySet()) {
+            Appointment a = (Appointment) ht.get(x);
+            if (a.Ppl.Username.equals(currentUser.Username)) {
+                htAppointment.put(String.valueOf(x), a);
+                
+                //Get vaccine data
+                String vaVaccine = "-";
+                if (a.Vacc != null) {
+                    FileOperation foVac = new FileOperation(a.Vacc.getVacCode(), General.vaccineFileName);
+                    foVac.ReadFile();
+                    Vaccine vac = (Vaccine) foVac.getReadResult();
+                    vaVaccine = vac.getVacCode() + " - " + vac.getName();
+                }
+
+                Calendar vaDate = a.VaccinationDate == null ? null : a.VaccinationDate.getCal();
+
+                String vaCentre = "-";
+                if (a.Location != null) {
+                    FileOperation foCentre = new FileOperation(a.Location.getVacCode(), General.vaccineCentreFileName);
+                    foCentre.ReadFile();
+                    VaccineCentre vacCentre = (VaccineCentre) foCentre.getReadResult();
+                    vaCentre = vacCentre.getVacCode() + " - " + vacCentre.getName();
+                }
+
+                Object[] dtmObj = new Object[]{a.getCode(), a.RegisterDate.GetShortDateTime(), vaDate, vaCentre, vaVaccine, a.getStatus()};
+
+                dtm.addRow(dtmObj);
+            }
+        }
+
+        if (ht.size() > 0) {
+            btnSubmit.setEnabled(false);
+            btnSubmit.setText("You have enrolled!");
+        }
+
+    }
+
+    public void setCurrentUserCitizen(Citizen user) {
+        currentUser = user;
+    }
+
+    public void setCurrentUserNonCitizen(NonCitizen user) {
+        currentUser = user;
     }
 
     /**
@@ -111,6 +242,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPNewPw = new javax.swing.JPasswordField();
         txtPCfmPw = new javax.swing.JPasswordField();
         jLabel42 = new javax.swing.JLabel();
+        lblPwNoMatch = new javax.swing.JLabel();
         btnEditProfile = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         txtPAddPostcode = new javax.swing.JTextField();
@@ -142,6 +274,7 @@ public class LoadingPage extends javax.swing.JFrame {
         pnlRejectReason = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         txtVAReason = new javax.swing.JTextField();
+        btnVAReject1 = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -377,17 +510,33 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPEmail.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         txtPNewPw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPNewPwKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPNewPwKeyTyped(evt);
             }
         });
 
         txtPCfmPw.setEnabled(false);
+        txtPCfmPw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPCfmPwKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPCfmPwKeyTyped(evt);
+            }
+        });
 
         jLabel42.setFont(new java.awt.Font("Bell MT", 0, 10)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel42.setForeground(new java.awt.Color(204, 204, 204));
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel42.setText("Leave this field blank to retain current password.");
+
+        lblPwNoMatch.setFont(new java.awt.Font("Bell MT", 0, 10)); // NOI18N
+        lblPwNoMatch.setForeground(new java.awt.Color(204, 0, 0));
+        lblPwNoMatch.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPwNoMatch.setText("Password doesn't match!");
 
         javax.swing.GroupLayout pnlCredentialLayout = new javax.swing.GroupLayout(pnlCredential);
         pnlCredential.setLayout(pnlCredentialLayout);
@@ -404,6 +553,7 @@ public class LoadingPage extends javax.swing.JFrame {
                     .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlCredentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPwNoMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlCredentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtPCfmPw, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                         .addComponent(txtPNewPw, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -428,7 +578,9 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addGroup(pnlCredentialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPCfmPw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel46))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPwNoMatch)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         btnEditProfile.setText("Edit Profile");
@@ -714,7 +866,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtVACode.setEnabled(false);
         txtVACode.setSelectionColor(new java.awt.Color(255, 255, 51));
 
-        btnVAReject.setText("Reject");
+        btnVAReject.setText("Decline");
         btnVAReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVARejectActionPerformed(evt);
@@ -802,24 +954,36 @@ public class LoadingPage extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel37.setText("Reject Reason");
+        jLabel37.setText("Reason");
 
-        txtVAReason.setEditable(false);
         txtVAReason.setBackground(new java.awt.Color(204, 204, 204));
         txtVAReason.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtVAReason.setForeground(new java.awt.Color(0, 0, 0));
         txtVAReason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtVAReason.setEnabled(false);
         txtVAReason.setSelectionColor(new java.awt.Color(255, 255, 51));
+
+        btnVAReject1.setText("Submit");
+        btnVAReject1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVAReject1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRejectReasonLayout = new javax.swing.GroupLayout(pnlRejectReason);
         pnlRejectReason.setLayout(pnlRejectReasonLayout);
         pnlRejectReasonLayout.setHorizontalGroup(
             pnlRejectReasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRejectReasonLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(txtVAReason)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRejectReasonLayout.createSequentialGroup()
+                .addGroup(pnlRejectReasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlRejectReasonLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVAReject1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlRejectReasonLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtVAReason)))
                 .addGap(97, 97, 97))
         );
         pnlRejectReasonLayout.setVerticalGroup(
@@ -829,20 +993,22 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addGroup(pnlRejectReasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtVAReason, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(btnVAReject1)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlVA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
-                    .addComponent(pnlRejectReason, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(pnlRejectReason, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -853,7 +1019,7 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addComponent(pnlVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRejectReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2141, Short.MAX_VALUE))
+                .addContainerGap(2083, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("View Appointment", jPanel6);
@@ -900,27 +1066,6 @@ public class LoadingPage extends javax.swing.JFrame {
         editProfile(true);
     }//GEN-LAST:event_btnEditProfileActionPerformed
 
-    private void editProfile(boolean b) {
-        btnSave.setVisible(b);
-        btnEditProfile.setVisible(!b);
-        pnlCredential.setVisible(b);
-        for (Component x : jPanel9.getComponents()) {
-
-            if (x instanceof JTextField) {
-                JTextField j = (JTextField) x;
-                j.setEnabled(j.isEditable() && b);
-            } else if (x instanceof JComboBox) {
-                JComboBox j = (JComboBox) x;
-                j.setEnabled(b);
-
-            } else if (x instanceof JPasswordField) {
-                JPasswordField j = (JPasswordField) x;
-                j.setEnabled(b);
-                j.setText("");
-            }
-        }
-    }
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
         if (General.AlertQuestionYesNo("Do you want to save your changes?", "Save Confirmation") == 1) {
@@ -928,15 +1073,16 @@ public class LoadingPage extends javax.swing.JFrame {
         }
 
         //Check field filled
-        if (txtPPhone.getText().isBlank() || txtPAddNo.getText().isBlank() || txtPAddStreet.getText().isBlank() || txtPAddCity.getText().isBlank() || txtPAddPostcode.getText().isBlank()) {
+        if (txtPPhone.getText().isBlank() || txtPEmail.getText().isBlank() || txtPAddNo.getText().isBlank() || txtPAddStreet.getText().isBlank() || txtPAddCity.getText().isBlank() || txtPAddPostcode.getText().isBlank()) {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
 
-        //Password doesnt match
+        //Check Pw Any Changes
         if (txtPNewPw.getPassword().length != 0) {
+            //Password doesnt match
 
-            if (txtPNewPw.getPassword().equals(txtPCfmPw.getPassword())) {
+            if (!String.valueOf(txtPNewPw.getPassword()).equals(String.valueOf(txtPCfmPw.getPassword()))) {
                 General.AlertMsgError("New Password doesn't match with Confirm Password.", "Profile Update Failed!");
                 return;
             } else {
@@ -963,8 +1109,10 @@ public class LoadingPage extends javax.swing.JFrame {
         currentUser.Address.setState(addState);
         currentUser.Address.setPostcode(addPostcode);
 
-        FileOperation fo = new FileOperation();
-        if (fo.ModifyRecord(currentUser, currentUser.Username, General.userFileName)) {
+        FileOperation fo = new FileOperation(currentUser.Username, General.userFileName);
+        fo.ReadFile();
+
+        if (fo.ModifyRecord(currentUser)) {
             General.AlertMsgInfo("Profile has been updated.", "Success!");
             editProfile(false);
             PopulateUserData();
@@ -976,8 +1124,7 @@ public class LoadingPage extends javax.swing.JFrame {
 
     private void txtPNewPwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPNewPwKeyTyped
         // TODO add your handling code here:
-        txtPCfmPw.setEnabled(txtPNewPw.getPassword().length > 0);
-        txtPCfmPw.setText("");
+
     }//GEN-LAST:event_txtPNewPwKeyTyped
 
     private void txtPICKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPICKeyPressed
@@ -1015,11 +1162,15 @@ public class LoadingPage extends javax.swing.JFrame {
         if (General.AlertQuestionYesNo("Do you want to accept the appointment?", "Appointment Confirmation") == 0) {
             String appCode = txtVACode.getText();
             FileOperation fo = new FileOperation(appCode, General.appointmentFileName);
+            fo.ReadFile();
             Appointment app = (Appointment) fo.getReadResult();
             app.setStatus(AppointmentStatus.Accepted);
 
-            if (fo.ModifyRecord(app, app.getCode(), General.appointmentFileName)) {
+            if (fo.ModifyRecord(app)) {
                 General.AlertMsgInfo("Appointment succesfully updated!", "Success");
+                btnVAAccept.setEnabled(false);
+                btnVAReject.setEnabled(false);
+                pnlRejectReason.setVisible(false);
                 PopulateUserData();
             } else {
                 General.AlertMsgInfo("Appointment failed to update.", "Error!");
@@ -1029,11 +1180,17 @@ public class LoadingPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVAAcceptActionPerformed
 
     private void tblAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAppointmentMouseClicked
-        // TODO add your handling code here:
+        pnlRejectReason.setVisible(false);
+        txtVAReason.setText("");
+        btnVAAccept.setEnabled(false);
+        btnVAReject.setEnabled(false);
+        txtVAReason.setEnabled(false);
+
         int row = tblAppointment.getSelectedRow();
         String appCode = String.valueOf(tblAppointment.getValueAt(row, 0));
 
         FileOperation fo = new FileOperation(appCode, General.appointmentFileName);
+        fo.ReadFile();
         Appointment app = (Appointment) fo.getReadResult();
 
         ClearVAFields();
@@ -1053,30 +1210,76 @@ public class LoadingPage extends javax.swing.JFrame {
             cmbVAVaccine.setSelectedItem(app.Vacc.getVacCode() + " - " + app.Vacc.getName());
         }
 
-        if (app.getStatus() == AppointmentStatus.Approved) {
+        if (app.getStatus().equals(AppointmentStatus.Approved)) {
             pnlVA.setVisible(true);
+            btnVAAccept.setEnabled(true);
+            btnVAReject.setEnabled(true);
+            return;
+        }
+
+        if (app.getStatus().equals(AppointmentStatus.Accepted)) {
+            pnlVA.setVisible(true);
+            return;
+        }
+
+        if (app.getStatus().equals(AppointmentStatus.Declined)) {
+            pnlVA.setVisible(true);
+            pnlRejectReason.setVisible(true);
+            txtVAReason.setText(app.getRejectReason());
+            return;
         }
     }//GEN-LAST:event_tblAppointmentMouseClicked
 
     private void btnVARejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVARejectActionPerformed
         // TODO add your handling code here:
-        General.AlertQuestionYesNo("Appointment is only considered officially declined after reject reason given. Please take note that you will be requeued automatically after declined.", "");
+        General.AlertMsgInfo("Appointment is only considered officially declined after reject reason given. Please take note that you will be requeued automatically after declined.", "");
         pnlRejectReason.setVisible(true);
-        
+        txtVAReason.setEnabled(true);
+
     }//GEN-LAST:event_btnVARejectActionPerformed
 
-    private void ClearVAFields() {
-        txtVACode.setText("");
-        dateVADate.setCalendar(null);
-        cmbVACentre.setSelectedIndex(-1);
-        cmbVAVaccine.setSelectedIndex(-1);
-        txtVAAddress.setText("");
-        txtVAReason.setText("");
+    private void txtPCfmPwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPCfmPwKeyTyped
 
-        pnlVA.setVisible(false);
+    }//GEN-LAST:event_txtPCfmPwKeyTyped
 
-        pnlRejectReason.setVisible(false);
-    }
+    private void txtPNewPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPNewPwKeyReleased
+        txtPCfmPw.setEnabled(txtPNewPw.getPassword().length > 0);
+        txtPCfmPw.setText("");
+        lblPwNoMatch.setVisible(txtPCfmPw.isEnabled());
+    }//GEN-LAST:event_txtPNewPwKeyReleased
+
+    private void txtPCfmPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPCfmPwKeyReleased
+        lblPwNoMatch.setVisible(!String.valueOf(txtPNewPw.getPassword()).equals(String.valueOf(txtPCfmPw.getPassword())));
+    }//GEN-LAST:event_txtPCfmPwKeyReleased
+
+    private void btnVAReject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVAReject1ActionPerformed
+
+        if (txtVAReason.getText().isBlank()) {
+            General.AlertMsgError("Decline reason can't be blank.", "Error");
+            return;
+        }
+
+        if (General.AlertQuestionYesNo("Your appointment will be recreated and rescheduled according to the given reject reason. Do you want to proceed?", "Reject Confirmation") == 1) {
+
+            String appCode = txtVACode.getText();
+            FileOperation fo = new FileOperation(appCode, General.appointmentFileName);
+            fo.ReadFile();
+            Appointment app = (Appointment) fo.getReadResult();
+            if (app != null) {
+                app.setRejectReason(txtVAReason.getText());
+                app.setStatus(AppointmentStatus.Declined);
+
+                if (fo.ModifyRecord(app)) {
+                    General.AlertMsgInfo("Appointment has been updated!", "Success");
+                    PopulateUserData();
+                    return;
+                }
+            }
+
+        } else {
+            General.AlertMsgInfo("Appointment was not updated. Please either Accept or Decline the appointment.", "Alert");
+        }
+    }//GEN-LAST:event_btnVAReject1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1117,79 +1320,6 @@ public class LoadingPage extends javax.swing.JFrame {
         });
     }
 
-    public void PopulateUserData() {
-        //---Profile Tab---
-        txtPFullName.setText(currentUser.getFullName());
-
-        txtPGender.setText(currentUser.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString);
-
-        jDob.setCalendar(currentUser.Dob.getCal());
-
-        if (currentUser.getClass().equals(Citizen.class
-        )) {
-            Citizen c = (Citizen) currentUser;
-            txtPIC.setText(c.getIcNo());
-            txtPNationality.setText(General.NationalityMalaysian);
-
-        } else {
-            NonCitizen c = (NonCitizen) currentUser;
-            txtPIC.setText(c.getPassport());
-            txtPNationality.setText(General.NationalityNonMalaysian);
-
-        }
-
-        txtPPhone.setText(currentUser.getContact());
-
-        txtPAddNo.setText(currentUser.Address.getNo());
-        txtPAddStreet.setText(currentUser.Address.getStreet());
-        txtPAddCity.setText(currentUser.Address.getCity());
-        txtPAddPostcode.setText(currentUser.Address.getPostcode());
-        cmbPState.setSelectedItem(currentUser.Address.getState());
-        txtPEmail.setText(currentUser.getEmail());
-        txtPUsername.setText(currentUser.Username);
-
-        lblVaccinatedStatus.setText(currentUser.getVacStatus());
-
-        txtPNewPw.setText("");
-        txtPCfmPw.setText("");
-
-        //---Vaccination Appointment Tab---
-        //Enroll disable
-        ArrayList<Object> allUserAppointments = FileOperation.DeserializeObject(General.appointmentFileName);
-        Hashtable<String, Object> ht = FileOperation.ConvertToHashTable(allUserAppointments);
-
-        //Appointment List
-        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
-
-        for (Object x : ht.keySet()) {
-            Appointment a = (Appointment) ht.get(x);
-            if (!a.Ppl.Username.equals(currentUser.Username)) {
-                ht.remove(x);
-            } else {
-                String vaVaccine = a.Vacc == null ? "-" : a.Vacc.getVacCode() + " - " + a.Vacc.getName();
-                Calendar vaDate = a.VaccinationDate == null ? null : a.VaccinationDate.getCal();
-                String vaCentre = a.Location == null ? null : a.Location.getVacCode() + " - " + a.Location.getName();
-
-                Object[] dtmObj = new Object[]{a.getCode(), a.RegisterDate.GetShortDateTime(), vaDate, vaCentre, vaVaccine, a.getStatus()};
-
-                dtm.addRow(dtmObj);
-            }
-        }
-
-        if (ht.size() > 0) {
-            btnSubmit.setEnabled(false);
-            btnSubmit.setText("You have enrolled!");
-        }
-
-    }
-
-    public void setCurrentUserCitizen(Citizen user) {
-        currentUser = user;
-    }
-
-    public void setCurrentUserNonCitizen(NonCitizen user) {
-        currentUser = user;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditProfile;
@@ -1198,6 +1328,7 @@ public class LoadingPage extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnVAAccept;
     private javax.swing.JButton btnVAReject;
+    private javax.swing.JButton btnVAReject1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbPState;
     private javax.swing.JComboBox<String> cmbVACentre;
@@ -1238,6 +1369,7 @@ public class LoadingPage extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblPwNoMatch;
     private javax.swing.JLabel lblVSName1;
     private javax.swing.JLabel lblVSName2;
     private javax.swing.JLabel lblVSSymtom1;

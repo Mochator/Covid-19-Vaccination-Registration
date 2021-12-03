@@ -85,12 +85,31 @@ public class General {
 
     public static String NationalityMalaysian = "Malaysian";
     public static String NationalityNonMalaysian = "Non-Malaysian";
+    
+    public static ArrayList<String> Nationalities() {
+        ArrayList<String> result = new ArrayList<String>();
+        result.add(NationalityMalaysian);
+        result.add(NationalityNonMalaysian);
+
+        Collections.sort(result);
+        return result;
+    }
+    
 
     public static char GenderMale = 'M';
     public static char GenderFemale = 'F';
 
     public static String GenderMaleString = "Male";
     public static String GenderFemaleString = "Female";
+    
+    public static ArrayList<String> GenderString() {
+        ArrayList<String> result = new ArrayList<String>();
+        result.add(GenderMaleString);
+        result.add(GenderFemaleString);
+
+        Collections.sort(result);
+        return result;
+    }
 
     //JOption Methods
     public static void AlertMsgInfo(String message, String title) {
@@ -133,8 +152,9 @@ public class General {
 
                     if (app.VaccinationDate.getCal().compareTo(tomorrow) < 0 && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
                         app.setStatus(AppointmentStatus.Cancelled);
-                        FileOperation fo = new FileOperation();
-                        fo.ModifyRecord(app, app.getCode(), appointmentFileName);
+                        FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
+                        fo.ReadFile();
+                        fo.ModifyRecord(app);
                     }
                 }
             }
@@ -145,4 +165,5 @@ public class General {
         timer.schedule(task, delay);
 
     }
+    
 }

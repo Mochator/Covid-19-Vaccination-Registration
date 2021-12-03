@@ -51,7 +51,7 @@ public class Main {
 //          ArrayList<Object> arrayList = new ArrayList<Object>();
         MyDateTime mdt = new MyDateTime(2000, 10, 26);
         MyDateTime passportExp = new MyDateTime(2022, 12, 12);
-        User citizen = new NonCitizen("123123", passportExp, add, People.VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
+        User citizen = new NonCitizen("123123", add, People.VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
         citizen.GenerateUsername();
         System.out.println(citizen);
         System.out.println("----------");
