@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.ListIterator;
+import javax.swing.JFrame;
 
 /**
  *
@@ -210,7 +211,6 @@ public class Login extends javax.swing.JFrame {
                     AdminLoadingPage lp = new AdminLoadingPage();
                     lp.setCurrentUser(u);
                     lp.StartUp();
-
                     lp.setVisible(true);
                     this.setVisible(false);
                 } else {

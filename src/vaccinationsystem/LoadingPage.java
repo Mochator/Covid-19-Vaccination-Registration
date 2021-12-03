@@ -32,7 +32,7 @@ import vaccinationsystem.Appointment.AppointmentStatus;
 public class LoadingPage extends javax.swing.JFrame {
 
     private static People currentUser;
-    private static Hashtable<String, Object> htAppointment;
+    private static Hashtable<String, Object> htAppointment = new Hashtable<String, Object>();
 
     /**
      * Creates new form LoadingPage
