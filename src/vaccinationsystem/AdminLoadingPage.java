@@ -477,7 +477,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.Address.getFullAddress(),
                     u.getEmail(),
                     u.RegistrationDate.GetShortDateTime(),
-                    u.getVacStatus()
+                    u.getVacStatus() + " Vaccinated"
                 };
 
             } else if (vClass.equals(NonCitizen.class)) {
@@ -497,7 +497,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.Address.getFullAddress(),
                     u.getEmail(),
                     u.RegistrationDate.GetShortDateTime(),
-                    u.getVacStatus()
+                    u.getVacStatus()+ " Vaccinated"
                 };
 
             } else {
@@ -2266,10 +2266,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtPpCode.setEnabled(false);
         txtPpCode.setSelectionColor(new java.awt.Color(255, 255, 51));
 
+        txtPpIC.setEditable(false);
         txtPpIC.setBackground(new java.awt.Color(204, 204, 204));
         txtPpIC.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPpIC.setForeground(new java.awt.Color(0, 0, 0));
         txtPpIC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPpIC.setEnabled(false);
         txtPpIC.setSelectionColor(new java.awt.Color(255, 255, 51));
 
         txtPpLName.setBackground(new java.awt.Color(204, 204, 204));
@@ -2376,7 +2378,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cboPpAddState, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -5463,32 +5465,30 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
 
         }
-        
-        if(v.getClass().equals(Doctor.class)){
+
+        if (v.getClass().equals(Doctor.class)) {
             Doctor u = (Doctor) v;
-           
+
             String vacCentre = String.valueOf(cboComVacCentre.getSelectedItem()).split(" - ")[0];
-            
-            
+
             FileOperation fo2 = new FileOperation(vacCentre, General.vaccineCentreFileName);
             fo2.ReadFile();
             VaccineCentre vc = (VaccineCentre) fo2.getReadResult();
-            
+
             u.setVacCentre(vc);
-            
+
             v = u;
-        } else if(v.getClass().equals(Stockist.class)){
+        } else if (v.getClass().equals(Stockist.class)) {
             Stockist u = (Stockist) v;
-           
+
             String vacCentre = String.valueOf(cboComVacCentre.getSelectedItem()).split(" - ")[0];
-            
-            
+
             FileOperation fo2 = new FileOperation(vacCentre, General.vaccineCentreFileName);
             fo2.ReadFile();
             VaccineCentre vc = (VaccineCentre) fo2.getReadResult();
-            
+
             u.setVacCentre(vc);
-            
+
             v = u;
         }
 
@@ -5716,7 +5716,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
             Object[] dtmObj = null;
 
-            
             if (status != null) {
                 if (!status.equals(v.getVacStatus())) {
                     continue;
@@ -5746,7 +5745,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         c.Address.getFullAddress(),
                         c.getEmail(),
                         c.RegistrationDate.GetShortDateTime(),
-                        c.getVacStatus()
+                        c.getVacStatus()+ " Vaccinated"
                     };
                 }
 
@@ -5847,7 +5846,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         v.setContact(phone);
         v.setEmail(email);
         v.setFirst_Name(txtPpFName.getText().trim());
-        v.setFirst_Name(txtPpLName.getText().trim());
+        v.setLast_Name(txtPpLName.getText().trim());
 
         char Gender = v.getGender();
 
@@ -5860,45 +5859,45 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         }
         v.setGender(Gender);
 
-        MyDateTime dob = new MyDateTime(calComDob.getCalendar());
+        MyDateTime dob = new MyDateTime(calPpDob.getCalendar());
         v.setDob(dob);
 
         Address add = new Address(txtPpAddNo.getText(), txtPpAddStreet.getText(), txtPpAddCity.getText(), txtPpAddPost.getText(), String.valueOf(cboPpAddState.getSelectedItem()));
 
         v.setAddress(add);
-        
-        if(v.getClass().equals(Citizen.class)){
+
+        if (v.getClass().equals(Citizen.class)) {
             Citizen u = (Citizen) v;
-           
-            
-            
+
             u.setIcNo(txtPpIC.getText());
-            
+
             v = u;
-        } else if (v.getClass().equals(NonCitizen.class)){
+        } else if (v.getClass().equals(NonCitizen.class)) {
             NonCitizen u = (NonCitizen) v;
-           
+
             u.setPassport(txtPpIC.getText());
-            
+
             v = u;
         }
 
         if (fo.ModifyRecord(v)) {
-            General.AlertMsgInfo("People (" + v.Username + ") has been updated!", "Success");
             InitGlobalData();
             InitTableRecords();
+
+            General.AlertMsgInfo("People (" + v.Username + ") has been updated!", "Success");
+
         } else {
             General.AlertMsgError("Failed to update people (" + v.Username + "). Please try again later!", "Error");
         }
     }//GEN-LAST:event_btnSRegister1ActionPerformed
 
     private void txtPpNewPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPpNewPwKeyReleased
-
+        txtPpCfmPw.setEnabled(txtPpNewPw.getPassword().length > 0);
+        txtPpCfmPw.setText("");
     }//GEN-LAST:event_txtPpNewPwKeyReleased
 
     private void txtPpNewPwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPpNewPwKeyTyped
-        txtPpCfmPw.setEnabled(txtPpCfmPw.getPassword().length > 0);
-        txtPpCfmPw.setText("");
+
     }//GEN-LAST:event_txtPpNewPwKeyTyped
 
     private void txtPpCfmPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPpCfmPwKeyReleased

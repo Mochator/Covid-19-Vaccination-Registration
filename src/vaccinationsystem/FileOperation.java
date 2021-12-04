@@ -104,12 +104,18 @@ public class FileOperation {
 
         arrayList = DeserializeObject(this.FileName);
         ht = ConvertToHashTable(arrayList);
+        
+        System.out.println(arrayList);
+        System.out.println(newRecord);
 
         if (ht.containsKey(this.Id)) {
             ht.replace(String.valueOf(this.Id), newRecord);
+            System.out.println("Found");
         } else {
             return success;
         }
+        
+        System.out.println(ht);
 
         try {
             //existing file
