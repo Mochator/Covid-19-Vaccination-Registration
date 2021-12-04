@@ -7,6 +7,7 @@ package vaccinationsystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
@@ -50,6 +51,10 @@ public class Vaccine implements Serializable {
         return Interval;
     }
 
+    public String GetCodeName() {
+        return Name + "(" + this.VacCode + ")";
+    }
+
     public void setName(String Name) {
         this.Name = Name;
     }
@@ -65,6 +70,8 @@ public class Vaccine implements Serializable {
     public void CreateStockForAllVaccineCentre() {
         //todo
     }
+
+    
 
     @Override
     public String toString() {

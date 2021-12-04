@@ -145,8 +145,8 @@ class People extends User {
         this.VacStatus = VacStatus;
     }
 
-    public String getVacStatus() {
-        return VacStatus.name();
+    public VaccinationStatus getVacStatus() {
+        return VacStatus;
     }
 
     public void setVacStatus(VaccinationStatus VacStatus) {

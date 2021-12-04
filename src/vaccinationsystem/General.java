@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
-import vaccinationsystem.Appointment.AppointmentStatus;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

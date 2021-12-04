@@ -227,9 +227,13 @@ public class Login extends javax.swing.JFrame {
                     General.AlertMsgError("Your account has been suspended!", "Login failed");
                     return;
                 }
-                
-                if (u.LoginVerification(password)) {
 
+                if (u.LoginVerification(password)) {
+                    DoctorLoadingPage lp = new DoctorLoadingPage();
+                    lp.setCurrentUser(u);
+                    lp.StartUp();
+                    lp.setVisible(true);
+                    this.setVisible(false);
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
@@ -237,7 +241,7 @@ public class Login extends javax.swing.JFrame {
             } else if (objClass.equals(Stockist.class)) {
                 //Personnel - Stockist
                 Stockist u = (Stockist) ob;
-                
+
                 if (u.getStatus().equals(PersonnelStatus.Suspend)) {
                     General.AlertMsgError("Your account has been suspended!", "Login failed");
                     return;

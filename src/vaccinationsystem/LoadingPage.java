@@ -23,7 +23,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import vaccinationsystem.Appointment.AppointmentStatus;
 
 /**
  *
@@ -134,7 +133,7 @@ public class LoadingPage extends javax.swing.JFrame {
         txtPEmail.setText(currentUser.getEmail());
         txtPUsername.setText(currentUser.Username);
 
-        lblVaccinatedStatus.setText(currentUser.getVacStatus());
+        lblVaccinatedStatus.setText(currentUser.getVacStatus().name());
 
         txtPNewPw.setText("");
         txtPCfmPw.setText("");
