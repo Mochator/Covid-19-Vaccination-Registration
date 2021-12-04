@@ -5,6 +5,7 @@
  */
 package vaccinationsystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public interface StockAudit {
 }
 
 //Adjust actual stock
-class ActualStock implements StockAudit {
+class ActualStock implements StockAudit, Serializable {
 
     private int Id;
     private Stock VacStock;
@@ -101,7 +102,7 @@ class ActualStock implements StockAudit {
 }
 
 //Adjust pending stock
-class PendingStock implements StockAudit {
+class PendingStock implements StockAudit, Serializable {
 
     private int Id;
     private Stock VacStock;

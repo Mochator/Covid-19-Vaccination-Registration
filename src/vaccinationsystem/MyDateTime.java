@@ -75,6 +75,11 @@ public class MyDateTime implements Serializable {
         return cal;
     }
     
+    public Date getDate(){
+        Date date = new Date(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DATE));
+        return date;
+    }
+    
     
 
 }

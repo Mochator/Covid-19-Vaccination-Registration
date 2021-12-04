@@ -233,15 +233,16 @@ public class FileOperation {
 
             while (li.hasNext()) {
                 Object element = li.next();
-
                 if (element != null) {
                     out.writeObject(element);
+                    System.out.println(element);
                 }
             }
 
             out.writeObject(obj);
             out.close();
             file.close();
+            System.out.println(obj);
 
             success = true;
         } catch (Exception ex) {
@@ -296,7 +297,6 @@ public class FileOperation {
         this.ht = ht;
     }
 
-    
 }
 
 class GenerateId {

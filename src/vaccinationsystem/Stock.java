@@ -5,13 +5,14 @@
  */
 package vaccinationsystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mocha
  */
-public class Stock {
+public class Stock implements Serializable{
     
     private int Id;
     protected Vaccine VacType;

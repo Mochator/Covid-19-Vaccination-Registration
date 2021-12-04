@@ -25,44 +25,54 @@ public class General {
     public static String pathTxtFiles = "";
 
     //Text file names
-    public static String userFileName = pathTxtFiles + "User.ser";
-    public static String appointmentFileName = pathTxtFiles + "Apppointment.ser";
-    public static String vaccineCentreFileName = pathTxtFiles + "VaccineCentre.ser";
-    public static String vaccineFileName = pathTxtFiles + "Vaccine.ser";
-    public static String stockFileName = pathTxtFiles + "Stock.ser";
-    public static String stockAuditFileName = pathTxtFiles + "StockAudit.ser";
-    public static String pendingStockAuditFileName = pathTxtFiles + "PendingStockAudit.ser";
+    public static final String userFileName = pathTxtFiles + "User.ser";
+    public static final String appointmentFileName = pathTxtFiles + "Apppointment.ser";
+    public static final String vaccineCentreFileName = pathTxtFiles + "VaccineCentre.ser";
+    public static final String vaccineFileName = pathTxtFiles + "Vaccine.ser";
+    public static final String stockFileName = pathTxtFiles + "Stock.ser";
+    public static final String stockAuditFileName = pathTxtFiles + "StockAudit.ser";
+    public static final String pendingStockAuditFileName = pathTxtFiles + "PendingStockAudit.ser";
 
     //Prefix
-    public static String PrefixPeople = "PP";
-    public static String PrefixPersonnel = "PSN";
-    public static String PrefixVaccineCentre = "VC";
-    public static String PrefixVaccine = "VAC";
-    public static String PrefixAppointment = "APP";
+    public static final String PrefixPeople = "PP";
+    public static final String PrefixPersonnel = "PSN";
+    public static final String PrefixVaccineCentre = "VC";
+    public static final String PrefixVaccine = "VAC";
+    public static final String PrefixAppointment = "APP";
 
     //UserRole
-    public static String UserRolePeople = "People";
-    public static String UserRolePersonnel = "Personnel";
+    public static final String UserRolePeople = "People";
+    public static final String UserRolePersonnel = "Personnel";
 
     //PersonnelRole 
-    public static String PersonnelRoleDoctor = "Doctor";
-    public static String PersonnelRoleAdmin = "Admin";
-    public static String PersonnelRoleStockist = "Stockist";
+    public static final String PersonnelRoleDoctor = "Doctor";
+    public static final String PersonnelRoleAdmin = "Admin";
+    public static final String PersonnelRoleStockist = "Stockist";
+    
+    public static ArrayList<String> PersonnelRoles() {
+        ArrayList<String> result = new ArrayList<String>();
+        result.add(PersonnelRoleDoctor);
+        result.add(PersonnelRoleAdmin);
+        result.add(PersonnelRoleStockist);
+
+        Collections.sort(result);
+        return result;
+    }
 
     //Malaysia States
-    public static String MalaysiaStateJohor = "Johor";
-    public static String MalaysiaStatePenang = "Penang";
-    public static String MalaysiaStateKualaLumpur = "Kuala Lumpur";
-    public static String MalaysiaStateMalacca = "Malacca";
-    public static String MalaysiaStateSarawak = "Sarawak";
-    public static String MalaysiaStateSabah = "Sabah";
-    public static String MalaysiaStateTerrenganu = "Terrenganu";
-    public static String MalaysiaStateNegeriSembilan = "Negeri Sembilan";
-    public static String MalaysiaStateKelantan = "Kelantan";
-    public static String MalaysiaStateKedah = "Kedah";
-    public static String MalaysiaStatePerak = "Perak";
-    public static String MalaysiaStatePahang = "Pahang";
-    public static String MalaysiaStatePerlis = "Perlis";
+    public static final String MalaysiaStateJohor = "Johor";
+    public static final String MalaysiaStatePenang = "Penang";
+    public static final String MalaysiaStateKualaLumpur = "Kuala Lumpur";
+    public static final String MalaysiaStateMalacca = "Malacca";
+    public static final String MalaysiaStateSarawak = "Sarawak";
+    public static final String MalaysiaStateSabah = "Sabah";
+    public static final String MalaysiaStateTerrenganu = "Terrenganu";
+    public static final String MalaysiaStateNegeriSembilan = "Negeri Sembilan";
+    public static final String MalaysiaStateKelantan = "Kelantan";
+    public static final String MalaysiaStateKedah = "Kedah";
+    public static final String MalaysiaStatePerak = "Perak";
+    public static final String MalaysiaStatePahang = "Pahang";
+    public static final String MalaysiaStatePerlis = "Perlis";
 
     public static ArrayList<String> MalaysiaStates() {
         ArrayList<String> result = new ArrayList<String>();
@@ -83,8 +93,8 @@ public class General {
         return result;
     }
 
-    public static String NationalityMalaysian = "Malaysian";
-    public static String NationalityNonMalaysian = "Non-Malaysian";
+    public static final String NationalityMalaysian = "Malaysian";
+    public static final String NationalityNonMalaysian = "Non-Malaysian";
     
     public static ArrayList<String> Nationalities() {
         ArrayList<String> result = new ArrayList<String>();
@@ -96,10 +106,10 @@ public class General {
     }
     
 
-    public static char GenderMale = 'M';
-    public static char GenderFemale = 'F';
+    public static final char GenderMale = 'M';
+    public static final char GenderFemale = 'F';
 
-    public static String GenderMaleString = "Male";
+    public static final String GenderMaleString = "Male";
     public static String GenderFemaleString = "Female";
     
     public static ArrayList<String> GenderString() {

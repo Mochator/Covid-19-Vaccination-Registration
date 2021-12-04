@@ -148,12 +148,13 @@ public class LoadingPage extends javax.swing.JFrame {
         DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
 
         dtm.setRowCount(0);
-        
+        int activeApp = 0;
+
         for (Object x : ht.keySet()) {
             Appointment a = (Appointment) ht.get(x);
             if (a.Ppl.Username.equals(currentUser.Username)) {
                 htAppointment.put(String.valueOf(x), a);
-                
+
                 //Get vaccine data
                 String vaVaccine = "-";
                 if (a.Vacc != null) {
@@ -163,7 +164,7 @@ public class LoadingPage extends javax.swing.JFrame {
                     vaVaccine = vac.getVacCode() + " - " + vac.getName();
                 }
 
-                Calendar vaDate = a.VaccinationDate == null ? null : a.VaccinationDate.getCal();
+                String vaDate = a.VaccinationDate == null ? null : a.VaccinationDate.GetShortDate();
 
                 String vaCentre = "-";
                 if (a.Location != null) {
@@ -176,10 +177,14 @@ public class LoadingPage extends javax.swing.JFrame {
                 Object[] dtmObj = new Object[]{a.getCode(), a.RegisterDate.GetShortDateTime(), vaDate, vaCentre, vaVaccine, a.getStatus()};
 
                 dtm.addRow(dtmObj);
+
+                if (!(a.getStatus().equals(AppointmentStatus.Cancelled))) {
+                    activeApp++;
+                }
             }
         }
 
-        if (ht.size() > 0) {
+        if (activeApp > 0) {
             btnSubmit.setEnabled(false);
             btnSubmit.setText("You have enrolled!");
         }
@@ -952,7 +957,7 @@ public class LoadingPage extends javax.swing.JFrame {
         );
 
         jLabel37.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel37.setText("Reason");
 
@@ -1259,7 +1264,7 @@ public class LoadingPage extends javax.swing.JFrame {
             return;
         }
 
-        if (General.AlertQuestionYesNo("Your appointment will be recreated and rescheduled according to the given reject reason. Do you want to proceed?", "Reject Confirmation") == 1) {
+        if (General.AlertQuestionYesNo("Your appointment will be recreated and rescheduled according to the given reject reason. Do you want to proceed?", "Reject Confirmation") == 0) {
 
             String appCode = txtVACode.getText();
             FileOperation fo = new FileOperation(appCode, General.appointmentFileName);
@@ -1271,6 +1276,7 @@ public class LoadingPage extends javax.swing.JFrame {
 
                 if (fo.ModifyRecord(app)) {
                     General.AlertMsgInfo("Appointment has been updated!", "Success");
+                    pnlRejectReason.setVisible(false);
                     PopulateUserData();
                     return;
                 }

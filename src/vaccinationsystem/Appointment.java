@@ -101,9 +101,12 @@ public class Appointment implements Serializable {
     
     private String GenerateCode(){
         
-        GenerateId genId = new GenerateId(General.appointmentFileName, General.PrefixAppointment);
-        
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.appointmentFileName);
+
+        GenerateId genId = new GenerateId(allObj, General.PrefixAppointment);
+
         return genId.returnId();
+        
         
     }
     
@@ -121,6 +124,7 @@ public class Appointment implements Serializable {
         Approved, //admin approved
         Accepted, //patient accepted
         Declined, //patient rejected
+        Rescheduled, //reschedule the app
         Completed, //vaccinated
         Cancelled //admin cancel
     }

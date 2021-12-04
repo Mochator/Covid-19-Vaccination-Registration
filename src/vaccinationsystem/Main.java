@@ -51,12 +51,12 @@ public class Main {
 //          ArrayList<Object> arrayList = new ArrayList<Object>();
         MyDateTime mdt = new MyDateTime(2000, 10, 26);
         MyDateTime passportExp = new MyDateTime(2022, 12, 12);
-        User citizen = new NonCitizen("123123", add, People.VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
+        User citizen = new NonCitizen("123123", add, VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
         citizen.GenerateUsername();
         System.out.println(citizen);
         System.out.println("----------");
 
-        User admin = new Admin(Personnel.PersonnelStatus.Active, "Carmen", "Lim", 'F', mdt, "clyy26@gmail.com", "123123", "012312");
+        User admin = new Admin(PersonnelStatus.Active, "Carmen", "Lim", 'F', mdt, "clyy26@gmail.com", "123123", "012312");
         admin.GenerateUsername();
         System.out.println(admin);
 

@@ -24,11 +24,13 @@ public abstract class User implements Serializable {
     private String Email;
     private String Password;
     private String Contact;
-    
+
     protected String Username;
 
     public User() {
-    };
+    }
+
+    ;
 
     public User(String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         this.First_Name = First_Name;
@@ -54,8 +56,8 @@ public abstract class User implements Serializable {
     public boolean LoginVerification(char[] password) {
         return this.Password.equals(String.valueOf(password));
     }
-    
-    public String getFullName(){
+
+    public String getFullName() {
         return this.First_Name + " " + this.Last_Name;
     }
 
@@ -110,8 +112,6 @@ public abstract class User implements Serializable {
     public void setContact(String Contact) {
         this.Contact = Contact;
     }
-    
-    
 
     protected abstract String GenerateUsername();
 
@@ -119,15 +119,14 @@ public abstract class User implements Serializable {
     public String toString() {
         return Username + "\t" + First_Name + "\t" + Last_Name + "\t" + Gender + "\t" + Dob + "\t" + Email + "\t" + Password + "\t" + Contact;
     }
-    
-    
+
 }
 
 class People extends User {
 
     private static String UserRole = General.UserRolePeople;
     protected Address Address;
-    protected MyDateTime RegistrationDate;
+    protected static MyDateTime RegistrationDate = new MyDateTime();
     private VaccinationStatus VacStatus;
 
     //Constructor for adding new user
@@ -160,25 +159,28 @@ class People extends User {
 
     protected String GenerateUsername() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.userFileName);
-        
-        GenerateId genId = new GenerateId(allObj, General.PrefixPeople);
-        
-        return genId.returnId();
-        
 
+        GenerateId genId = new GenerateId(allObj, General.PrefixPeople);
+
+        return genId.returnId();
+
+    }
+
+    public void setAddress(Address Address) {
+        this.Address = Address;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + UserRole + "\t" + Address + "\t" + RegistrationDate  + "\t" + VacStatus;
+        return super.toString() + "\t" + UserRole + "\t" + Address + "\t" + RegistrationDate + "\t" + VacStatus;
     }
 
-    enum VaccinationStatus {
-        Not,
-        Partially,
-        Fully
-    }
+}
 
+enum VaccinationStatus {
+    Not,
+    Partially,
+    Fully
 }
 
 class Citizen extends People {
@@ -210,7 +212,6 @@ class Citizen extends People {
         return super.toString() + "\t" + IsCitizen + "\t" + IcNo;
     }
 
-    
 }
 
 class NonCitizen extends People {
@@ -236,13 +237,10 @@ class NonCitizen extends People {
         this.Passport = Passport;
     }
 
-
     @Override
     public String toString() {
         return super.toString() + "\t" + IsCitizen + "\t" + Passport;
     }
-    
-    
 
 }
 
@@ -280,10 +278,14 @@ class Personnel extends User {
 
     public String GenerateUsername() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.userFileName);
-        
+
         GenerateId genId = new GenerateId(allObj, General.PrefixPersonnel);
-        
+
         return genId.returnId();
+    }
+
+    public MyDateTime getHiredDate() {
+        return HiredDate;
     }
 
     @Override
@@ -291,11 +293,11 @@ class Personnel extends User {
         return super.toString() + "\t" + UserRole + "\t" + HiredDate + "\t" + Status;
     }
 
-    enum PersonnelStatus {
-        Active,
-        Suspend
-    }
+}
 
+enum PersonnelStatus {
+    Active,
+    Suspend
 }
 
 class Doctor extends Personnel {
@@ -313,11 +315,20 @@ class Doctor extends Personnel {
         this.VacCentre = VacCentre;
     }
 
+    public VaccineCentre getVacCentre() {
+        return VacCentre;
+    }
+
+    public void setVacCentre(VaccineCentre VacCentre) {
+        this.VacCentre = VacCentre;
+    }
+
+    
     @Override
     public String toString() {
         return super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
     }
-    
+
 }
 
 class Admin extends Personnel {
@@ -339,7 +350,6 @@ class Admin extends Personnel {
         return super.toString() + "\t" + this.PersonnelRole;
     }
 
-    
 }
 
 class Stockist extends Personnel {
@@ -352,8 +362,16 @@ class Stockist extends Personnel {
         this.VacCentre = VacCentre;
     }
 
-    public Stockist(VaccineCentre VacCentre, MyDateTime HiredDate, PersonnelStatus Status,  String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
+    public Stockist(VaccineCentre VacCentre, MyDateTime HiredDate, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
         super(HiredDate, Status, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
+        this.VacCentre = VacCentre;
+    }
+
+    public VaccineCentre getVacCentre() {
+        return VacCentre;
+    }
+
+    public void setVacCentre(VaccineCentre VacCentre) {
         this.VacCentre = VacCentre;
     }
 
@@ -362,5 +380,4 @@ class Stockist extends Personnel {
         return super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
     }
 
-    
 }
