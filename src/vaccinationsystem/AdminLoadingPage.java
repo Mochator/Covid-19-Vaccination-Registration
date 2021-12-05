@@ -3756,7 +3756,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtComLName.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtComLName.setForeground(new java.awt.Color(0, 0, 0));
         txtComLName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtComLName.setEnabled(false);
         txtComLName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtComLNameActionPerformed(evt);
@@ -4327,7 +4326,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        System.exit(0);
+        this.setVisible(false);
+        this.dispose();
+        Login lg = new Login();
+        lg.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void cboCMStateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCMStateSearchActionPerformed
@@ -4683,9 +4685,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     private void cboVSearchVacCentreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVSearchVacCentreActionPerformed
         String search = (!txtVSearch.getText().isBlank() ? txtVSearch.getText() : "").trim().toLowerCase();
-        Calendar cal = calVSearchVacDate.getCalendar();
-        MyDateTime vacDate = new MyDateTime(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        String nationality = (cboVSearchNat.getSelectedIndex() > 0) ? String.valueOf(cboVSearchNat.getSelectedItem()) : "";
+        MyDateTime vacDate = calVSearchVacDate.getCalendar() != null ? new MyDateTime(calVSearchVacDate.getCalendar()) : null;
         Vaccine vaccine = (Vaccine) (cboVSearchVac.getSelectedIndex() > 0 ? htVac.get(String.valueOf(cboVSearchVac.getSelectedItem()).split(" - ")[0]) : null);
         VaccineCentre centre = (VaccineCentre) (cboVSearchVacCentre.getSelectedIndex() > 0 ? htVacCentre.get(String.valueOf(cboVSearchVacCentre.getSelectedItem()).split(" - ")[0]) : null);
         AppointmentStatus status = (cboVSearchStatus.getSelectedIndex() > 0) ? AppointmentStatus.valueOf(String.valueOf(cboVSearchStatus.getSelectedItem())) : null;
@@ -4709,9 +4709,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     private void cboVSearchStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVSearchStatusActionPerformed
         String search = (!txtVSearch.getText().isBlank() ? txtVSearch.getText() : "").trim().toLowerCase();
-        Calendar cal = calVSearchVacDate.getCalendar();
-        MyDateTime vacDate = new MyDateTime(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        String nationality = (cboVSearchNat.getSelectedIndex() > 0) ? String.valueOf(cboVSearchNat.getSelectedItem()) : "";
+        MyDateTime vacDate = calVSearchVacDate.getCalendar() != null ? new MyDateTime(calVSearchVacDate.getCalendar()) : null;
         Vaccine vaccine = (Vaccine) (cboVSearchVac.getSelectedIndex() > 0 ? htVac.get(String.valueOf(cboVSearchVac.getSelectedItem()).split(" - ")[0]) : null);
         VaccineCentre centre = (VaccineCentre) (cboVSearchVacCentre.getSelectedIndex() > 0 ? htVacCentre.get(String.valueOf(cboVSearchVacCentre.getSelectedItem()).split(" - ")[0]) : null);
         AppointmentStatus status = (cboVSearchStatus.getSelectedIndex() > 0) ? AppointmentStatus.valueOf(String.valueOf(cboVSearchStatus.getSelectedItem())) : null;
@@ -4735,9 +4733,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     private void cboVSearchVacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVSearchVacActionPerformed
         String search = (!txtVSearch.getText().isBlank() ? txtVSearch.getText() : "").trim().toLowerCase();
-        Calendar cal = calVSearchVacDate.getCalendar();
-        MyDateTime vacDate = new MyDateTime(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        String nationality = (cboVSearchNat.getSelectedIndex() > 0) ? String.valueOf(cboVSearchNat.getSelectedItem()) : "";
+        MyDateTime vacDate = calVSearchVacDate.getCalendar() != null ? new MyDateTime(calVSearchVacDate.getCalendar()) : null;
         Vaccine vaccine = (Vaccine) (cboVSearchVac.getSelectedIndex() > 0 ? htVac.get(String.valueOf(cboVSearchVac.getSelectedItem()).split(" - ")[0]) : null);
         VaccineCentre centre = (VaccineCentre) (cboVSearchVacCentre.getSelectedIndex() > 0 ? htVacCentre.get(String.valueOf(cboVSearchVacCentre.getSelectedItem()).split(" - ")[0]) : null);
         AppointmentStatus status = (cboVSearchStatus.getSelectedIndex() > 0) ? AppointmentStatus.valueOf(String.valueOf(cboVSearchStatus.getSelectedItem())) : null;
@@ -4762,9 +4758,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private void cboVSearchNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVSearchNatActionPerformed
 
         String search = (!txtVSearch.getText().isBlank() ? txtVSearch.getText() : "").trim().toLowerCase();
-        Calendar cal = calVSearchVacDate.getCalendar();
-        MyDateTime vacDate = new MyDateTime(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        String nationality = (cboVSearchNat.getSelectedIndex() > 0) ? String.valueOf(cboVSearchNat.getSelectedItem()) : "";
+        MyDateTime vacDate = calVSearchVacDate.getCalendar() != null ? new MyDateTime(calVSearchVacDate.getCalendar()) : null;
         Vaccine vaccine = (Vaccine) (cboVSearchVac.getSelectedIndex() > 0 ? htVac.get(String.valueOf(cboVSearchVac.getSelectedItem()).split(" - ")[0]) : null);
         VaccineCentre centre = (VaccineCentre) (cboVSearchVacCentre.getSelectedIndex() > 0 ? htVacCentre.get(String.valueOf(cboVSearchVacCentre.getSelectedItem()).split(" - ")[0]) : null);
         AppointmentStatus status = (cboVSearchStatus.getSelectedIndex() > 0) ? AppointmentStatus.valueOf(String.valueOf(cboVSearchStatus.getSelectedItem())) : null;
@@ -4788,9 +4782,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     private void btnVSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVSearchActionPerformed
         String search = (!txtVSearch.getText().isBlank() ? txtVSearch.getText() : "").trim().toLowerCase();
-        Calendar cal = calVSearchVacDate.getCalendar();
-        MyDateTime vacDate = new MyDateTime(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-        String nationality = (cboVSearchNat.getSelectedIndex() > 0) ? String.valueOf(cboVSearchNat.getSelectedItem()) : "";
+        MyDateTime vacDate = calVSearchVacDate.getCalendar() != null ? new MyDateTime(calVSearchVacDate.getCalendar()) : null;
         Vaccine vaccine = (Vaccine) (cboVSearchVac.getSelectedIndex() > 0 ? htVac.get(String.valueOf(cboVSearchVac.getSelectedItem()).split(" - ")[0]) : null);
         VaccineCentre centre = (VaccineCentre) (cboVSearchVacCentre.getSelectedIndex() > 0 ? htVacCentre.get(String.valueOf(cboVSearchVacCentre.getSelectedItem()).split(" - ")[0]) : null);
         AppointmentStatus status = (cboVSearchStatus.getSelectedIndex() > 0) ? AppointmentStatus.valueOf(String.valueOf(cboVSearchStatus.getSelectedItem())) : null;
@@ -4830,6 +4822,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htAppointment.values()) {
             Appointment a = (Appointment) x;
 
+            if(!a.getStatus().equals(AppointmentStatus.Approved) || !a.getStatus().equals(AppointmentStatus.Pending)){
+                continue;
+            }
+            
             //Ppl type
             Class pplClass = a.Ppl.getClass();
 
@@ -4995,6 +4991,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         //Update appointment
         Appointment data = (Appointment) htAppointment.get(txtMaAppCode.getText());
         if (data != null) {
+            AppointmentStatus as = data.getStatus();
+
             data.setLocation(vacCentre);
             data.setRemarks(remarks);
             data.setVacc(vac);
@@ -5006,20 +5004,22 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
             if (fo.ModifyRecord(data)) {
 
-                //Modify vaccine stock
-                Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
+                if (as.equals(AppointmentStatus.Pending)) {
+                    //Modify vaccine stock
+                    Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
 
-                if (s.FindStock()) {
+                    if (s.FindStock()) {
 
-                    if (s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
-                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                        return;
+                        if (!s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
+                            General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                            return;
+                        }
+
+                    } else {
+                        s.GenerateId();
+                        FileOperation.SerializeObject(General.stockFileName, s);
+                        s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode());
                     }
-
-                } else {
-                    s.GenerateId();
-                    FileOperation.SerializeObject(General.stockFileName, s);
-                    s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode());
                 }
 
                 General.AlertMsgInfo("Appointment Updated!", "Success");
@@ -5027,7 +5027,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 //Update appointment hashtable
                 InitGlobalData();
                 InitTableRecords();
-
+                btnMaApprove.setEnabled(false);
             } else {
                 General.AlertMsgError("Appointment failed to update, please try again later.", "Error");
             }
@@ -5920,7 +5920,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             Appointment a = (Appointment) x;
 
             if (vacDate != null) {
-                if (!a.VaccinationDate.getDate().equals(vacDate.getDate())) {
+                MyDateTime today = new MyDateTime(vacDate.getCal().get(Calendar.YEAR), vacDate.getCal().get(Calendar.MONTH), vacDate.getCal().get(Calendar.DATE));
+                MyDateTime tomorrow = today;
+                tomorrow.getCal().add(Calendar.DATE, 1);
+                if (!(a.VaccinationDate.getCal().after(today)) && a.VaccinationDate.getCal().before(tomorrow)) {
                     continue;
                 }
             }

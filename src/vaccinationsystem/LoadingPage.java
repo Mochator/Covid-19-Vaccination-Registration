@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Hashtable;
+import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -1380,18 +1381,40 @@ public class LoadingPage extends javax.swing.JFrame {
             g2d.setColor(Color.darkGray);
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
             g2d.drawString("DIGITAL CERTIFICATE", 50, 150);
-            
-            g2d.setFont(new Font("TimesRoman", Font.PLAIN, 36));           
+
+            g2d.setFont(new Font("TimesRoman", Font.PLAIN, 36));
             g2d.drawString("for COVID-19 Vaccination", 50, 200);
-            
+
             g2d.setStroke(new BasicStroke(3));
             g2d.drawLine(50, 220, 500, 220);
 
             g2d.setColor(Color.BLUE);
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
             g2d.drawString(currentUser.getFullName(), 50, 275);
-            
-            //g2d.draw(s);
+
+            g2d.setColor(new Color(111, 195, 255, 50));
+            g2d.fillRect(50, 300, width - 50, 200);
+
+            ArrayList<Appointment> al = new ArrayList<Appointment>();
+            int i = 0;
+
+            for (Object x : htAppointment.values()) {
+                Appointment a = (Appointment) x;
+                if (a.getStatus().equals(AppointmentStatus.Completed)) {
+                    al.add(a);
+
+                    g2d.setColor(Color.BLACK);
+                    g2d.setFont(new Font("TimesRoman", Font.BOLD, 24));
+                    g2d.drawString(a.Vacc.GetCodeName(), 75, 350);
+
+                    g2d.setColor(Color.BLACK);
+                    g2d.setFont(new Font("TimesRoman", Font.PLAIN, 18));
+                    g2d.drawString("#" + String.valueOf(a.CheckDoseFromAppointment()), 100+(i*150), 400);
+                    g2d.drawString(a.getLocation().GetCodeName(), 100+(i*150), 420);
+                    g2d.drawString(a.getVaccinationDate().GetLongDate(), 100+(i*150), 440);
+                    i++;
+                }
+            }
 
             g2d.dispose();
 

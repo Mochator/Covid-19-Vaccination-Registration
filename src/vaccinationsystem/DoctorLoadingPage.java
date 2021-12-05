@@ -1236,7 +1236,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 return;
             }
 
-            if (s.MinusPendingQty(dose, currentUser, "Vaccination - " + data.getCode())) {
+            if (!s.MinusPendingQty(dose, currentUser, "Vaccination - " + data.getCode())) {
                 General.AlertMsgError("Something went wrong, please try again later!", "Error");
                 return;
             }

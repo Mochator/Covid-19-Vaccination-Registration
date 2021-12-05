@@ -147,19 +147,19 @@ public class General {
             public void run() {
                 ArrayList<Object> al = FileOperation.DeserializeObject(General.appointmentFileName);
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                MyDateTime mdt = new MyDateTime();
+
+                
                 for (Object x : al) {
                     Appointment app = (Appointment) x;
-
-                    System.out.println("run");
 
                     if (app.VaccinationDate == null) {
                         continue;
                     }
-
-                    Calendar tomorrow = Calendar.getInstance(); // today
-                    tomorrow.add(Calendar.DATE, 1);
-
-                    if (app.VaccinationDate.getCal().compareTo(tomorrow) < 0 && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
+                    System.out.println(app.VaccinationDate.getDate());
+                    System.out.println(mdt.getDate());
+                    
+                    if (app.VaccinationDate.getDate().before(mdt.getDate()) && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
                         app.setStatus(AppointmentStatus.Cancelled);
                         FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
                         fo.ReadFile();
