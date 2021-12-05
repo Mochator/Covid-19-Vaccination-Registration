@@ -3299,6 +3299,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Vaccine & Centre Management", jScrollPane2);
 
+        jTabbedPane2.setOpaque(true);
+
         jPanel5.setBackground(new java.awt.Color(255, 102, 102));
         jPanel5.setMinimumSize(new java.awt.Dimension(500, 100));
 
