@@ -80,8 +80,6 @@ public class Appointment implements Serializable {
         return Location;
     }
     
-    
-
     public AppointmentStatus getStatus() {
         return Status;
     }

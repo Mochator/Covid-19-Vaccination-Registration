@@ -159,7 +159,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         }
 
         tblMs.setModel(dtmMs);
-        
+
         //----------Stock audit----------
         DefaultTableModel dtmSf = (DefaultTableModel) tblSf.getModel();
         dtmSf.setRowCount(0);
@@ -174,7 +174,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username
+                a.getCreatedBy().Username,
+                a.getRemarks()
             };
 
             dtmSf.addRow(dtmObj);
@@ -182,8 +183,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         }
 
         tblSf.setModel(dtmSf);
-        
-         //----------Stock audit----------
+
+        //----------Stock audit----------
         DefaultTableModel dtmSf1 = (DefaultTableModel) tblSf1.getModel();
         dtmSf1.setRowCount(0);
         int i3 = 0;
@@ -197,7 +198,9 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username
+                a.getCreatedBy().Username,
+                a.getRemarks()
+
             };
 
             dtmSf1.addRow(dtmObj);
@@ -1467,7 +1470,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         tblSf1.setModel(dtm);
     }
-    
+
     private void txtPNewPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPNewPwKeyReleased
         txtPCfmPw.setEnabled(txtPNewPw.getPassword().length > 0);
         txtPCfmPw.setText("");
@@ -1641,7 +1644,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
     private void cboMsSearchDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMsSearchDoseActionPerformed
         Object[] vacArray = (Object[]) htVac.values().toArray();
-        Vaccine vac = cboMsSearchVac.getSelectedIndex() > 0? (Vaccine) vacArray[cboMsSearchVac.getSelectedIndex() - 1]  : null;
+        Vaccine vac = cboMsSearchVac.getSelectedIndex() > 0 ? (Vaccine) vacArray[cboMsSearchVac.getSelectedIndex() - 1] : null;
 
         int dose = cboMsSearchDose.getSelectedIndex() > 0 ? Integer.parseInt(String.valueOf(cboMsSearchDose.getSelectedItem())) : 0;
 
@@ -1841,7 +1844,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             }
             cboMsSearchDose.setEnabled(true);
         }
-        
+
         SfSearch(search, vac, dose, mdt);
     }//GEN-LAST:event_cboSfSearchVacActionPerformed
 
@@ -1904,7 +1907,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             }
             cboMsSearchDose.setEnabled(true);
         }
-        
+
         SfSearch(search, vac, dose, mdt);
     }//GEN-LAST:event_cboSfSearchVac1ActionPerformed
 

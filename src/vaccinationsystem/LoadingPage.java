@@ -203,6 +203,8 @@ public class LoadingPage extends javax.swing.JFrame {
             btnSubmit.setEnabled(false);
             btnSubmit.setText("You have enrolled!");
         }
+        
+        btnCert.setVisible(currentUser.getVacStatus().equals(VaccinationStatus.Fully));
 
     }
 

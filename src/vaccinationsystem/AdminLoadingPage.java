@@ -275,8 +275,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 v.Ppl.getFullName() + " (" + v.Ppl.Username + ")",
                 IcPassport,
                 v.getRegisterDate().GetShortDate(),
-                v.Vacc == null ? "-" : (v.Vacc.getName() + " (" + v.Vacc.getVacCode() + ")"),
-                v.Location == null ? "-" : (v.Location.getName() + " (" + v.Location.getVacCode() + ")"),
+                v.Vacc == null ? "-" : v.Vacc.GetCodeName(),
+                v.Location == null ? "-" : v.Location.GetCodeName(),
                 v.VaccinationDate == null ? "-" : v.VaccinationDate.GetShortDate(),
                 v.getRemarks(),
                 v.getHandledBy() == null ? "-" : v.getHandledBy().Username,
@@ -415,7 +415,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.getFullName(),
                     u.getGender(),
                     General.PersonnelRoleDoctor,
-                    u.VacCentre.getVacCode() + " - " + u.VacCentre.getName(),
+                    u.VacCentre.GetCodeName(),
                     u.getHiredDate(),
                     u.getStatus()
                 };
@@ -429,7 +429,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.getFullName(),
                     u.getGender(),
                     General.PersonnelRoleStockist,
-                    u.VacCentre.getVacCode() + " - " + u.VacCentre.getName(),
+                    u.VacCentre.GetCodeName(),
                     u.getHiredDate(),
                     u.getStatus()
                 };
