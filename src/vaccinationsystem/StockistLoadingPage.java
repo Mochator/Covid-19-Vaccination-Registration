@@ -35,9 +35,12 @@ public class StockistLoadingPage extends javax.swing.JFrame {
      */
     public StockistLoadingPage() {
         initComponents();
+        editProfile(false);
+        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
+        this.setSize(d);
         this.setMaximumSize(d);
     }
 
@@ -133,6 +136,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         txtPNewPw.setText("");
         txtPCfmPw.setText("");
+        lblWbUsername.setText(currentUser.getFirst_Name());
 
     }
 
@@ -229,8 +233,10 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
-        jPanel16 = new javax.swing.JPanel();
-        lblVSName1 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        lblWbUsername2 = new javax.swing.JLabel();
+        lblVSName6 = new javax.swing.JLabel();
+        lblVSName7 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -337,48 +343,65 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        jPanel16.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel20.setBackground(new java.awt.Color(102, 0, 0));
 
-        lblVSName1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 20)); // NOI18N
-        lblVSName1.setForeground(new java.awt.Color(0, 0, 0));
-        lblVSName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVSName1.setText("Stockist Panel");
+        lblWbUsername2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 20)); // NOI18N
+        lblWbUsername2.setForeground(new java.awt.Color(0, 0, 0));
+        lblWbUsername2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWbUsername2.setText("Username");
 
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblVSName1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        lblVSName6.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 20)); // NOI18N
+        lblVSName6.setForeground(new java.awt.Color(0, 0, 0));
+        lblVSName6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVSName6.setText("Stockist Panel");
+
+        lblVSName7.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 20)); // NOI18N
+        lblVSName7.setForeground(new java.awt.Color(0, 0, 0));
+        lblVSName7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVSName7.setText("Welcome Back");
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblWbUsername2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblVSName6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblVSName7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(lblVSName1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(lblVSName7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblWbUsername2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(lblVSName6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2017,7 +2040,9 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2028,7 +2053,15 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JLabel lblPwNoMatch;
-    private javax.swing.JLabel lblVSName1;
+    private javax.swing.JLabel lblVSName2;
+    private javax.swing.JLabel lblVSName3;
+    private javax.swing.JLabel lblVSName4;
+    private javax.swing.JLabel lblVSName5;
+    private javax.swing.JLabel lblVSName6;
+    private javax.swing.JLabel lblVSName7;
+    private javax.swing.JLabel lblWbUsername;
+    private javax.swing.JLabel lblWbUsername1;
+    private javax.swing.JLabel lblWbUsername2;
     private javax.swing.JPanel pnlCredential;
     private javax.swing.JSlider sldrMsAs;
     private javax.swing.JSlider sldrMsPs;
