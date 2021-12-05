@@ -19,12 +19,17 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        
+        Vaccine data = new Vaccine("test", 2, 15);
+        MyDateTime newVacDate = new MyDateTime();
+            newVacDate.getCal().add(Calendar.DATE, data.getInterval());
+            System.out.println(newVacDate);
 
 //        Vaccine vaccine = new Vaccine("Pfizer", 2, 21);
 //        FileOperation fo = new FileOperation();
 //        fo.SaveToFile(vaccine, General.vaccineFileName);
 //
-        Address add = new Address("123", "Street abc", "City Potato", "11600", "Penang");
+//        Address add = new Address("123", "Street abc", "City Potato", "11600", "Penang");
 //        VaccineCentre vc = new VaccineCentre("Bukit Jalil Covid Centre", add);
 //        fo.SaveToFile(vc, General.vaccineCentreFileName);
 //
@@ -49,20 +54,20 @@ public class Main {
 //            
 //        }
 //          ArrayList<Object> arrayList = new ArrayList<Object>();
-        MyDateTime mdt = new MyDateTime(2000, 10, 26);
-        MyDateTime passportExp = new MyDateTime(2022, 12, 12);
-        User citizen = new NonCitizen("123123", add, VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
-        citizen.GenerateUsername();
-        System.out.println(citizen);
-        System.out.println("----------");
-
-        User admin = new Admin(PersonnelStatus.Active, "Carmen", "Lim", 'F', mdt, "clyy26@gmail.com", "123123", "012312");
-        admin.GenerateUsername();
-        System.out.println(admin);
-
-        FileOperation.SerializeObject(General.userFileName, citizen);
-        FileOperation.SerializeObject(General.userFileName, admin);
-        
+//        MyDateTime mdt = new MyDateTime(2000, 10, 26);
+//        MyDateTime passportExp = new MyDateTime(2022, 12, 12);
+//        User citizen = new NonCitizen("123123", add, VaccinationStatus.Not, "James", "Bond", 'M', mdt, "123@gmail.com", "123123", "012312");
+//        citizen.GenerateUsername();
+//        System.out.println(citizen);
+//        System.out.println("----------");
+//
+//        User admin = new Admin(PersonnelStatus.Active, "Carmen", "Lim", 'F', mdt, "clyy26@gmail.com", "123123", "012312");
+//        admin.GenerateUsername();
+//        System.out.println(admin);
+//
+//        FileOperation.SerializeObject(General.userFileName, citizen);
+//        FileOperation.SerializeObject(General.userFileName, admin);
+//        
 //
 //        ArrayList<Object> users = FileOperation.DeserializeObject(General.userFileName);
 //        ListIterator li = users.listIterator();

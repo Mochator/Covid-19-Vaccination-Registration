@@ -38,6 +38,20 @@ public class Appointment implements Serializable {
 
         this.Code = this.GenerateCode();
     }
+    
+    //Auto create appointment
+    public Appointment(People Ppl, Admin HandledBy, Vaccine Vacc, VaccineCentre Location, MyDateTime VaccinationDate) {
+        this.Ppl = Ppl;
+        this.Status = AppointmentStatus.Approved;
+        this.RegisterDate = new MyDateTime();
+        this.HandledBy = HandledBy;
+        this.Vacc = Vacc;
+        this.Location = Location;
+        this.VaccinationDate = VaccinationDate;
+        
+
+        this.Code = this.GenerateCode();
+    }
 
     public String getCode() {
         return Code;

@@ -496,7 +496,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.Address.getFullAddress(),
                     u.getEmail(),
                     u.RegistrationDate.GetShortDateTime(),
-                    u.getVacStatus()+ " Vaccinated"
+                    u.getVacStatus() + " Vaccinated"
                 };
 
             } else {
@@ -4970,9 +4970,27 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             fo.ReadFile();
             Appointment app = (Appointment) fo.getReadResult();
 
+            //Modify pending stock (if from approval)
+            if (app.getStatus().equals(AppointmentStatus.Approved)) {
+                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+                if (s.FindStock()) {
+
+                    if (s.MinusPendingQty(1, currentUser, "Vaccination - " + app.getCode())) {
+                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                        return;
+                    }
+
+                } else {
+                    s.GenerateId();
+                    FileOperation.SerializeObject(General.stockFileName, s);
+                    s.MinusPendingQty(1, currentUser, "Vaccination - " + app.getCode());
+                }
+            }
+
             app.setStatus(AppointmentStatus.Cancelled);
 
             if (fo.ModifyRecord(app)) {
+
                 General.AlertMsgInfo("Appointment (" + appCode + ") has been cancelled!", "Appointment Updated");
                 InitGlobalData();
                 InitTableRecords();
@@ -5029,6 +5047,23 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             FileOperation fo = new FileOperation(data.getCode(), General.appointmentFileName);
 
             if (fo.ModifyRecord(data)) {
+
+                //MOdify vaccine stock
+                Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
+
+                if (s.FindStock()) {
+
+                    if (s.AddPendingQty(1, currentUser, "Vaccination - " + data.getCode())) {
+                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                        return;
+                    }
+
+                } else {
+                    s.GenerateId();
+                    FileOperation.SerializeObject(General.stockFileName, s);
+                    s.AddPendingQty(1, currentUser, "Vaccination - " + data.getCode());
+                }
+
                 General.AlertMsgInfo("Appointment Updated!", "Success");
 
                 //Update appointment hashtable
@@ -5717,7 +5752,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         c.Address.getFullAddress(),
                         c.getEmail(),
                         c.RegistrationDate.GetShortDateTime(),
-                        c.getVacStatus()+ " Vaccinated"
+                        c.getVacStatus() + " Vaccinated"
                     };
                 }
 

@@ -7,28 +7,28 @@ package vaccinationsystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  *
  * @author Mocha
  */
-public class Stock implements Serializable{
-    
+public class Stock implements Serializable {
+
     private int Id;
     protected Vaccine VacType;
     private int Dose;
     private static int Quantity = 0;
     private static int PendingQuantity = 0;
     protected VaccineCentre VacCentre;
-    
+
     //Create new stock
     public Stock(Vaccine VacType, int Dose, VaccineCentre VacCentre) {
         this.VacType = VacType;
         this.Dose = Dose;
         this.VacCentre = VacCentre;
-        this.Id = this.GenerateId();
     }
-    
+
     public Stock(int Id, Vaccine VacType, int Quantity, int PendingQuantity, int Dose, VaccineCentre VacCentre) {
         this.VacType = VacType;
         this.Quantity = Quantity;
@@ -37,10 +37,30 @@ public class Stock implements Serializable{
         this.VacCentre = VacCentre;
         this.Id = Id;
     }
-    
-    public Stock(int Id){
+
+    public Stock(int Id) {
         //TODO:: Read from file then input the object
-        
+
+    }
+
+    public boolean FindStock() {
+
+        ArrayList<Object> allStocks = FileOperation.DeserializeObject(General.stockFileName);
+        ListIterator li = allStocks.listIterator();
+
+        boolean found = false;
+
+        while (li.hasNext() && !found) {
+            Stock s = (Stock) li.next();
+            if (s.getDose() == this.Dose && s.VacCentre.getVacCode().equals(this.VacCentre.getVacCode()) && s.VacType.getVacCode().equals(this.VacType.getVacCode())) {
+                this.Id = s.Id;
+                this.setQuantity(s.getQuantity());
+                this.setPendingQuantity(s.getPendingQuantity());
+                found = true;
+            }
+        }
+
+        return found;
     }
 
     public int getId() {
@@ -74,17 +94,80 @@ public class Stock implements Serializable{
     public void setVacCentre(VaccineCentre VacCentre) {
         this.VacCentre = VacCentre;
     }
-    
-    private int GenerateId(){
-        GenerateId genId = new GenerateId(General.stockFileName);
-        
-        return Integer.parseInt(genId.returnId());
+
+    public void GenerateId() {
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockFileName);
+
+        GenerateId genId = new GenerateId(allObj, "");
+
+        this.Id =  Integer.parseInt(genId.returnId());
+    }
+
+    public boolean AddQty(int i, User currentUser, String auditRemarks) {
+        this.Quantity = +i;
+        boolean success = true;
+
+        StockAudit sa = new ActualStock(this, i, currentUser, auditRemarks);
+
+        if (!FileOperation.SerializeObject(General.stockAuditFileName, sa)) {
+            success = false;
+        }
+
+        return success;
+    }
+
+    public boolean MinusQty(int i, User currentUser, String auditRemarks) {
+        int newBal = this.Quantity - i;
+        boolean success = true;
+
+        if (newBal >= 0) {
+            this.setQuantity(newBal);
+            StockAudit sa = new ActualStock(this, 0 - i, currentUser, auditRemarks);
+
+            if (!FileOperation.SerializeObject(General.stockAuditFileName, sa)) {
+                success = false;
+            }
+        } else {
+            success = false;
+        }
+
+        return success;
+    }
+
+    public boolean AddPendingQty(int i, User currentUser, String auditRemarks) {
+        this.PendingQuantity = +i;
+        boolean success = true;
+
+        StockAudit sa = new PendingStock(this, i, currentUser, auditRemarks);
+
+        if (!FileOperation.SerializeObject(General.pendingStockAuditFileName, sa)) {
+            success = false;
+        }
+
+        return success;
+    }
+
+    public boolean MinusPendingQty(int i, User currentUser, String auditRemarks) {
+        int newBal = this.PendingQuantity - i;
+        boolean success = true;
+
+        if (newBal >= 0) {
+            this.setQuantity(newBal);
+            StockAudit sa = new PendingStock(this, 0 - i, currentUser, auditRemarks);
+
+            if (!FileOperation.SerializeObject(General.pendingStockAuditFileName, sa)) {
+                success = false;
+            }
+        } else {
+            success = false;
+        }
+
+        return success;
     }
 
     @Override
     public String toString() {
         return Id + "\t" + VacType.getVacCode() + "\t" + Dose + "\t" + Quantity + "\t" + PendingQuantity + "\t" + VacCentre.getVacCode();
     }
-    
-    
+
 }

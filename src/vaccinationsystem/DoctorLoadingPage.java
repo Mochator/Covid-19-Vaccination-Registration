@@ -988,7 +988,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         txtPEmail.setText(currentUser.getEmail());
         txtAdPUser.setText(currentUser.Username);
 
-        txtAdPRole.setText(General.PersonnelRoleAdmin);
+        txtAdPRole.setText(General.PersonnelRoleDoctor);
         calAdPHiredDate.setCalendar(currentUser.HiredDate.getCal());
         txtAdPVacCentre.setText(currentUser.VacCentre.getVacCode() + " - " + currentUser.VacCentre.getName());
 
@@ -1206,6 +1206,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             return;
         }
 
+        //Appointment's
         FileOperation fo = new FileOperation(code, General.appointmentFileName);
         fo.ReadFile();
         Appointment data = (Appointment) fo.getReadResult();
@@ -1213,12 +1214,52 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         data.setStatus(AppointmentStatus.Completed);
         data.setVaccinatedBy(currentUser);
 
-        if (fo.ModifyRecords()) {
-            General.AlertMsgInfo(data.Ppl.getFullName() + "(" + data.Ppl.Username + ") is marked as vaccinated!", "Success");
-            InitGlobalData();
-            InitTableRecords();
+        int dose = Integer.parseInt(txtTaDose.getText());
+
+        //Modify Stock
+        Stock s = new Stock(data.Vacc, dose, data.Location);
+
+        if (s.FindStock()) {
+            if (!s.MinusQty(dose, currentUser, "Vaccination - " + data.getCode())) {
+                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                return;
+            }
+
+            if (s.MinusPendingQty(dose, currentUser, "Vaccination - " + data.getCode())) {
+                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                return;
+            }
+
         } else {
-            General.AlertMsgError("Failed to ,mark as vaccinated. Please try again later!", "Error");
+            General.AlertMsgError("Out of stock!", "Error");
+            return;
+        }
+
+        if (fo.ModifyRecords()) {
+
+            if (data.Vacc.getDoseCount() > dose) {
+                //Save stock
+                FileOperation fo2 = new FileOperation(s.getId(), General.stockFileName);
+                fo2.ModifyRecord(s);
+                
+                //Create new appointment
+                MyDateTime newVacDate = new MyDateTime();
+                newVacDate.getCal().add(Calendar.DATE, data.Vacc.getInterval());
+
+                Appointment newApp = new Appointment(data.Ppl, data.HandledBy, data.Vacc, data.Location, newVacDate);
+
+                if (FileOperation.SerializeObject(General.appointmentFileName, newApp)) {
+                    General.AlertMsgInfo(data.Ppl.getFullName() + "(" + data.Ppl.Username + ") is marked as vaccinated!", "Success");
+                    InitGlobalData();
+                    InitTableRecords();
+                } else {
+                    General.AlertMsgError("Failed to mark " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") as vaccinated. Please try again later!", "Error");
+                }
+
+            }
+
+        } else {
+            General.AlertMsgError("Failed to mark " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") as vaccinated. Please try again later!", "Error");
         }
     }//GEN-LAST:event_btnTaMarkActionPerformed
 

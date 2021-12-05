@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        btnLogin1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +90,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnLogin1.setText("Register");
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +115,8 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtPass)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +134,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(btnLogin)
-                .addGap(138, 138, 138))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogin1)
+                .addGap(110, 110, 110))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,12 +163,12 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = txtUsername.getText();
         char[] password = txtPass.getPassword();
-
+        
         if (username.isBlank() || username.isEmpty() || password.length == 0) {
             General.AlertMsgError("Username and password must not leave blank!", "Login Failed");
             return;
         }
-
+        
         FileOperation fo = new FileOperation(username, General.userFileName);
         fo.ReadFile();
         System.out.println(fo.getReadResult());
@@ -166,12 +177,12 @@ public class Login extends javax.swing.JFrame {
 //        Hashtable<String, Object> allUsersHt = FileOperation.ConvertToHashTable(allUsers);
         if (fo.getReadResult() != null) {
             Object ob = fo.getReadResult();
-
+            
             System.out.println(ob.toString());
             Class objClass = ob.getClass();
             System.out.println(objClass);
             User user = null;
-
+            
             if (objClass.equals(Citizen.class)) {
                 //People - Citizen
                 Citizen u = (Citizen) ob;
@@ -180,37 +191,37 @@ public class Login extends javax.swing.JFrame {
                     LoadingPage lp = new LoadingPage();
                     lp.setCurrentUserCitizen(u);
                     lp.PopulateUserData();
-
+                    
                     lp.setVisible(true);
                     this.setVisible(false);
-
+                    
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
             } else if (objClass.equals(NonCitizen.class)) {
                 //People - Non-Citizen
                 NonCitizen u = (NonCitizen) ob;
-
+                
                 if (u.LoginVerification(password)) {
                     LoadingPage lp = new LoadingPage();
                     lp.setCurrentUserNonCitizen(u);
                     lp.PopulateUserData();
-
+                    
                     lp.setVisible(true);
                     this.setVisible(false);
-
+                    
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
             } else if (objClass.equals(Admin.class)) {
                 //Personnel - Admin
                 Admin u = (Admin) ob;
-
+                
                 if (u.getStatus().equals(PersonnelStatus.Suspend)) {
                     General.AlertMsgError("Your account has been suspended!", "Login failed");
                     return;
                 }
-
+                
                 if (u.LoginVerification(password)) {
                     AdminLoadingPage lp = new AdminLoadingPage();
                     lp.setCurrentUser(u);
@@ -227,7 +238,7 @@ public class Login extends javax.swing.JFrame {
                     General.AlertMsgError("Your account has been suspended!", "Login failed");
                     return;
                 }
-
+                
                 if (u.LoginVerification(password)) {
                     DoctorLoadingPage lp = new DoctorLoadingPage();
                     lp.setCurrentUser(u);
@@ -237,18 +248,18 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
-
+                
             } else if (objClass.equals(Stockist.class)) {
                 //Personnel - Stockist
                 Stockist u = (Stockist) ob;
-
+                
                 if (u.getStatus().equals(PersonnelStatus.Suspend)) {
                     General.AlertMsgError("Your account has been suspended!", "Login failed");
                     return;
                 }
-
+                
                 if (u.LoginVerification(password)) {
-
+                    
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }
@@ -256,7 +267,7 @@ public class Login extends javax.swing.JFrame {
                 General.AlertMsgError("No user found!", "Invalid role");
                 return;
             }
-
+            
         } else {
             General.AlertMsgError("No user found!", "Invalid Username");
         }
@@ -273,6 +284,12 @@ public class Login extends javax.swing.JFrame {
             btnLoginActionPerformed(null);
         }
     }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        Register reg = new Register();
+        reg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLogin1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,6 +331,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

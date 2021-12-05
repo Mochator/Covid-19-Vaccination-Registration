@@ -18,10 +18,6 @@ public interface StockAudit {
 
     public int GenerateId();
 
-    public void AddQuantity();
-
-    public void MinusQuantity();
-
     public int getId();
 
 }
@@ -33,11 +29,11 @@ class ActualStock implements StockAudit, Serializable {
     private Stock VacStock;
     private int Quantity;
     private MyDateTime CreateDate;
-    private Personnel CreatedBy;
+    private User CreatedBy;
     private String Remarks;
 
     //For stockist
-    public ActualStock(Stock VacStock, int Quantity, Stockist CreatedBy, String Remarks) {
+    public ActualStock(Stock VacStock, int Quantity, User CreatedBy, String Remarks) {
         this.VacStock = VacStock;
         this.Quantity = Quantity;
         this.CreatedBy = CreatedBy;
@@ -46,20 +42,9 @@ class ActualStock implements StockAudit, Serializable {
         this.Id = this.GenerateId();
         this.CreateDate = StockAudit.CreateDate;
     }
-    
 
-    //For doctor after vaccination
-    public ActualStock(Stock VacStock, int Quantity, Doctor CreatedBy, Appointment Appointment) {
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = "Vaccinatation - " + Appointment.getCode();
 
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
-
-    public ActualStock(int Id, Stock VacStock, int Quantity, MyDateTime CreateDate, Personnel CreatedBy, String Remarks) {
+    public ActualStock(int Id, Stock VacStock, int Quantity, MyDateTime CreateDate, User CreatedBy, String Remarks) {
         this.Id = Id;
         this.VacStock = VacStock;
         this.Quantity = Quantity;
@@ -76,17 +61,12 @@ class ActualStock implements StockAudit, Serializable {
         this.Remarks = Remarks;
     }
 
-    public void AddQuantity() {
-        ///todo
-
-    }
-
-    public void MinusQuantity() {
-        //todo
-    }
 
     public int GenerateId() {
-        GenerateId genId = new GenerateId(General.stockAuditFileName);
+        
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockAuditFileName);
+
+        GenerateId genId = new GenerateId(allObj, "");
 
         return Integer.parseInt(genId.returnId());
     }
@@ -107,41 +87,19 @@ class PendingStock implements StockAudit, Serializable {
     private int Id;
     private Stock VacStock;
     private int Quantity;
-    protected Personnel CreatedBy;
-    private static String Remarks = "Vaccinatation - ";
+    protected User CreatedBy;
+    private static String Remarks;
     private MyDateTime CreateDate;
 
-    //For admin after assign vaccine
-    public PendingStock(Stock VacStock, int Quantity, Admin CreatedBy, Appointment Appointment) {
+
+    public PendingStock(Stock VacStock, int Quantity, User CreatedBy, String Remarks) {
         this.VacStock = VacStock;
         this.Quantity = Quantity;
         this.CreatedBy = CreatedBy;
-        this.Remarks += Appointment.getCode();
+        this.Remarks = Remarks;
 
         this.Id = this.GenerateId();
         this.CreateDate = StockAudit.CreateDate;
-    }
-
-    //For doctor after vaccination
-    public PendingStock(Stock VacStock, int Quantity, Doctor CreatedBy, Appointment Appointment) {
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = Appointment.getCode();
-
-        this.Id = this.GenerateId();
-        this.CreateDate = StockAudit.CreateDate;
-    }
-
-    @Override
-    public void AddQuantity() {
-        int newQty = this.VacStock.getQuantity() + this.Quantity;
-        this.VacStock.setQuantity(newQty);
-    }
-
-    @Override
-    public void MinusQuantity() {
-
     }
 
     public int getId() {
@@ -149,8 +107,10 @@ class PendingStock implements StockAudit, Serializable {
     }
 
     public int GenerateId() {
+        
+        ArrayList<Object> allObj = FileOperation.DeserializeObject(General.pendingStockAuditFileName);
 
-        GenerateId genId = new GenerateId(General.pendingStockAuditFileName);
+        GenerateId genId = new GenerateId(allObj, "");
 
         return Integer.parseInt(genId.returnId());
 
