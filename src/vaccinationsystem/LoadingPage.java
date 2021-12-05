@@ -5,19 +5,31 @@
  */
 package vaccinationsystem;
 
+import java.io.File;
+import java.io.IOException;
 import com.toedter.calendar.JDateChooser;
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -26,8 +38,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
-
 
 /**
  *
@@ -178,7 +188,7 @@ public class LoadingPage extends javax.swing.JFrame {
                     vaCentre = vacCentre.getVacCode() + " - " + vacCentre.getName();
                 }
 
-                Object[] dtmObj = new Object[]{a.getCode(), a.RegisterDate.GetShortDateTime(), vaDate, vaCentre, vaVaccine, a.getStatus()};
+                Object[] dtmObj = new Object[]{a.getCode(), a.getRegisterDate().GetShortDateTime(), vaDate, vaCentre, vaVaccine, a.getStatus()};
 
                 dtm.addRow(dtmObj);
 
@@ -1352,16 +1362,50 @@ public class LoadingPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVAReject1ActionPerformed
 
     private void btnCertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertActionPerformed
+        try {
+            Image covid19 = ImageIO.read(new File("Images\\cert.jpg"));
 
+            int width = covid19.getWidth(null);
+            int height = covid19.getHeight(null);
+
+            // Constructs a BufferedImage of one of the predefined image types.
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+            // Create a graphics which can be used to draw into the buffered image
+            Graphics2D g2d = bufferedImage.createGraphics();
+
+            g2d.drawImage(covid19, 0, 0, null);
+            g2d.setColor(Color.black);
+
+            g2d.setColor(Color.darkGray);
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
+            g2d.drawString("DIGITAL CERTIFICATE", 50, 150);
+            
+            g2d.setFont(new Font("TimesRoman", Font.PLAIN, 36));           
+            g2d.drawString("for COVID-19 Vaccination", 50, 200);
+            
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawLine(50, 220, 500, 220);
+
+            g2d.setColor(Color.BLUE);
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
+            g2d.drawString(currentUser.getFullName(), 50, 275);
+            
+            g2d.draw(s);
+
+            g2d.dispose();
+
+            // Save as JPG
+            File file = new File("Certs\\" + currentUser.Username + "Vaccination_Certificate.jpg");
+            ImageIO.write(bufferedImage, "jpg", file);
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btnCertActionPerformed
+
+    protected void manipulatePdf(String dest) throws Exception {
 
     }
-
-    public static void saveFileFromUrlWithJavaIO(String fileName, String fileUrl)
-            throws MalformedURLException, IOException {
-        
-
-
-    }//GEN-LAST:event_btnCertActionPerformed
 
     /**
      * @param args the command line arguments

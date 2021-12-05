@@ -1079,7 +1079,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         String Gender = data.Ppl.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString;
         txtTaGender.setText(Gender);
 
-        calTaDob.setCalendar(data.RegisterDate.getCal());
+        calTaDob.setCalendar(data.getRegisterDate().getCal());
 
         if (data.Ppl.getClass().equals(Citizen.class
         )) {
@@ -1260,7 +1260,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             MyDateTime newVacDate = new MyDateTime();
             newVacDate.getCal().add(Calendar.DATE, data.Vacc.getInterval());
 
-            Appointment newApp = new Appointment(data.Ppl, data.HandledBy, data.Vacc, data.Location, newVacDate);
+            Appointment newApp = new Appointment(data.Ppl, data.getHandledBy(), data.Vacc, data.Location, newVacDate);
 
             //Update vac status of ppl
             FileOperation foPpl = new FileOperation(data.Ppl.Username, General.userFileName);

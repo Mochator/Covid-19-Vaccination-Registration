@@ -21,11 +21,10 @@ public class Appointment implements Serializable {
     protected People Ppl;
     protected Vaccine Vacc;
     private AppointmentStatus Status;
-    protected Admin HandledBy;
-    protected MyDateTime RegisterDate;
+    private Admin HandledBy;
+    private MyDateTime RegisterDate;
     protected MyDateTime VaccinationDate;
     protected VaccineCentre Location;
-    private StockAudit stockAudit; //composition
     private Doctor VaccinatedBy;
     private String RejectReason;
     private String Remarks;
@@ -57,13 +56,36 @@ public class Appointment implements Serializable {
         return Code;
     }
 
+    public Admin getHandledBy() {
+        return HandledBy;
+    }
+
+    public People getPpl() {
+        return Ppl;
+    }
+
+    public Vaccine getVacc() {
+        return Vacc;
+    }
+
+    public MyDateTime getRegisterDate() {
+        return RegisterDate;
+    }
+
+    public MyDateTime getVaccinationDate() {
+        return VaccinationDate;
+    }
+
+    public VaccineCentre getLocation() {
+        return Location;
+    }
+    
+    
+
     public AppointmentStatus getStatus() {
         return Status;
     }
 
-    public StockAudit getStockAudit() {
-        return stockAudit;
-    }
 
     public Doctor getVaccinatedBy() {
         return VaccinatedBy;
@@ -155,7 +177,7 @@ public class Appointment implements Serializable {
 
     @Override
     public String toString() {
-        return Code + "\t" + Ppl + "\t" + Vacc + "\t" + Status + "\t" + HandledBy + "\t" + RegisterDate + "\t" + VaccinationDate + "\t" + Location + "\t" + stockAudit + "\t" + VaccinatedBy + "\t" + RejectReason + "\t" + Remarks;
+        return Code + "\t" + Ppl + "\t" + Vacc + "\t" + Status + "\t" + HandledBy + "\t" + RegisterDate + "\t" + VaccinationDate + "\t" + Location + "\t" + VaccinatedBy + "\t" + RejectReason + "\t" + Remarks;
     }
 
 }

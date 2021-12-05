@@ -5,12 +5,20 @@
  */
 package vaccinationsystem;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.ListIterator;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -18,13 +26,13 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
-        Vaccine data = new Vaccine("test", 2, 15);
-        MyDateTime newVacDate = new MyDateTime();
-            newVacDate.getCal().add(Calendar.DATE, data.getInterval());
-            System.out.println(newVacDate);
 
+//        Vaccine data = new Vaccine("test", 2, 15);
+//        MyDateTime newVacDate = new MyDateTime();
+//            newVacDate.getCal().add(Calendar.DATE, data.getInterval());
+//            System.out.println(newVacDate);
 //        Vaccine vaccine = new Vaccine("Pfizer", 2, 21);
 //        FileOperation fo = new FileOperation();
 //        fo.SaveToFile(vaccine, General.vaccineFileName);
@@ -37,7 +45,6 @@ public class Main {
 //            Stock stock = new Stock(vaccine, i, vc);
 //            fo.SaveToFile(stock, General.stockFileName);
 //        }
-
 //        try{
 //            File file = new File(General.stockFileName);
 //            Scanner sc = new Scanner(file);
@@ -91,7 +98,7 @@ public class Main {
 //        }
         ArrayList<Object> users = FileOperation.DeserializeObject(General.userFileName);
         Hashtable<String, Object> ht = FileOperation.ConvertToHashTable(users);
-        
+
         ListIterator li = users.listIterator();
 
         while (li.hasNext()) {
@@ -103,10 +110,10 @@ public class Main {
             if (user.getClass() == Admin.class) {
                 Personnel obj = (Admin) ob;
                 System.out.println(obj.getStatus());
-            } else if (user.getClass() == Doctor.class){
+            } else if (user.getClass() == Doctor.class) {
                 Doctor obj = (Doctor) ob;
                 System.out.println(obj.VacCentre);
-            } else if(user.getClass() == NonCitizen.class){
+            } else if (user.getClass() == NonCitizen.class) {
                 NonCitizen obj = (NonCitizen) ob;
                 System.out.println(obj.Address.getFullAddress());
             }

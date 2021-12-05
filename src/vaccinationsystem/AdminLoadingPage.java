@@ -242,7 +242,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 a.getCode(),
                 a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
                 IcPassport,
-                a.RegisterDate.GetShortDateTime(),
+                a.getRegisterDate().GetShortDateTime(),
                 a.getStatus()
             };
 
@@ -274,12 +274,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 v.getCode(),
                 v.Ppl.getFullName() + " (" + v.Ppl.Username + ")",
                 IcPassport,
-                v.RegisterDate.GetShortDate(),
+                v.getRegisterDate().GetShortDate(),
                 v.Vacc == null ? "-" : (v.Vacc.getName() + " (" + v.Vacc.getVacCode() + ")"),
                 v.Location == null ? "-" : (v.Location.getName() + " (" + v.Location.getVacCode() + ")"),
                 v.VaccinationDate == null ? "-" : v.VaccinationDate.GetShortDate(),
                 v.getRemarks(),
-                v.HandledBy == null ? "-" : v.HandledBy.Username,
+                v.getHandledBy() == null ? "-" : v.getHandledBy().Username,
                 v.getVaccinatedBy() == null ? "-" : (v.getVaccinatedBy().Username),
                 v.getStatus()
             };
@@ -316,7 +316,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 ++i,
                 a.getCode(),
                 a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
-                a.RegisterDate.GetShortDateTime(),
+                a.getRegisterDate().GetShortDateTime(),
                 a.getStatus()
             };
 
@@ -4602,7 +4602,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
 
@@ -4615,7 +4615,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
 
@@ -4841,7 +4841,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
                         c.getIcNo() + "(" + General.NationalityCitizen + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
 
@@ -4855,7 +4855,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
                         c.getPassport() + "(" + General.NationalityNonCitizen + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
 
@@ -4904,7 +4904,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     a.getCode(),
                     a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
                     IcPassport,
-                    a.RegisterDate.GetShortDateTime(),
+                    a.getRegisterDate().GetShortDateTime(),
                     a.getStatus()
                 };
 
@@ -5053,7 +5053,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         String Gender = data.Ppl.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString;
         txtMaGender.setText(Gender);
 
-        calMaDob.setCalendar(data.RegisterDate.getCal());
+        calMaDob.setCalendar(data.getRegisterDate().getCal());
         txtMaAddress.setText(data.Ppl.Address.getFullAddress());
 
         txtMaRemarks.setText(data.getRemarks());
@@ -5962,12 +5962,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
                         c.getIcNo() + "(" + General.NationalityCitizen + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.Location != null ? a.Location.getVacCode() + " - " + a.Location.getName() : "-",
                         a.VaccinationDate != null ? a.VaccinationDate.GetShortDate() : "-",
                         a.getRemarks(),
-                        a.HandledBy != null ? a.HandledBy.Username : "-",
+                        a.getHandledBy() != null ? a.getHandledBy().Username : "-",
                         a.getVaccinatedBy() != null ? a.getVaccinatedBy().Username : "-",
                         a.getStatus()
                     };
@@ -5982,12 +5982,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
                         c.getPassport() + "(" + General.NationalityNonCitizen + ")",
-                        a.RegisterDate.GetShortDate(),
+                        a.getRegisterDate().GetShortDate(),
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.Location != null ? a.Location.getVacCode() + " - " + a.Location.getName() : "-",
                         a.VaccinationDate != null ? a.VaccinationDate.GetShortDate() : "-",
                         a.getRemarks(),
-                        a.HandledBy != null ? a.HandledBy.Username : "-",
+                        a.getHandledBy() != null ? a.getHandledBy().Username : "-",
                         a.getVaccinatedBy() != null ? a.getVaccinatedBy().Username : "-",
                         a.getStatus()
                     };
