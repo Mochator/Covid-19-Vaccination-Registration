@@ -259,7 +259,11 @@ public class Login extends javax.swing.JFrame {
                 }
                 
                 if (u.LoginVerification(password)) {
-                    
+                    StockistLoadingPage lp = new StockistLoadingPage();
+                    lp.setCurrentUser(u);
+                    lp.StartUp();
+                    lp.setVisible(true);
+                    this.setVisible(false);
                 } else {
                     General.AlertMsgError("Incorrect password!", "Login failed");
                 }

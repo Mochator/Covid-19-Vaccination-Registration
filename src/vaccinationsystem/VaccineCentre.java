@@ -57,7 +57,7 @@ public class VaccineCentre implements Serializable {
     }
     
     public String GetCodeName(){
-        return Name + "(" + this.VacCode + ")";
+        return Name + " (" + this.VacCode + ")";
     }
     
     public void CreateStockOfAllVaccine(){

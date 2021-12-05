@@ -61,12 +61,27 @@ class ActualStock implements StockAudit, Serializable {
         this.Remarks = Remarks;
     }
 
+    public Stock getVacStock() {
+        return VacStock;
+    }
+
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public MyDateTime getCreateDate() {
+        return CreateDate;
+    }
+
+    public User getCreatedBy() {
+        return CreatedBy;
+    }
 
     public int GenerateId() {
         
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockAuditFileName);
 
-        GenerateId genId = new GenerateId(allObj, "");
+        GenerateId genId = new GenerateId(allObj);
 
         return Integer.parseInt(genId.returnId());
     }
@@ -110,11 +125,32 @@ class PendingStock implements StockAudit, Serializable {
         
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.pendingStockAuditFileName);
 
-        GenerateId genId = new GenerateId(allObj, "");
+        GenerateId genId = new GenerateId(allObj);
 
         return Integer.parseInt(genId.returnId());
 
     }
+
+    public Stock getVacStock() {
+        return VacStock;
+    }
+
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public User getCreatedBy() {
+        return CreatedBy;
+    }
+
+    public static String getRemarks() {
+        return Remarks;
+    }
+
+    public MyDateTime getCreateDate() {
+        return CreateDate;
+    }
+    
 
     @Override
     public String toString() {

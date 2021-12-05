@@ -18,8 +18,8 @@ public class Stock implements Serializable {
     private int Id;
     protected Vaccine VacType;
     private int Dose;
-    private static int Quantity = 0;
-    private static int PendingQuantity = 0;
+    private int Quantity = 0;
+    private int PendingQuantity = 0;
     protected VaccineCentre VacCentre;
 
     //Create new stock
@@ -98,20 +98,20 @@ public class Stock implements Serializable {
     public void GenerateId() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.stockFileName);
 
-        GenerateId genId = new GenerateId(allObj, "");
+        GenerateId genId = new GenerateId(allObj);
 
-        this.Id =  Integer.parseInt(genId.returnId());
+        this.Id = Integer.parseInt(genId.returnId());
     }
 
     public boolean AddQty(int i, User currentUser, String auditRemarks) {
-        this.Quantity = +i;
+        this.Quantity = this.Quantity + i;
         boolean success = true;
-
         StockAudit sa = new ActualStock(this, i, currentUser, auditRemarks);
 
         if (!FileOperation.SerializeObject(General.stockAuditFileName, sa)) {
             success = false;
         }
+        System.out.println("Actual : " + success);
 
         return success;
     }
@@ -135,15 +135,14 @@ public class Stock implements Serializable {
     }
 
     public boolean AddPendingQty(int i, User currentUser, String auditRemarks) {
-        this.PendingQuantity = +i;
+        this.PendingQuantity = this.PendingQuantity + i;
         boolean success = true;
 
         StockAudit sa = new PendingStock(this, i, currentUser, auditRemarks);
 
-        if (!FileOperation.SerializeObject(General.pendingStockAuditFileName, sa)) {
-            success = false;
-        }
+        success = FileOperation.SerializeObject(General.pendingStockAuditFileName, sa);
 
+        System.out.println("Pending : " + success);
         return success;
     }
 

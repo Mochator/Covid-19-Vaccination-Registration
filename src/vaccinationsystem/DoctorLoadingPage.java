@@ -924,7 +924,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
 
         Color col = b ? Color.WHITE : Color.GRAY;
 
-        for (Component x : jPanel4.getComponents()) {
+        for (Component x : pnlCredential.getComponents()) {
 
             if (x instanceof JTextField) {
                 JTextField j = (JTextField) x;

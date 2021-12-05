@@ -104,9 +104,6 @@ public class FileOperation {
 
         arrayList = DeserializeObject(this.FileName);
         ht = ConvertToHashTable(arrayList);
-        
-        System.out.println(arrayList);
-        System.out.println(newRecord);
 
         if (ht.containsKey(this.Id)) {
             ht.replace(String.valueOf(this.Id), newRecord);
@@ -353,6 +350,19 @@ class GenerateId {
         while (AnyDuplicatedSerializableId()) {
             count++;
             this.newId = prefix + String.format("%04d", count);
+        }
+    }
+    
+    public GenerateId(ArrayList<Object> arrayList) {
+        this.arrayList = arrayList;
+
+        int count = 1;
+
+        this.newId = String.valueOf(count);
+
+        while (AnyDuplicatedSerializableId()) {
+            count++;
+            this.newId = String.valueOf(count);
         }
     }
 

@@ -1,0 +1,12 @@
+vaccinationsystem.PersonnelStatus
+vaccinationsystem.Admin
+vaccinationsystem.NonCitizen
+vaccinationsystem.Personnel$PersonnelStatus
+vaccinationsystem.User
+vaccinationsystem.VaccinationStatus
+vaccinationsystem.Citizen
+vaccinationsystem.Stockist
+vaccinationsystem.Doctor
+vaccinationsystem.People$VaccinationStatus
+vaccinationsystem.People
+vaccinationsystem.Personnel
