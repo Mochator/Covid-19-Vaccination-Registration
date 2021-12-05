@@ -1391,7 +1391,7 @@ public class LoadingPage extends javax.swing.JFrame {
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
             g2d.drawString(currentUser.getFullName(), 50, 275);
             
-            g2d.draw(s);
+            //g2d.draw(s);
 
             g2d.dispose();
 
