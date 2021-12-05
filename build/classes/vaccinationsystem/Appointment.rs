@@ -1,2 +1,0 @@
-vaccinationsystem.Appointment
-vaccinationsystem.AppointmentStatus

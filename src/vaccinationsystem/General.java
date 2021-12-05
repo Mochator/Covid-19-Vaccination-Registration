@@ -92,13 +92,13 @@ public class General {
         return result;
     }
 
-    public static final String NationalityMalaysian = "Malaysian";
-    public static final String NationalityNonMalaysian = "Non-Malaysian";
+    public static final String NationalityCitizen = "Citizen";
+    public static final String NationalityNonCitizen = "Non-Citizen";
     
     public static ArrayList<String> Nationalities() {
         ArrayList<String> result = new ArrayList<String>();
-        result.add(NationalityMalaysian);
-        result.add(NationalityNonMalaysian);
+        result.add(NationalityCitizen);
+        result.add(NationalityNonCitizen);
 
         Collections.sort(result);
         return result;

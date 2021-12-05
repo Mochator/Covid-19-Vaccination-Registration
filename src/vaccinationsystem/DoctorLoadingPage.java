@@ -36,6 +36,16 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
+        System.out.println(d.width);
+        System.out.println(d.height);
+
+        d.height = Integer.parseInt(String.format("%.0f", d.height * 0.75));
+        d.width = Integer.parseInt(String.format("%.0f", d.width * 0.75));
+
+        System.out.println(d.width);
+        System.out.println(d.height);
+
+        this.setSize(d);
         this.setMaximumSize(d);
     }
 
@@ -85,6 +95,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jLabel89 = new javax.swing.JLabel();
         txtAdPVacCentre = new javax.swing.JTextField();
         jTabbedPane5 = new javax.swing.JTabbedPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTA = new javax.swing.JTable();
@@ -155,7 +166,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblVSName1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+            .addComponent(lblVSName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,30 +181,25 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 653, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(289, 289, 289)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(289, Short.MAX_VALUE)))
+                .addGap(234, 234, 234))
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
@@ -516,13 +522,17 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdPInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdPSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Profile", jPanel4);
 
         jTabbedPane5.setBackground(new java.awt.Color(51, 51, 51));
         jTabbedPane5.setOpaque(true);
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setAutoscrolls(true);
 
         jPanel18.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -639,7 +649,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
 
         jLabel64.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 30)); // NOI18N
         jLabel64.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel64.setText("Appointment Verification");
+        jLabel64.setText("Appointment Info.");
 
         jLabel16.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
@@ -721,56 +731,52 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calTaDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTaGender, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTaName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTaCentre)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(txtTaIC, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTaNat))
-                            .addComponent(txtTaStatus)
-                            .addComponent(calTaDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(txtTaVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTaDose, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                            .addComponent(txtTaRemarks))
-                        .addGap(36, 36, 36))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
                         .addComponent(txtTaAppCode, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtTaVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTaDose, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
+                                    .addComponent(txtTaCentre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calTaDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtTaStatus, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtTaIC, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTaNat))
+                                    .addComponent(calTaDob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtTaGender, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTaName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTaRemarks)))
                             .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTaMark, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(btnTaMark, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(59, 59, 59))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtTaAppCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTaAppCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel65)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -847,7 +853,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(txtTaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -862,8 +868,8 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1872, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1898, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -876,13 +882,15 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                     .addComponent(cboTaNationality)
                     .addComponent(cboTaStatus))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Today's Appointment", jPanel18);
+        jScrollPane2.setViewportView(jPanel18);
+
+        jTabbedPane5.addTab("Today's Appointment", jScrollPane2);
 
         jTabbedPane1.addTab("Vaccination Appointment", jTabbedPane5);
 
@@ -893,19 +901,20 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1020,10 +1029,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             String IcPassport = "";
             if (a.Ppl.getClass().equals(Citizen.class)) {
                 Citizen c = (Citizen) a.Ppl;
-                IcPassport = c.getIcNo() + " (" + General.NationalityMalaysian + ")";
+                IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
                 NonCitizen c = (NonCitizen) a.Ppl;
-                IcPassport = c.getPassport() + " (" + General.NationalityNonMalaysian + ")";
+                IcPassport = c.getPassport() + " (" + General.NationalityNonCitizen + ")";
             }
 
             Object[] dtmObj = new Object[]{
@@ -1050,7 +1059,9 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
 
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        System.exit(0);
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void tblTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTAMouseClicked
@@ -1074,11 +1085,11 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         )) {
             Citizen c = (Citizen) data.Ppl;
             txtTaIC.setText(c.getIcNo());
-            txtTaNat.setText(General.NationalityMalaysian);
+            txtTaNat.setText(General.NationalityCitizen);
         } else {
             NonCitizen c = (NonCitizen) data.Ppl;
             txtTaIC.setText(c.getPassport());
-            txtTaNat.setText(General.NationalityMalaysian);
+            txtTaNat.setText(General.NationalityCitizen);
         }
 
         txtTaStatus.setText(String.valueOf(data.getStatus()));
@@ -1100,10 +1111,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboTaNationality.getSelectedIndex() > 0) {
             switch (String.valueOf(cboTaNationality.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -1170,7 +1181,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                         ++i,
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getIcNo() + "(" + General.NationalityMalaysian + ")",
+                        c.getIcNo() + "(" + General.NationalityCitizen + ")",
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.getStatus()
                     };
@@ -1184,7 +1195,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                         ++i,
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getPassport() + "(" + General.NationalityNonMalaysian + ")",
+                        c.getPassport() + "(" + General.NationalityNonCitizen + ")",
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.getStatus()
                     };
@@ -1235,32 +1246,55 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             return;
         }
 
-        if (fo.ModifyRecords()) {
+        if (!fo.ModifyRecords()) {
+            General.AlertMsgError("Failed to mark " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") as vaccinated. Please try again later!", "Error");
+            return;
+        }
 
-            if (data.Vacc.getDoseCount() > dose) {
-                //Save stock
-                FileOperation fo2 = new FileOperation(s.getId(), General.stockFileName);
-                fo2.ModifyRecord(s);
-                
-                //Create new appointment
-                MyDateTime newVacDate = new MyDateTime();
-                newVacDate.getCal().add(Calendar.DATE, data.Vacc.getInterval());
+        if (data.Vacc.getDoseCount() > dose) {
+            //Save stock
+            FileOperation fo2 = new FileOperation(s.getId(), General.stockFileName);
+            fo2.ModifyRecord(s);
 
-                Appointment newApp = new Appointment(data.Ppl, data.HandledBy, data.Vacc, data.Location, newVacDate);
+            //Create new appointment
+            MyDateTime newVacDate = new MyDateTime();
+            newVacDate.getCal().add(Calendar.DATE, data.Vacc.getInterval());
 
-                if (FileOperation.SerializeObject(General.appointmentFileName, newApp)) {
-                    General.AlertMsgInfo(data.Ppl.getFullName() + "(" + data.Ppl.Username + ") is marked as vaccinated!", "Success");
-                    InitGlobalData();
-                    InitTableRecords();
-                } else {
-                    General.AlertMsgError("Failed to mark " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") as vaccinated. Please try again later!", "Error");
-                }
+            Appointment newApp = new Appointment(data.Ppl, data.HandledBy, data.Vacc, data.Location, newVacDate);
 
+            //Update vac status of ppl
+            FileOperation foPpl = new FileOperation(data.Ppl.Username, General.userFileName);
+            foPpl.ReadFile();
+            People ppl = (People) foPpl.getReadResult();
+            ppl.setVacStatus(VaccinationStatus.Partially);
+
+            if (!foPpl.ModifyRecord(ppl)) {
+                General.AlertMsgError("Failed to update " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") vaccination status. Please edit manually.", "Error");
+                return;
+            }
+
+            if (!FileOperation.SerializeObject(General.appointmentFileName, newApp)) {
+                General.AlertMsgError("Failed to schedule next apointment for " + data.Ppl.getFullName() + "(" + data.Ppl.Username + "). Please inform patient to self-enroll.", "Error");
+                return;
             }
 
         } else {
-            General.AlertMsgError("Failed to mark " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") as vaccinated. Please try again later!", "Error");
+            //Update vac status of ppl
+            FileOperation foPpl = new FileOperation(data.Ppl.Username, General.userFileName);
+            foPpl.ReadFile();
+            People ppl = (People) foPpl.getReadResult();
+            ppl.setVacStatus(VaccinationStatus.Fully);
+
+            if (!foPpl.ModifyRecord(ppl)) {
+                General.AlertMsgError("Failed to update " + data.Ppl.getFullName() + "(" + data.Ppl.Username + ") vaccination status. Please edit manually.", "Error");
+                return;
+            }
         }
+
+        General.AlertMsgInfo(data.Ppl.getFullName() + "(" + data.Ppl.Username + ") is marked as vaccinated!", "Success");
+        InitGlobalData();
+        InitTableRecords();
+
     }//GEN-LAST:event_btnTaMarkActionPerformed
 
     private void txtPNewPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPNewPwKeyReleased
@@ -1330,10 +1364,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboTaNationality.getSelectedIndex() > 0) {
             switch (String.valueOf(cboTaNationality.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -1359,10 +1393,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboTaNationality.getSelectedIndex() > 0) {
             switch (String.valueOf(cboTaNationality.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -1389,10 +1423,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboTaNationality.getSelectedIndex() > 0) {
             switch (String.valueOf(cboTaNationality.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -1429,13 +1463,17 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoctorLoadingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorLoadingPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoctorLoadingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorLoadingPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoctorLoadingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorLoadingPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoctorLoadingPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorLoadingPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1494,6 +1532,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JLabel lblPwNoMatch;

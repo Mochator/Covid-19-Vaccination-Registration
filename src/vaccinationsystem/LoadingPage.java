@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -23,6 +26,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+
+
 
 /**
  *
@@ -114,12 +119,12 @@ public class LoadingPage extends javax.swing.JFrame {
         )) {
             Citizen c = (Citizen) currentUser;
             txtPIC.setText(c.getIcNo());
-            txtPNationality.setText(General.NationalityMalaysian);
+            txtPNationality.setText(General.NationalityCitizen);
 
         } else {
             NonCitizen c = (NonCitizen) currentUser;
             txtPIC.setText(c.getPassport());
-            txtPNationality.setText(General.NationalityNonMalaysian);
+            txtPNationality.setText(General.NationalityNonCitizen);
 
         }
 
@@ -220,6 +225,7 @@ public class LoadingPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         lblVSName2 = new javax.swing.JLabel();
         lblVaccinatedStatus = new javax.swing.JLabel();
+        btnCert = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -361,20 +367,34 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        btnCert.setBackground(new java.awt.Color(51, 51, 51));
+        btnCert.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        btnCert.setForeground(new java.awt.Color(255, 255, 255));
+        btnCert.setText("Vaccination Certificate");
+        btnCert.setBorder(null);
+        btnCert.setOpaque(true);
+        btnCert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCertActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCert, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,9 +403,11 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCert, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
@@ -1075,7 +1097,9 @@ public class LoadingPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        System.exit(0);
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnEditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProfileActionPerformed
@@ -1148,9 +1172,9 @@ public class LoadingPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (txtPIC.getText().matches("^([\\d]|\\-{2})+$")) {
-            txtPNationality.setText(General.NationalityMalaysian);
+            txtPNationality.setText(General.NationalityCitizen);
         } else {
-            txtPNationality.setText(General.NationalityNonMalaysian);
+            txtPNationality.setText(General.NationalityNonCitizen);
         }
 
     }//GEN-LAST:event_txtPICKeyPressed
@@ -1182,6 +1206,20 @@ public class LoadingPage extends javax.swing.JFrame {
             fo.ReadFile();
             Appointment app = (Appointment) fo.getReadResult();
             app.setStatus(AppointmentStatus.Accepted);
+
+            Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+            if (s.FindStock()) {
+
+                if (s.MinusPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode())) {
+                    General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                    return;
+                }
+
+            } else {
+                s.GenerateId();
+                FileOperation.SerializeObject(General.stockFileName, s);
+                s.MinusPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode());
+            }
 
             if (fo.ModifyRecord(app)) {
                 General.AlertMsgInfo("Appointment succesfully updated!", "Success");
@@ -1286,6 +1324,20 @@ public class LoadingPage extends javax.swing.JFrame {
                 app.setRejectReason(txtVAReason.getText());
                 app.setStatus(AppointmentStatus.Declined);
 
+                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+                if (s.FindStock()) {
+
+                    if (s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode())) {
+                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                        return;
+                    }
+
+                } else {
+                    s.GenerateId();
+                    FileOperation.SerializeObject(General.stockFileName, s);
+                    s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode());
+                }
+
                 if (fo.ModifyRecord(app)) {
                     General.AlertMsgInfo("Appointment has been updated!", "Success");
                     pnlRejectReason.setVisible(false);
@@ -1298,6 +1350,18 @@ public class LoadingPage extends javax.swing.JFrame {
             General.AlertMsgInfo("Appointment was not updated. Please either Accept or Decline the appointment.", "Alert");
         }
     }//GEN-LAST:event_btnVAReject1ActionPerformed
+
+    private void btnCertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertActionPerformed
+
+
+    }
+
+    public static void saveFileFromUrlWithJavaIO(String fileName, String fileUrl)
+            throws MalformedURLException, IOException {
+        
+
+
+    }//GEN-LAST:event_btnCertActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1340,6 +1404,7 @@ public class LoadingPage extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCert;
     private javax.swing.JButton btnEditProfile;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSave;

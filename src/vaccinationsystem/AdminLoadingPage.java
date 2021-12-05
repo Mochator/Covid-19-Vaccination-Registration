@@ -232,10 +232,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             String IcPassport = "";
             if (a.Ppl.getClass().equals(Citizen.class)) {
                 Citizen c = (Citizen) a.Ppl;
-                IcPassport = c.getIcNo() + " (" + General.NationalityMalaysian + ")";
+                IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
                 NonCitizen c = (NonCitizen) a.Ppl;
-                IcPassport = c.getPassport() + " (" + General.NationalityNonMalaysian + ")";
+                IcPassport = c.getPassport() + " (" + General.NationalityNonCitizen + ")";
             }
 
             Object[] dtmObj = new Object[]{
@@ -263,10 +263,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             String IcPassport = "";
             if (v.Ppl.getClass().equals(Citizen.class)) {
                 Citizen c = (Citizen) v.Ppl;
-                IcPassport = c.getIcNo() + " (" + General.NationalityMalaysian + ")";
+                IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
                 NonCitizen c = (NonCitizen) v.Ppl;
-                IcPassport = c.getPassport() + " (" + General.NationalityNonMalaysian + ")";
+                IcPassport = c.getPassport() + " (" + General.NationalityNonCitizen + ")";
             }
 
             Object[] dtmObj = new Object[]{
@@ -306,10 +306,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             String IcPassport = "";
             if (a.Ppl.getClass().equals(Citizen.class)) {
                 Citizen c = (Citizen) a.Ppl;
-                IcPassport = c.getIcNo() + " (" + General.NationalityMalaysian + ")";
+                IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
                 NonCitizen c = (NonCitizen) a.Ppl;
-                IcPassport = c.getPassport() + " (" + General.NationalityNonMalaysian + ")";
+                IcPassport = c.getPassport() + " (" + General.NationalityNonCitizen + ")";
             }
 
             Object[] dtmObj = new Object[]{
@@ -469,7 +469,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     ++ppCount,
                     u.Username,
                     u.getFullName(),
-                    u.getIcNo() + " (" + General.NationalityMalaysian + ")",
+                    u.getIcNo() + " (" + General.NationalityCitizen + ")",
                     gender,
                     u.Dob.GetShortDate(),
                     u.getContact(),
@@ -489,7 +489,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     ++ppCount,
                     u.Username,
                     u.getFullName(),
-                    u.getPassport() + " (" + General.NationalityNonMalaysian + ")",
+                    u.getPassport() + " (" + General.NationalityNonCitizen + ")",
                     gender,
                     u.Dob.GetShortDate(),
                     u.getContact(),
@@ -694,7 +694,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         cboPpAddState = new javax.swing.JComboBox<>();
         jPanel11 = new javax.swing.JPanel();
         jLabel155 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jLabel156 = new javax.swing.JLabel();
         jLabel157 = new javax.swing.JLabel();
         txtPpEmail = new javax.swing.JTextField();
@@ -702,6 +701,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtPpNewPw = new javax.swing.JPasswordField();
         jLabel158 = new javax.swing.JLabel();
         txtPpCfmPw = new javax.swing.JPasswordField();
+        jLabel159 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
@@ -719,7 +719,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtAnvInterval = new javax.swing.JTextField();
         txtVMSearch = new javax.swing.JTextField();
         btnVMSearch = new javax.swing.JButton();
-        btnVmUpdate = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -2463,11 +2462,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jLabel155.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel155.setText("E-mail");
 
-        jLabel23.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Account Info.");
-
         jLabel156.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel156.setForeground(new java.awt.Color(0, 0, 0));
         jLabel156.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2520,18 +2514,22 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel159.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 30)); // NOI18N
+        jLabel159.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel159.setText("Account Info.");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGap(338, 338, 338)
+                .addComponent(btnSRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel159)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2543,14 +2541,15 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(txtPpCfmPw, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtPpNewPw, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPpEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))
-                        .addGap(64, 64, 64))))
+                                .addComponent(txtPpEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))))
+                .addGap(64, 64, 64))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPpEmail))
@@ -2633,7 +2632,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2790,19 +2789,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        btnVmUpdate.setBackground(new java.awt.Color(0, 255, 0));
-        btnVmUpdate.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
-        btnVmUpdate.setForeground(new java.awt.Color(0, 0, 0));
-        btnVmUpdate.setText("Update Vaccine Details");
-        btnVmUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnVmUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVmUpdate.setOpaque(true);
-        btnVmUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVmUpdateActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -2813,9 +2799,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVmUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(txtVMSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -2832,10 +2816,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVmUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(461, Short.MAX_VALUE))
         );
 
@@ -4413,44 +4394,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblCMKeyPressed
 
-    private void btnVmUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVmUpdateActionPerformed
-        if (General.AlertQuestionYesNo("Do you want to save vaccine information changes?", "Changes Confirmation") == 1) {
-            return;
-        }
-
-        DefaultTableModel dtm = (DefaultTableModel) tblVM.getModel();
-        int i = 0;
-
-        try {
-            while (i < dtm.getRowCount()) {
-                int col = 1;
-                String code = String.valueOf(dtm.getValueAt(i, col++));
-                String name = String.valueOf(dtm.getValueAt(i, col++));
-                int dose = Integer.parseInt(String.valueOf(dtm.getValueAt(i, col++)));
-                int interval = Integer.parseInt(String.valueOf(dtm.getValueAt(i, col++)));
-
-                Vaccine vaccine = new Vaccine(code, name, dose, interval);
-
-                htVac.replace(code, vaccine);
-                i++;
-            }
-        } catch (Exception ex) {
-            General.AlertMsgError("Dose and Interval fields have to be integer.", "Error");
-            return;
-        }
-
-        FileOperation fo = new FileOperation(General.vaccineFileName);
-        fo.setHt(htVac);
-
-        if (fo.ModifyRecords()) {
-            General.AlertMsgInfo("Vaccine information are successfully updated!", "Success");
-            InitGlobalData();
-            InitTableRecords();
-        } else {
-            General.AlertMsgError("Failed to update vaccine information. Please try again later!", "Error");
-        }
-    }//GEN-LAST:event_btnVmUpdateActionPerformed
-
     private void btnVMSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVMSearchActionPerformed
         // TODO add your handling code here:
         String search = "";
@@ -4601,6 +4544,21 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             newApp.setHandledBy(currentUser);
             newApp.setStatus(AppointmentStatus.Approved);
 
+            //Update pending stock
+            Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+            if (s.FindStock()) {
+
+                if (s.MinusPendingQty(1, currentUser, "Reschedule Vaccination - " + app.getCode())) {
+                    General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                    return;
+                }
+
+            } else {
+                s.GenerateId();
+                FileOperation.SerializeObject(General.stockFileName, s);
+                s.MinusPendingQty(1, currentUser, "Reschedule Vaccination - " + app.getCode());
+            }
+
             if (FileOperation.SerializeObject(General.appointmentFileName, newApp)) {
                 General.AlertMsgInfo("Appointment Rescheduled!", "Success");
 
@@ -4694,11 +4652,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         if (app.Ppl.getClass().equals(Citizen.class)) {
             Citizen c = (Citizen) app.Ppl;
             txtRaIC.setText(c.getIcNo());
-            txtRaNat.setText(General.NationalityMalaysian);
+            txtRaNat.setText(General.NationalityCitizen);
         } else {
             NonCitizen c = (NonCitizen) app.Ppl;
             txtRaIC.setText(c.getPassport());
-            txtRaNat.setText(General.NationalityNonMalaysian);
+            txtRaNat.setText(General.NationalityNonCitizen);
         }
 
         //Schedule Info
@@ -4735,10 +4693,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboVSearchNat.getSelectedIndex() > 0) {
             switch (String.valueOf(cboVSearchNat.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -4761,10 +4719,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboVSearchNat.getSelectedIndex() > 0) {
             switch (String.valueOf(cboVSearchNat.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -4787,10 +4745,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboVSearchNat.getSelectedIndex() > 0) {
             switch (String.valueOf(cboVSearchNat.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -4814,10 +4772,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboVSearchNat.getSelectedIndex() > 0) {
             switch (String.valueOf(cboVSearchNat.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -4840,10 +4798,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         Class nat = null;
         if (cboVSearchNat.getSelectedIndex() > 0) {
             switch (String.valueOf(cboVSearchNat.getSelectedItem())) {
-                case General.NationalityMalaysian:
+                case General.NationalityCitizen:
                     nat = Citizen.class;
                     break;
-                case General.NationalityNonMalaysian:
+                case General.NationalityNonCitizen:
                     nat = NonCitizen.class;
                     break;
                 default:
@@ -4882,7 +4840,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getIcNo() + "(" + General.NationalityMalaysian + ")",
+                        c.getIcNo() + "(" + General.NationalityCitizen + ")",
                         a.RegisterDate.GetShortDate(),
                         a.getStatus()
                     };
@@ -4896,7 +4854,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getPassport() + "(" + General.NationalityNonMalaysian + ")",
+                        c.getPassport() + "(" + General.NationalityNonCitizen + ")",
                         a.RegisterDate.GetShortDate(),
                         a.getStatus()
                     };
@@ -4936,10 +4894,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 if (a.Ppl.getClass().equals(Citizen.class
                 )) {
                     Citizen c = (Citizen) a.Ppl;
-                    IcPassport = c.getIcNo() + " (" + General.NationalityMalaysian + ")";
+                    IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
                 } else {
                     NonCitizen c = (NonCitizen) a.Ppl;
-                    IcPassport = c.getPassport() + " (" + General.NationalityNonMalaysian + ")";
+                    IcPassport = c.getPassport() + " (" + General.NationalityNonCitizen + ")";
                 }
 
                 Object[] dtmObj = new Object[]{
@@ -4975,7 +4933,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
                 if (s.FindStock()) {
 
-                    if (s.MinusPendingQty(1, currentUser, "Vaccination - " + app.getCode())) {
+                    if (s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode())) {
                         General.AlertMsgError("Something went wrong, please try again later!", "Error");
                         return;
                     }
@@ -4983,7 +4941,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 } else {
                     s.GenerateId();
                     FileOperation.SerializeObject(General.stockFileName, s);
-                    s.MinusPendingQty(1, currentUser, "Vaccination - " + app.getCode());
+                    s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode());
                 }
             }
 
@@ -5048,12 +5006,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
             if (fo.ModifyRecord(data)) {
 
-                //MOdify vaccine stock
+                //Modify vaccine stock
                 Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
 
                 if (s.FindStock()) {
 
-                    if (s.AddPendingQty(1, currentUser, "Vaccination - " + data.getCode())) {
+                    if (s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
                         General.AlertMsgError("Something went wrong, please try again later!", "Error");
                         return;
                     }
@@ -5061,7 +5019,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 } else {
                     s.GenerateId();
                     FileOperation.SerializeObject(General.stockFileName, s);
-                    s.AddPendingQty(1, currentUser, "Vaccination - " + data.getCode());
+                    s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode());
                 }
 
                 General.AlertMsgInfo("Appointment Updated!", "Success");
@@ -5113,11 +5071,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         )) {
             Citizen c = (Citizen) data.Ppl;
             txtMaIC.setText(c.getIcNo());
-            txtMaNat.setText(General.NationalityMalaysian);
+            txtMaNat.setText(General.NationalityCitizen);
         } else {
             NonCitizen c = (NonCitizen) data.Ppl;
             txtMaIC.setText(c.getPassport());
-            txtMaNat.setText(General.NationalityMalaysian);
+            txtMaNat.setText(General.NationalityCitizen);
         }
 
         if (data.getStatus().equals(AppointmentStatus.Pending)) {
@@ -5745,7 +5703,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         ++i,
                         c.Username,
                         c.getFullName(),
-                        c.getIcNo() + " (" + General.NationalityMalaysian + ")",
+                        c.getIcNo() + " (" + General.NationalityCitizen + ")",
                         gender,
                         c.Dob.GetShortDate(),
                         c.getContact(),
@@ -5767,7 +5725,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         ++i,
                         c.Username,
                         c.getFullName(),
-                        c.getPassport() + " (" + General.NationalityNonMalaysian + ")",
+                        c.getPassport() + " (" + General.NationalityNonCitizen + ")",
                         gender,
                         c.Dob.GetShortDate(),
                         c.getContact(),
@@ -5942,12 +5900,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         if (classRole.equals(Citizen.class)) {
             Citizen c = (Citizen) data;
-            txtPpNat.setText(General.NationalityMalaysian);
+            txtPpNat.setText(General.NationalityCitizen);
             txtPpIC.setText(c.getIcNo());
 
         } else {
             NonCitizen c = (NonCitizen) data;
-            txtPpNat.setText(General.NationalityNonMalaysian);
+            txtPpNat.setText(General.NationalityNonCitizen);
             txtPpIC.setText(c.getPassport());
         }
     }//GEN-LAST:event_tblPpMouseClicked
@@ -6003,7 +5961,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         ++i,
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getIcNo() + "(" + General.NationalityMalaysian + ")",
+                        c.getIcNo() + "(" + General.NationalityCitizen + ")",
                         a.RegisterDate.GetShortDate(),
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.Location != null ? a.Location.getVacCode() + " - " + a.Location.getName() : "-",
@@ -6023,7 +5981,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         ++i,
                         a.getCode(),
                         a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getPassport() + "(" + General.NationalityNonMalaysian + ")",
+                        c.getPassport() + "(" + General.NationalityNonCitizen + ")",
                         a.RegisterDate.GetShortDate(),
                         a.Vacc != null ? a.Vacc.getVacCode() + " - " + a.Vacc.getName() : "-",
                         a.Location != null ? a.Location.getVacCode() + " - " + a.Location.getName() : "-",
@@ -6145,7 +6103,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JButton btnSRegister1;
     private javax.swing.JButton btnVMSearch;
     private javax.swing.JButton btnVSearch;
-    private javax.swing.JButton btnVmUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -6251,6 +6208,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
     private javax.swing.JLabel jLabel158;
+    private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -6258,7 +6216,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel50;
