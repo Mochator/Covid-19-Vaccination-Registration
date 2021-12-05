@@ -44,14 +44,6 @@ class ActualStock implements StockAudit, Serializable {
     }
 
 
-    public ActualStock(int Id, Stock VacStock, int Quantity, MyDateTime CreateDate, User CreatedBy, String Remarks) {
-        this.Id = Id;
-        this.VacStock = VacStock;
-        this.Quantity = Quantity;
-        this.CreateDate = CreateDate;
-        this.CreatedBy = CreatedBy;
-        this.Remarks = Remarks;
-    }
 
     public String getRemarks() {
         return Remarks;
@@ -102,7 +94,7 @@ class PendingStock implements StockAudit, Serializable {
     private int Id;
     private Stock VacStock;
     private int Quantity;
-    protected User CreatedBy;
+    private User CreatedBy;
     private static String Remarks;
     private MyDateTime CreateDate;
 

@@ -34,17 +34,6 @@ public class MyDateTime implements Serializable {
         cal.set(Year, Month, Day, Hour, Minute, Second);
     }
 
-    public void setDate(int Year, int Month, int Day) {
-        cal.set(Calendar.YEAR, Year);
-        cal.set(Calendar.MONTH, Month);
-        cal.set(Calendar.DATE, Day);
-    }
-
-    public void setTime(int Hour, int Minute, int Second) {
-        cal.set(Calendar.HOUR, Hour);
-        cal.set(Calendar.MINUTE, Minute);
-        cal.set(Calendar.SECOND, Second);
-    }
 
     public String GetShortDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
