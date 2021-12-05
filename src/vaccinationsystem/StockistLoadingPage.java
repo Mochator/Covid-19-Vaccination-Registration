@@ -238,6 +238,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         lblVSName6 = new javax.swing.JLabel();
         lblVSName7 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
@@ -267,6 +268,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         jLabel151 = new javax.swing.JLabel();
         btnAdPSave = new javax.swing.JButton();
         btnAdPInfoEdit = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -730,7 +732,9 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 .addContainerGap(647, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Profile", jPanel4);
+        jScrollPane2.setViewportView(jPanel4);
+
+        jTabbedPane1.addTab("Profile", jScrollPane2);
 
         jTabbedPane5.setBackground(new java.awt.Color(51, 51, 51));
         jTabbedPane5.setOpaque(true);
@@ -1071,7 +1075,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1974, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1084,7 +1088,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(549, Short.MAX_VALUE))
+                .addContainerGap(551, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Vaccine Management", jPanel18);
@@ -1188,13 +1192,13 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1865, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 554, Short.MAX_VALUE))
+                .addGap(0, 556, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Stock Audit", jPanel3);
@@ -1303,18 +1307,20 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1865, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 554, Short.MAX_VALUE))
+                .addGap(0, 556, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Pending Stock Audit", jPanel5);
 
-        jTabbedPane1.addTab("Stock Management", jTabbedPane5);
+        jScrollPane3.setViewportView(jTabbedPane5);
+
+        jTabbedPane1.addTab("Stock Management", jScrollPane3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1323,7 +1329,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2048,6 +2054,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
