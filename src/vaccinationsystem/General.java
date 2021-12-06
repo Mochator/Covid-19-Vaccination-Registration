@@ -155,23 +155,24 @@ public class General {
                         continue;
                     }
 
-                    if (app.getStatus().equals(AppointmentStatus.Approved)) {
-                        Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
-                        if (s.FindStock()) {
-
-                            if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
-                                General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                                return;
-                            }
-
-                        } else {
-                            s.GenerateId();
-                            s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode());
-                            FileOperation.SerializeObject(General.stockFileName, s);
-                        }
-                    }
-
                     if (app.VaccinationDate.getDate().before(mdt.getDate()) && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
+
+                        if (app.getStatus().equals(AppointmentStatus.Approved)) {
+                            Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+                            if (s.FindStock()) {
+
+                                if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
+                                    General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                                    return;
+                                }
+
+                            } else {
+                                s.GenerateId();
+                                s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode());
+                                FileOperation.SerializeObject(General.stockFileName, s);
+                            }
+                        }
+
                         app.setStatus(AppointmentStatus.Cancelled);
                         FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
                         fo.ReadFile();
