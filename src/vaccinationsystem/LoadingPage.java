@@ -58,8 +58,7 @@ public class LoadingPage extends javax.swing.JFrame {
     public LoadingPage() {
         initComponents();
         ComponentReset();
-        
-        
+
         //---Profile Tab---
         //Init state combo
         General.MalaysiaStates().forEach(d -> cmbPState.addItem(d));
@@ -123,8 +122,7 @@ public class LoadingPage extends javax.swing.JFrame {
     }
 
     public void PopulateUserData() {
-        
-        
+
         //---Profile Tab---
         txtPFullName.setText(currentUser.getFullName());
 
@@ -132,8 +130,7 @@ public class LoadingPage extends javax.swing.JFrame {
 
         jDob.setCalendar(currentUser.Dob.getCal());
 
-        if (currentUser.getClass().equals(Citizen.class
-        )) {
+        if (currentUser.getIsCitizen()) {
             Citizen c = (Citizen) currentUser;
             txtPIC.setText(c.getIcNo());
             txtPNationality.setText(General.NationalityCitizen);
@@ -209,7 +206,7 @@ public class LoadingPage extends javax.swing.JFrame {
             btnSubmit.setEnabled(false);
             btnSubmit.setText("You have enrolled!");
         }
-        
+
         btnCert.setVisible(currentUser.getVacStatus().equals(VaccinationStatus.Fully));
 
     }
@@ -1143,8 +1140,8 @@ public class LoadingPage extends javax.swing.JFrame {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
-        
-        if(!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
@@ -1240,15 +1237,16 @@ public class LoadingPage extends javax.swing.JFrame {
             Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
             if (s.FindStock()) {
 
-                if (s.MinusPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode())) {
+                if (s.AddPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode())) {
                     General.AlertMsgError("Something went wrong, please try again later!", "Error");
                     return;
                 }
 
             } else {
                 s.GenerateId();
+                s.AddPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode());
                 FileOperation.SerializeObject(General.stockFileName, s);
-                s.MinusPendingQty(1, currentUser, "Accept Vaccination - " + app.getCode());
+
             }
 
             if (fo.ModifyRecord(app)) {
@@ -1354,19 +1352,20 @@ public class LoadingPage extends javax.swing.JFrame {
                 app.setRejectReason(txtVAReason.getText());
                 app.setStatus(AppointmentStatus.Declined);
 
-                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
-                if (s.FindStock()) {
-
-                    if (s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode())) {
-                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                        return;
-                    }
-
-                } else {
-                    s.GenerateId();
-                    FileOperation.SerializeObject(General.stockFileName, s);
-                    s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode());
-                }
+//                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+//                if (s.FindStock()) {
+//
+//                    if (s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode())) {
+//                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
+//                        return;
+//                    }
+//
+//                } 
+//                else {
+//                    s.GenerateId();
+//                    s.MinusPendingQty(1, currentUser, "Decline Vaccination - " + app.getCode());
+//                    FileOperation.SerializeObject(General.stockFileName, s);
+//                }
 
                 if (fo.ModifyRecord(app)) {
                     General.AlertMsgInfo("Appointment has been updated!", "Success");
@@ -1428,9 +1427,9 @@ public class LoadingPage extends javax.swing.JFrame {
 
                     g2d.setColor(Color.BLACK);
                     g2d.setFont(new Font("TimesRoman", Font.PLAIN, 18));
-                    g2d.drawString("#" + String.valueOf(a.CheckDoseFromAppointment()), 100+(i*150), 400);
-                    g2d.drawString(a.getLocation().GetCodeName(), 100+(i*150), 420);
-                    g2d.drawString(a.getVaccinationDate().GetLongDate(), 100+(i*150), 440);
+                    g2d.drawString("#" + String.valueOf(a.CheckDoseFromAppointment()), 100 + (i * 150), 400);
+                    g2d.drawString(a.getLocation().GetCodeName(), 100 + (i * 150), 420);
+                    g2d.drawString(a.getVaccinationDate().GetLongDate(), 100 + (i * 150), 440);
                     i++;
                 }
             }

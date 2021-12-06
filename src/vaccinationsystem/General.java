@@ -47,7 +47,7 @@ public class General {
     public static final String PersonnelRoleDoctor = "Doctor";
     public static final String PersonnelRoleAdmin = "Admin";
     public static final String PersonnelRoleStockist = "Stockist";
-    
+
     public static ArrayList<String> PersonnelRoles() {
         ArrayList<String> result = new ArrayList<String>();
         result.add(PersonnelRoleDoctor);
@@ -94,7 +94,7 @@ public class General {
 
     public static final String NationalityCitizen = "Citizen";
     public static final String NationalityNonCitizen = "Non-Citizen";
-    
+
     public static ArrayList<String> Nationalities() {
         ArrayList<String> result = new ArrayList<String>();
         result.add(NationalityCitizen);
@@ -103,14 +103,13 @@ public class General {
         Collections.sort(result);
         return result;
     }
-    
 
     public static final char GenderMale = 'M';
     public static final char GenderFemale = 'F';
 
     public static final String GenderMaleString = "Male";
     public static String GenderFemaleString = "Female";
-    
+
     public static ArrayList<String> GenderString() {
         ArrayList<String> result = new ArrayList<String>();
         result.add(GenderMaleString);
@@ -149,16 +148,29 @@ public class General {
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 MyDateTime mdt = new MyDateTime();
 
-                
                 for (Object x : al) {
                     Appointment app = (Appointment) x;
 
                     if (app.VaccinationDate == null) {
                         continue;
                     }
-                    System.out.println(app.VaccinationDate.getDate());
-                    System.out.println(mdt.getDate());
-                    
+
+                    if (app.getStatus().equals(AppointmentStatus.Approved)) {
+                        Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+                        if (s.FindStock()) {
+
+                            if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
+                                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                                return;
+                            }
+
+                        } else {
+                            s.GenerateId();
+                            s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode());
+                            FileOperation.SerializeObject(General.stockFileName, s);
+                        }
+                    }
+
                     if (app.VaccinationDate.getDate().before(mdt.getDate()) && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
                         app.setStatus(AppointmentStatus.Cancelled);
                         FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
@@ -174,5 +186,5 @@ public class General {
         timer.schedule(task, delay);
 
     }
-    
+
 }

@@ -26,6 +26,7 @@ public abstract class User implements Serializable {
     private String Contact;
 
     protected String Username;
+    private String UserRole;
 
     public User() {
     }
@@ -42,19 +43,16 @@ public abstract class User implements Serializable {
         this.Contact = Contact;
     }
 
-    public User(String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        this.First_Name = First_Name;
-        this.Last_Name = Last_Name;
-        this.Gender = Gender;
-        this.Dob = Dob;
-        this.Email = Email;
-        this.Password = Password;
-        this.Username = Username;
-        this.Contact = Contact;
-    }
-
     public boolean LoginVerification(char[] password) {
         return this.Password.equals(String.valueOf(password));
+    }
+    
+    protected void setUserRole(String Role){
+        this.UserRole = Role;
+    }
+    
+    protected String getUserRole(){
+        return UserRole;
     }
 
     public String getFullName() {
@@ -93,6 +91,10 @@ public abstract class User implements Serializable {
         this.Gender = Gender;
     }
 
+    public void setGender(String Gender) {
+        this.Gender = Gender.charAt(0);
+    }
+
     public void setDob(MyDateTime Dob) {
         this.Dob = Dob;
     }
@@ -117,17 +119,18 @@ public abstract class User implements Serializable {
 
     @Override
     public String toString() {
-        return Username + "\t" + First_Name + "\t" + Last_Name + "\t" + Gender + "\t" + Dob + "\t" + Email + "\t" + Password + "\t" + Contact;
+        return Username + "\t" + First_Name + "\t" + Last_Name + "\t" + Gender + "\t" + Dob + "\t" + Email + "\t" + Password + "\t" + Contact + "\t" + UserRole;
     }
 
 }
 
 class People extends User {
 
-    private static String UserRole = General.UserRolePeople;
+    private final String UserRole = General.UserRolePeople;
     protected Address Address;
     protected static MyDateTime RegistrationDate = new MyDateTime();
     private VaccinationStatus VacStatus;
+    private boolean isCitizen;
 
     //Constructor for adding new user
     public People(Address Address, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
@@ -135,15 +138,9 @@ class People extends User {
         this.Address = Address;
         this.VacStatus = VacStatus;
         super.Username = this.GenerateUsername();
+        super.setUserRole(UserRole);
     }
 
-    //Constructor for all reading user
-    public People(Address Address, MyDateTime RegistrationDate, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.Address = Address;
-        this.RegistrationDate = RegistrationDate;
-        this.VacStatus = VacStatus;
-    }
 
     public VaccinationStatus getVacStatus() {
         return VacStatus;
@@ -152,10 +149,15 @@ class People extends User {
     public void setVacStatus(VaccinationStatus VacStatus) {
         this.VacStatus = VacStatus;
     }
-
-    public static String getUserRole() {
-        return UserRole;
+    
+    protected void setIsCitizen(boolean isCitizen){
+        this.isCitizen = isCitizen;
     }
+    
+    protected boolean getIsCitizen(){
+        return this.isCitizen;
+    }
+
 
     protected String GenerateUsername() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.userFileName);
@@ -166,13 +168,17 @@ class People extends User {
 
     }
 
-    public void setAddress(Address Address) {
-        this.Address = Address;
+    public void setAddress(String no, String street, String city, String postcode, String state) {
+        this.Address = new Address(no, street, city, postcode, state);
+    }
+    
+    public Address getAddress(){
+        return this.Address;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + UserRole + "\t" + Address + "\t" + RegistrationDate + "\t" + VacStatus;
+        return super.toString() + "\t" + Address + "\t" + RegistrationDate + "\t" + VacStatus;
     }
 
 }
@@ -186,18 +192,15 @@ enum VaccinationStatus {
 class Citizen extends People {
 
     private String IcNo;
-    private static boolean IsCitizen = true;
+    private final boolean IsCitizen = true;
 
     //Create new citizen
     public Citizen(String IcNo, Address Address, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Address, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.IcNo = IcNo;
+        this.setIsCitizen(IsCitizen);
     }
 
-    public Citizen(String IcNo, Address Address, MyDateTime RegistrationDate, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(Address, RegistrationDate, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.IcNo = IcNo;
-    }
 
     public String getIcNo() {
         return IcNo;
@@ -209,7 +212,7 @@ class Citizen extends People {
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + IsCitizen + "\t" + IcNo;
+        return super.toString() + "\t" + this.IcNo;
     }
 
 }
@@ -217,16 +220,12 @@ class Citizen extends People {
 class NonCitizen extends People {
 
     private String Passport;
-    private static boolean IsCitizen = false;
+    private final boolean IsCitizen = false;
 
     public NonCitizen(String Passport, Address Address, VaccinationStatus VacStatus, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Address, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.Passport = Passport;
-    }
-
-    public NonCitizen(String Passport, Address Address, MyDateTime RegistrationDate, VaccinationStatus VacStatus, boolean IsCitizen, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(Address, RegistrationDate, VacStatus, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.Passport = Passport;
+        super.setIsCitizen(IsCitizen);
     }
 
     public String getPassport() {
@@ -239,31 +238,25 @@ class NonCitizen extends People {
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + IsCitizen + "\t" + Passport;
+        return super.toString() + "\t" + Passport;
     }
 
 }
 
 class Personnel extends User {
 
-    private static String UserRole = General.UserRolePersonnel;
+    private final String UserRole = General.UserRolePersonnel;
     protected static MyDateTime HiredDate = new MyDateTime();
     private PersonnelStatus Status;
+    private String PersonnelRole;
 
     //Create
     public Personnel(PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.Status = Status;
         super.Username = this.GenerateUsername();
+        super.setUserRole(this.UserRole);
     }
-
-    //Read
-    public Personnel(MyDateTime HiredDate, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.HiredDate = HiredDate;
-        this.Status = Status;
-    }
-
     public PersonnelStatus getStatus() {
         return Status;
     }
@@ -272,9 +265,15 @@ class Personnel extends User {
         this.Status = Status;
     }
 
-    public static String getUserRole() {
-        return UserRole;
+    public String getPersonnelRole() {
+        return PersonnelRole;
     }
+
+    protected void setPersonnelRole(String PersonnelRole) {
+        this.PersonnelRole = PersonnelRole;
+    }
+    
+    
 
     public String GenerateUsername() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.userFileName);
@@ -290,7 +289,7 @@ class Personnel extends User {
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + UserRole + "\t" + HiredDate + "\t" + Status;
+        return super.toString() + "\t" + HiredDate + "\t" + Status + "\t" + PersonnelRole;
     }
 
 }
@@ -302,18 +301,15 @@ enum PersonnelStatus {
 
 class Doctor extends Personnel {
 
-    private static String PersonnelRole = General.PersonnelRoleDoctor;
+    private final String PersonnelRole = General.PersonnelRoleDoctor;
     protected VaccineCentre VacCentre;
 
     public Doctor(VaccineCentre VacCentre, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Status, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.VacCentre = VacCentre;
+        super.setPersonnelRole(PersonnelRole);
     }
 
-    public Doctor(VaccineCentre VacCentre, MyDateTime HiredDate, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(HiredDate, Status, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.VacCentre = VacCentre;
-    }
 
     public VaccineCentre getVacCentre() {
         return VacCentre;
@@ -323,48 +319,38 @@ class Doctor extends Personnel {
         this.VacCentre = VacCentre;
     }
 
-    
     @Override
     public String toString() {
-        return super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
+        return super.toString() + "\t" + VacCentre;
     }
 
 }
 
 class Admin extends Personnel {
 
-    private static String PersonnelRole = General.PersonnelRoleAdmin;
+    private final String PersonnelRole = General.PersonnelRoleAdmin;
 
     public Admin(PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Status, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
-
-    }
-
-    public Admin(MyDateTime HiredDate, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(HiredDate, Status, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-
+        super.setPersonnelRole(PersonnelRole);
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + this.PersonnelRole;
+        return super.toString();
     }
 
 }
 
 class Stockist extends Personnel {
 
-    private static String PersonnelRole = General.PersonnelRoleStockist;
+    private final String PersonnelRole = General.PersonnelRoleStockist;
     protected VaccineCentre VacCentre;
 
     public Stockist(VaccineCentre VacCentre, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         super(Status, First_Name, Last_Name, Gender, Dob, Email, Password, Contact);
         this.VacCentre = VacCentre;
-    }
-
-    public Stockist(VaccineCentre VacCentre, MyDateTime HiredDate, PersonnelStatus Status, String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Username, String Contact) {
-        super(HiredDate, Status, First_Name, Last_Name, Gender, Dob, Email, Password, Username, Contact);
-        this.VacCentre = VacCentre;
+        super.setPersonnelRole(PersonnelRole);
     }
 
     public VaccineCentre getVacCentre() {
@@ -377,7 +363,7 @@ class Stockist extends Personnel {
 
     @Override
     public String toString() {
-        return super.toString() + "\t" + PersonnelRole + "\t" + VacCentre;
+        return super.toString() +  "\t" + VacCentre;
     }
 
 }

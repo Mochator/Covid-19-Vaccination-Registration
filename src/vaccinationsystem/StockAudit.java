@@ -95,7 +95,7 @@ class PendingStock implements StockAudit, Serializable {
     private Stock VacStock;
     private int Quantity;
     private User CreatedBy;
-    private static String Remarks;
+    private String Remarks;
     private MyDateTime CreateDate;
 
 
@@ -135,7 +135,7 @@ class PendingStock implements StockAudit, Serializable {
         return CreatedBy;
     }
 
-    public static String getRemarks() {
+    public String getRemarks() {
         return Remarks;
     }
 

@@ -36,7 +36,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     public StockistLoadingPage() {
         initComponents();
         editProfile(false);
-        
+
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -138,6 +138,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         txtPCfmPw.setText("");
         lblWbUsername.setText(currentUser.getFirst_Name());
 
+        cboMsCentre.setSelectedItem(currentUser.VacCentre.getVacCode() + " - " + currentUser.VacCentre.getName());
+
     }
 
     private void InitTableRecords() {
@@ -178,7 +180,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username,
+                a.getCreatedBy() != null ? a.getCreatedBy().Username : "System",
                 a.getRemarks()
             };
 
@@ -202,7 +204,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username,
+                a.getCreatedBy() != null ? a.getCreatedBy().Username : "System",
                 a.getRemarks()
 
             };
@@ -790,6 +792,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         txtMsCurrentAs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsCurrentAs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsCurrentAs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMsCurrentAs.setText("0");
         txtMsCurrentAs.setEnabled(false);
         txtMsCurrentAs.setSelectionColor(new java.awt.Color(255, 255, 51));
 
@@ -824,13 +827,20 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("New");
 
-        txtMsNewAs.setEditable(false);
         txtMsNewAs.setBackground(new java.awt.Color(204, 204, 204));
         txtMsNewAs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsNewAs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsNewAs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMsNewAs.setEnabled(false);
+        txtMsNewAs.setText("0");
         txtMsNewAs.setSelectionColor(new java.awt.Color(255, 255, 51));
+        txtMsNewAs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMsNewAsKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMsNewAsKeyTyped(evt);
+            }
+        });
 
         txtMsRemarks.setEditable(false);
         txtMsRemarks.setBackground(new java.awt.Color(204, 204, 204));
@@ -849,16 +859,24 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         txtMsCurrentPs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsCurrentPs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsCurrentPs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMsCurrentPs.setText("0");
         txtMsCurrentPs.setEnabled(false);
         txtMsCurrentPs.setSelectionColor(new java.awt.Color(255, 255, 51));
 
-        txtMsNewPs.setEditable(false);
         txtMsNewPs.setBackground(new java.awt.Color(204, 204, 204));
         txtMsNewPs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsNewPs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsNewPs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMsNewPs.setEnabled(false);
+        txtMsNewPs.setText("0");
         txtMsNewPs.setSelectionColor(new java.awt.Color(255, 255, 51));
+        txtMsNewPs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMsNewPsKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMsNewPsKeyTyped(evt);
+            }
+        });
 
         jLabel34.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
@@ -875,6 +893,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         jLabel71.setText("Stock Adjustment");
 
         sldrMsPs.setMaximum(10000);
+        sldrMsPs.setPaintLabels(true);
+        sldrMsPs.setPaintTicks(true);
         sldrMsPs.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrMsPsStateChanged(evt);
@@ -894,6 +914,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         });
 
         sldrMsAs.setMaximum(10000);
+        sldrMsAs.setPaintLabels(true);
+        sldrMsAs.setPaintTicks(true);
         sldrMsAs.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sldrMsAsStateChanged(evt);
@@ -915,6 +937,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         });
 
         cboMsCentre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        cboMsCentre.setEnabled(false);
         cboMsCentre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboMsCentreActionPerformed(evt);
@@ -1024,7 +1047,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                     .addComponent(txtMsCurrentPs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMsNewPs)
                     .addComponent(jLabel35))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jLabel71)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1365,6 +1388,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
     private void tblMsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMsMouseClicked
 
+
     }//GEN-LAST:event_tblMsMouseClicked
 
     private void MsSearch(Vaccine vac, int dose) {
@@ -1451,7 +1475,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username,
+                a.getCreatedBy() != null ? a.getCreatedBy().Username : "System",
                 a.getRemarks()
             };
 
@@ -1493,7 +1517,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 a.getVacStock().getDose(),
                 a.getQuantity(),
                 a.getCreateDate().GetShortDateTime(),
-                a.getCreatedBy().Username,
+                a.getCreatedBy() != null ? a.getCreatedBy().Username : "System",
                 a.getRemarks()
             };
 
@@ -1528,8 +1552,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
-        
-        if(!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
@@ -1573,7 +1597,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
     private void btnTaMark1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaMark1ActionPerformed
 
-        if (cboMsCentre.getSelectedIndex() <= 0 || cboMsVac.getSelectedIndex() <= 0 || cboMsDose.getSelectedIndex() <= 0 || (sldrMsAs.getValue() == 0 && sldrMsPs.getValue() == 0)) {
+        if (cboMsCentre.getSelectedIndex() <= 0 || cboMsVac.getSelectedIndex() <= 0 || cboMsDose.getSelectedIndex() <= 0 || !(sldrMsAs.getValue() != 0 || sldrMsPs.getValue() != 0)) {
             General.AlertMsgError("All fields must be filled!", "Error");
             return;
         }
@@ -1628,7 +1652,6 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             success = fo.ModifyRecord(s);
 
         } else {
-            System.out.println("Not found");
             s.GenerateId();
 
             if (As > 0) {
@@ -1667,7 +1690,6 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             General.AlertMsgInfo(s.VacType.GetCodeName() + " in " + s.VacCentre.GetCodeName() + " is updated!", "Success");
             InitGlobalData();
             InitTableRecords();
-            cboMsCentre.setSelectedIndex(0);
             cboMsDose.setSelectedIndex(0);
             cboMsVac.setSelectedIndex(0);
             cboMsAs.setSelectedIndex(0);
@@ -1771,13 +1793,20 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
     private void sldrMsAsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrMsAsStateChanged
         int val = sldrMsAs.getValue();
+        int old = Integer.parseInt(txtMsCurrentAs.getText());
 
         if (!txtMsCurrentAs.getText().isBlank()) {
             if (cboMsAs.getSelectedIndex() == 0) {
-                txtMsNewAs.setText(String.valueOf(Integer.parseInt(txtMsCurrentAs.getText()) + val));
+                txtMsNewAs.setText(String.valueOf(old + val));
 
             } else {
-                txtMsNewAs.setText(String.valueOf(Integer.parseInt(txtMsCurrentAs.getText()) - val));
+
+                if (old - val < 0) {
+                    sldrMsAs.setValue(old);
+                    txtMsNewAs.setText("0");
+                } else {
+                    txtMsNewAs.setText(String.valueOf(old - val));
+                }
 
             }
         }
@@ -1786,26 +1815,41 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     private void sldrMsPsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldrMsPsStateChanged
         // TODO add your handling code here:
         int val = sldrMsPs.getValue();
+        int old = Integer.parseInt(txtMsCurrentPs.getText());
 
         if (!txtMsCurrentPs.getText().isBlank()) {
             if (cboMsPs.getSelectedIndex() == 0) {
+                txtMsNewPs.setText(String.valueOf(old + val));
 
-                txtMsNewPs.setText(String.valueOf(Integer.parseInt(txtMsCurrentPs.getText()) + val));
             } else {
-                txtMsNewPs.setText(String.valueOf(Integer.parseInt(txtMsCurrentPs.getText()) - val));
+
+                if (old - val < 0) {
+                    sldrMsPs.setValue(old);
+                    txtMsNewPs.setText("0");
+                } else {
+                    txtMsNewPs.setText(String.valueOf(old - val));
+                }
+
             }
         }
     }//GEN-LAST:event_sldrMsPsStateChanged
 
     private void cboMsAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMsAsActionPerformed
         int val = sldrMsAs.getValue();
+        int old = Integer.parseInt(txtMsCurrentAs.getText());
 
         if (!txtMsCurrentAs.getText().isBlank()) {
             if (cboMsAs.getSelectedIndex() == 0) {
-                txtMsNewAs.setText(String.valueOf(Integer.parseInt(txtMsCurrentAs.getText()) + val));
+                txtMsNewAs.setText(String.valueOf(old + val));
 
             } else {
-                txtMsNewAs.setText(String.valueOf(Integer.parseInt(txtMsCurrentAs.getText()) - val));
+
+                if (old - val < 0) {
+                    sldrMsAs.setValue(old);
+                    txtMsNewAs.setText("0");
+                } else {
+                    txtMsNewAs.setText(String.valueOf(old - val));
+                }
 
             }
         }
@@ -1813,13 +1857,21 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
     private void cboMsPsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMsPsActionPerformed
         int val = sldrMsPs.getValue();
+        int old = Integer.parseInt(txtMsCurrentPs.getText());
 
         if (!txtMsCurrentPs.getText().isBlank()) {
             if (cboMsPs.getSelectedIndex() == 0) {
+                txtMsNewPs.setText(String.valueOf(old + val));
 
-                txtMsNewPs.setText(String.valueOf(Integer.parseInt(txtMsCurrentPs.getText()) + val));
             } else {
-                txtMsNewPs.setText(String.valueOf(Integer.parseInt(txtMsCurrentPs.getText()) - val));
+
+                if (old - val < 0) {
+                    sldrMsPs.setValue(old);
+                    txtMsNewPs.setText("0");
+                } else {
+                    txtMsNewPs.setText(String.valueOf(old - val));
+                }
+
             }
         }
     }//GEN-LAST:event_cboMsPsActionPerformed
@@ -1964,6 +2016,107 @@ public class StockistLoadingPage extends javax.swing.JFrame {
     private void txtSfSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSfSearch1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSfSearch1ActionPerformed
+
+    private void txtMsNewAsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMsNewAsKeyTyped
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_txtMsNewAsKeyTyped
+
+    private void txtMsNewAsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMsNewAsKeyReleased
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+            return;
+        }
+
+        int n = 0; //new
+        int old = 0; //old
+
+        try {
+            n = Integer.parseInt(txtMsNewAs.getText());
+            old = Integer.parseInt(txtMsCurrentAs.getText());
+        } catch (Exception ex) {
+            n = 0;
+            old = 0;
+        }
+
+        int result = n - old; //new - old
+        int max = sldrMsAs.getMaximum();
+
+        if (result > 0) {
+
+            if (result > max) {
+                sldrMsAs.setMaximum(result);
+            } else {
+                sldrMsAs.setValue(result);
+            }
+
+            cboMsAs.setSelectedIndex(0);
+
+        } else {
+
+            if (max < old) {
+                sldrMsAs.setMaximum(old);
+                sldrMsAs.setValue(Math.abs(result));
+
+            } else {
+                sldrMsAs.setValue(Math.abs(result));
+            }
+
+            cboMsAs.setSelectedIndex(1);
+
+        }
+
+    }//GEN-LAST:event_txtMsNewAsKeyReleased
+
+    private void txtMsNewPsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMsNewPsKeyReleased
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+            return;
+        }
+
+        int n = 0; //new
+        int old = 0; //old
+
+        try {
+            n = Integer.parseInt(txtMsNewPs.getText());
+            old = Integer.parseInt(txtMsCurrentPs.getText());
+        } catch (Exception ex) {
+            n = 0;
+            old = 0;
+        }
+
+        int result = n - old; //new - old
+        int max = sldrMsPs.getMaximum();
+
+        if (result > 0) {
+
+            if (result > max) {
+                sldrMsPs.setMaximum(result);
+            } else {
+                sldrMsPs.setValue(result);
+            }
+
+            cboMsPs.setSelectedIndex(0);
+
+        } else {
+
+            if (max < old) {
+                sldrMsPs.setMaximum(old);
+                sldrMsPs.setValue(Math.abs(result));
+
+            } else {
+                sldrMsPs.setValue(Math.abs(result));
+            }
+
+            cboMsPs.setSelectedIndex(1);
+
+        }
+    }//GEN-LAST:event_txtMsNewPsKeyReleased
+
+    private void txtMsNewPsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMsNewPsKeyTyped
+
+    }//GEN-LAST:event_txtMsNewPsKeyTyped
 
     /**
      * @param args the command line arguments

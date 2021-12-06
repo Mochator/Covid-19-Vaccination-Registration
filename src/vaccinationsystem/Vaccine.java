@@ -52,7 +52,7 @@ public class Vaccine implements Serializable {
     }
 
     public String GetCodeName() {
-        return Name + " (" + this.VacCode + ")";
+        return VacCode + " - " + Name;
     }
 
     public void setName(String Name) {

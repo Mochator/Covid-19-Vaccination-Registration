@@ -104,18 +104,13 @@ public class Main {
         while (li.hasNext()) {
             Object ob = li.next();
             User user = (User) ob;
-            System.out.println(ob.getClass());
-            System.out.println(user.Username);
 
             if (user.getClass() == Admin.class) {
                 Personnel obj = (Admin) ob;
-                System.out.println(obj.getStatus());
             } else if (user.getClass() == Doctor.class) {
                 Doctor obj = (Doctor) ob;
-                System.out.println(obj.VacCentre);
             } else if (user.getClass() == NonCitizen.class) {
                 NonCitizen obj = (NonCitizen) ob;
-                System.out.println(obj.Address.getFullAddress());
             }
         }
 

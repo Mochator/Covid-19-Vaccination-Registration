@@ -234,7 +234,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
 
             String IcPassport = "";
-            if (a.Ppl.getClass().equals(Citizen.class)) {
+            if (a.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) a.Ppl;
                 IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
@@ -265,7 +265,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             Appointment v = (Appointment) htAppointment.get(x);
 
             String IcPassport = "";
-            if (v.Ppl.getClass().equals(Citizen.class)) {
+            if (v.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) v.Ppl;
                 IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
@@ -308,7 +308,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
 
             String IcPassport = "";
-            if (a.Ppl.getClass().equals(Citizen.class)) {
+            if (a.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) a.Ppl;
                 IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
@@ -390,11 +390,15 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htUser.keySet()) {
             User v = (User) htUser.get(x);
 
-            Class vClass = v.getClass();
+            if (v.getUserRole().equals(General.UserRolePeople)) {
+                continue;
+            }
+
+            Personnel p = (Personnel) v;
 
             Object[] dtmObj = null;
 
-            if (vClass.equals(Admin.class)) {
+            if (p.getPersonnelRole().equals(General.PersonnelRoleAdmin)) {
 
                 Admin u = (Admin) v;
 
@@ -409,7 +413,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.getStatus()
                 };
 
-            } else if (vClass.equals(Doctor.class)) {
+            } else if (p.getPersonnelRole().equals(General.PersonnelRoleDoctor)) {
 
                 Doctor u = (Doctor) v;
 
@@ -424,7 +428,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.getStatus()
                 };
 
-            } else if (vClass.equals(Stockist.class)) {
+            } else if (p.getPersonnelRole().equals(General.PersonnelRoleStockist)) {
                 Stockist u = (Stockist) v;
 
                 dtmObj = new Object[]{
@@ -459,11 +463,15 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htUser.keySet()) {
             User v = (User) htUser.get(x);
 
-            Class vClass = v.getClass();
+            if (v.getUserRole().equals(General.UserRolePersonnel)) {
+                continue;
+            }
+
+            People p = (People) v;
 
             Object[] dtmObj = null;
 
-            if (vClass.equals(Citizen.class)) {
+            if (p.getIsCitizen()) {
 
                 Citizen u = (Citizen) v;
 
@@ -483,12 +491,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     u.getVacStatus() + " Vaccinated"
                 };
 
-            } else if (vClass.equals(NonCitizen.class)) {
+            } else if (!p.getIsCitizen()) {
 
                 NonCitizen u = (NonCitizen) v;
 
                 String gender = u.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString;
-                System.out.println(u);
                 dtmObj = new Object[]{
                     ++ppCount,
                     u.Username,
@@ -792,7 +799,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         calMaDob = new com.toedter.calendar.JDateChooser();
         jLabel89 = new javax.swing.JLabel();
         txtMaAddress = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         txtMaSearch = new javax.swing.JTextField();
         btnMASearch = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
@@ -1988,7 +1994,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(txtSEmail)
                             .addComponent(txtSPass)
                             .addComponent(txtSCfmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2423,7 +2429,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(cboMCSearchStatus))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(736, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Manage Committee", jPanel3);
@@ -3513,24 +3519,18 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(txtMaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 32114, Short.MAX_VALUE)))))
-                .addContainerGap())
+                        .addComponent(btnMASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32129, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3539,16 +3539,14 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMaSearch))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(576, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(587, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Schedule Appointment", jPanel18);
@@ -4354,30 +4352,25 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 57, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -4424,7 +4417,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         if (FileOperation.SerializeObject(General.vaccineCentreFileName, newVac)) {
             General.AlertMsgInfo("New vaccine centre created!", "Success");
-            AnvClear();
+            CncClear();
             InitGlobalData();
             InitTableRecords();
         } else {
@@ -4615,8 +4608,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
             } else {
                 s.GenerateId();
-                FileOperation.SerializeObject(General.stockFileName, s);
                 s.MinusPendingQty(1, currentUser, "Reschedule Vaccination - " + app.getCode());
+                FileOperation.SerializeObject(General.stockFileName, s);
             }
 
             if (FileOperation.SerializeObject(General.appointmentFileName, newApp)) {
@@ -4652,10 +4645,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htAppointment.values()) {
             Appointment a = (Appointment) x;
 
-            //Ppl type
-            Class pplClass = a.Ppl.getClass();
-
-            if (pplClass.equals(Citizen.class)) {
+            if (a.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) a.Ppl;
 
                 if (c.getIcNo().toLowerCase().contains(search) || a.getCode().toLowerCase().contains(search) || a.Ppl.Username.toLowerCase().contains(search) || a.Ppl.getFullName().toLowerCase().contains(search)) {
@@ -4709,7 +4699,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         calRaDob.setCalendar(app.Ppl.Dob.getCal());
         txtRaAddress.setText(app.Ppl.Address.getFullAddress());
 
-        if (app.Ppl.getClass().equals(Citizen.class)) {
+        if (app.Ppl.getIsCitizen()) {
             Citizen c = (Citizen) app.Ppl;
             txtRaIC.setText(c.getIcNo());
             txtRaNat.setText(General.NationalityCitizen);
@@ -4880,21 +4870,18 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htAppointment.values()) {
             Appointment a = (Appointment) x;
 
-            if (!a.getStatus().equals(AppointmentStatus.Approved) || !a.getStatus().equals(AppointmentStatus.Pending)) {
+            if (!(a.getStatus().equals(AppointmentStatus.Approved) || a.getStatus().equals(AppointmentStatus.Pending))) {
                 continue;
             }
 
-            //Ppl type
-            Class pplClass = a.Ppl.getClass();
-
-            if (pplClass.equals(Citizen.class)) {
+            if (a.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) a.Ppl;
 
                 if (c.getIcNo().toLowerCase().contains(search) || a.getCode().toLowerCase().contains(search) || a.Ppl.Username.toLowerCase().contains(search) || a.Ppl.getFullName().toLowerCase().contains(search)) {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
-                        a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getIcNo() + "(" + General.NationalityCitizen + ")",
+                        a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
+                        c.getIcNo() + " (" + General.NationalityCitizen + ")",
                         a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
@@ -4907,8 +4894,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 if (c.getPassport().toLowerCase().contains(search) || a.getCode().toLowerCase().contains(search) || a.Ppl.Username.toLowerCase().contains(search) || a.Ppl.getFullName().toLowerCase().contains(search)) {
                     Object[] dtmObj = new Object[]{
                         a.getCode(),
-                        a.Ppl.getFullName() + "(" + a.Ppl.Username + ")",
-                        c.getPassport() + "(" + General.NationalityNonCitizen + ")",
+                        a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
+                        c.getPassport() + " (" + General.NationalityNonCitizen + ")",
                         a.getRegisterDate().GetShortDate(),
                         a.getStatus()
                     };
@@ -4945,8 +4932,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             if (a.getCode().toLowerCase().equals(search) || a.Ppl.Username.toLowerCase().contains(search) || a.Ppl.getFullName().toLowerCase().contains(search)) {
 
                 String IcPassport = "";
-                if (a.Ppl.getClass().equals(Citizen.class
-                )) {
+                if (a.Ppl.getIsCitizen()) {
                     Citizen c = (Citizen) a.Ppl;
                     IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
                 } else {
@@ -4983,21 +4969,22 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             Appointment app = (Appointment) fo.getReadResult();
 
             //Modify pending stock (if from approval)
-            if (app.getStatus().equals(AppointmentStatus.Approved)) {
-                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
-                if (s.FindStock()) {
-
-                    if (s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode())) {
-                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                        return;
-                    }
-
-                } else {
-                    s.GenerateId();
-                    FileOperation.SerializeObject(General.stockFileName, s);
-                    s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode());
-                }
-            }
+//            if (app.getStatus().equals(AppointmentStatus.Approved)) {
+//                Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+//                if (s.FindStock()) {
+//
+//                    if (s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode())) {
+//                        General.AlertMsgError("Something went wrong, please try again later!", "Error");
+//                        return;
+//                    }
+//
+//                } else {
+//                    s.GenerateId();
+//                    s.MinusPendingQty(1, currentUser, "Cancel Vaccination - " + app.getCode());
+//                    FileOperation.SerializeObject(General.stockFileName, s);
+//
+//                }
+//            }
 
             app.setStatus(AppointmentStatus.Cancelled);
 
@@ -5062,23 +5049,33 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
             if (fo.ModifyRecord(data)) {
 
-                if (as.equals(AppointmentStatus.Pending)) {
-                    //Modify vaccine stock
-                    Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
-
-                    if (s.FindStock()) {
-
-                        if (!s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
-                            General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                            return;
-                        }
-
-                    } else {
-                        s.GenerateId();
-                        FileOperation.SerializeObject(General.stockFileName, s);
-                        s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode());
-                    }
-                }
+//                if (as.equals(AppointmentStatus.Pending)) {
+//                    //Modify vaccine stock
+//                    Stock s = new Stock(data.Vacc, data.CheckDoseFromAppointment(), data.Location);
+//
+//                    if (s.FindStock()) {
+//
+//                        if (!s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
+//                            General.AlertMsgError("Something went wrong, please try again later!", "Error");
+//                            return;
+//                        }
+//
+//                        FileOperation fo2 = new FileOperation(s.getId(), General.stockFileName);
+//                        if (!fo2.ModifyRecord(s)) {
+//                            General.AlertMsgError("Something went wrong, please try again later!", "Error");
+//                            return;
+//                        }
+//
+//                    } else {
+//                        s.GenerateId();
+//                        if (!s.AddPendingQty(1, currentUser, "Approve Vaccination - " + data.getCode())) {
+//                            General.AlertMsgError("Something went wrong, please try again later!", "Error");
+//                            return;
+//                        }
+//                        FileOperation.SerializeObject(General.stockFileName, s);
+//
+//                    }
+//                }
 
                 General.AlertMsgInfo("Appointment Updated!", "Success");
 
@@ -5126,8 +5123,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         }
 
-        if (data.Ppl.getClass().equals(Citizen.class
-        )) {
+        if (data.Ppl.getIsCitizen()) {
             Citizen c = (Citizen) data.Ppl;
             txtMaIC.setText(c.getIcNo());
             txtMaNat.setText(General.NationalityCitizen);
@@ -5334,14 +5330,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htUser.keySet()) {
             User u = (User) htUser.get(x);
 
-            if (u.getClass().getSuperclass().equals(People.class)) {
+            if (u.getUserRole().equals(General.UserRolePeople)) {
                 continue;
             }
 
             Personnel v = (Personnel) u;
-
-            Class vClass = v.getClass();
-            Class commClass = null;
 
             Object[] dtmObj = null;
 
@@ -5352,26 +5345,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
 
             if (!role.isBlank()) {
-                switch (role) {
-                    case General.PersonnelRoleAdmin:
-                        commClass = Admin.class;
-                        break;
-                    case General.PersonnelRoleDoctor:
-                        commClass = Doctor.class;
-                        break;
-                    case General.PersonnelRoleStockist:
-                        commClass = Stockist.class;
-                        break;
-                }
-            }
-
-            if (commClass != null) {
-                if (!vClass.equals(commClass)) {
+                if (!v.getPersonnelRole().equals(role)) {
                     continue;
                 }
             }
 
-            if (vClass.equals(Admin.class)) {
+            if (v.getPersonnelRole().equals(General.PersonnelRoleAdmin)) {
                 Admin c = (Admin) v;
 
                 if (vc != null) {
@@ -5391,7 +5370,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     };
                 }
 
-            } else if (vClass.equals(Doctor.class)) {
+            } else if (v.getPersonnelRole().equals(General.PersonnelRoleDoctor)) {
 
                 Doctor c = (Doctor) v;
 
@@ -5414,7 +5393,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     };
                 }
 
-            } else if (vClass.equals(Stockist.class)) {
+            } else if (v.getPersonnelRole().equals(General.PersonnelRoleStockist)) {
                 Stockist c = (Stockist) v;
 
                 if (vc != null) {
@@ -5505,7 +5484,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         }
 
-        if (v.getClass().equals(Doctor.class)) {
+        if (v.getPersonnelRole().equals(General.PersonnelRoleDoctor)) {
             Doctor u = (Doctor) v;
 
             String vacCentre = String.valueOf(cboComVacCentre.getSelectedItem()).split(" - ")[0];
@@ -5517,7 +5496,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             u.setVacCentre(vc);
 
             v = u;
-        } else if (v.getClass().equals(Stockist.class)) {
+        } else if (v.getPersonnelRole().equals(General.PersonnelRoleStockist)) {
             Stockist u = (Stockist) v;
 
             String vacCentre = String.valueOf(cboComVacCentre.getSelectedItem()).split(" - ")[0];
@@ -5602,17 +5581,15 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         cboComStatus.setSelectedItem(data.getStatus());
         calComHiredDate.setCalendar(data.getHiredDate().getCal());
 
-        Class classRole = data.getClass();
-
-        if (classRole.equals(Admin.class)) {
+        if (data.getPersonnelRole().equals(General.PersonnelRoleAdmin)) {
             cboComRole.setSelectedItem(General.PersonnelRoleAdmin);
             pnlComVacCentre.setVisible(false);
-        } else if (classRole.equals(Doctor.class)) {
+        } else if (data.getPersonnelRole().equals(General.PersonnelRoleDoctor)) {
             Doctor d = (Doctor) data;
             cboComRole.setSelectedItem(General.PersonnelRoleDoctor);
             pnlComVacCentre.setVisible(true);
             cboComVacCentre.setSelectedItem(d.VacCentre.getVacCode() + " - " + d.VacCentre.getName());
-        } else if (classRole.equals(Stockist.class)) {
+        } else if (data.getPersonnelRole().equals(General.PersonnelRoleStockist)) {
             Stockist s = (Stockist) data;
             cboComRole.setSelectedItem(General.PersonnelRoleStockist);
             pnlComVacCentre.setVisible(true);
@@ -5744,14 +5721,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         for (Object x : htUser.keySet()) {
             User u = (User) htUser.get(x);
 
-            if (u.getClass().getSuperclass().equals(Personnel.class)) {
+            if (u.getUserRole().equals(General.UserRolePersonnel)) {
                 continue;
             }
 
             People v = (People) u;
-
-            Class vClass = v.getClass();
-            Class commClass = null;
 
             Object[] dtmObj = null;
 
@@ -5767,7 +5741,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 }
             }
 
-            if (vClass.equals(Citizen.class)) {
+            if (v.getIsCitizen()) {
                 Citizen c = (Citizen) v;
 
                 String gender = c.getGender() == General.GenderMale ? General.GenderMaleString : General.GenderFemaleString;
@@ -5788,7 +5762,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     };
                 }
 
-            } else if (vClass.equals(NonCitizen.class)) {
+            } else if (!v.getIsCitizen()) {
 
                 NonCitizen c = (NonCitizen) v;
 
@@ -5906,17 +5880,15 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         MyDateTime dob = new MyDateTime(calPpDob.getCalendar());
         v.setDob(dob);
 
-        Address add = new Address(txtPpAddNo.getText(), txtPpAddStreet.getText(), txtPpAddCity.getText(), txtPpAddPost.getText(), String.valueOf(cboPpAddState.getSelectedItem()));
+        v.setAddress(txtPpAddNo.getText(), txtPpAddStreet.getText(), txtPpAddCity.getText(), txtPpAddPost.getText(), String.valueOf(cboPpAddState.getSelectedItem()));
 
-        v.setAddress(add);
-
-        if (v.getClass().equals(Citizen.class)) {
+        if (v.getIsCitizen()) {
             Citizen u = (Citizen) v;
 
             u.setIcNo(txtPpIC.getText());
 
             v = u;
-        } else if (v.getClass().equals(NonCitizen.class)) {
+        } else if (!v.getIsCitizen()) {
             NonCitizen u = (NonCitizen) v;
 
             u.setPassport(txtPpIC.getText());
@@ -5975,9 +5947,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtPpAddPost.setText(data.Address.getPostcode());
         cboPpAddState.setSelectedItem(data.Address.getState());
 
-        Class classRole = data.getClass();
-
-        if (classRole.equals(Citizen.class)) {
+        if (data.getIsCitizen()) {
             Citizen c = (Citizen) data;
             txtPpNat.setText(General.NationalityCitizen);
             txtPpIC.setText(c.getIcNo());
@@ -6368,7 +6338,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;

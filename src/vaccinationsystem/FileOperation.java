@@ -107,12 +107,9 @@ public class FileOperation {
 
         if (ht.containsKey(this.Id)) {
             ht.replace(String.valueOf(this.Id), newRecord);
-            System.out.println("Found");
         } else {
             return success;
         }
-        
-        System.out.println(ht);
 
         try {
             //existing file
@@ -125,8 +122,6 @@ public class FileOperation {
             }
 
             for (Object x : ht.values()) {
-
-                System.out.println(x.getClass());
 
                 if (!SerializeObject(tempFilename, x)) {
                     System.out.println("Update data serialization error!");
@@ -200,7 +195,6 @@ public class FileOperation {
             ObjectInputStream in = new ObjectInputStream(file);
 
             while (s <= file.available()) {
-                System.out.println(file.available());
                 Object temp = new Object();
                 temp = in.readObject();
 
@@ -238,7 +232,6 @@ public class FileOperation {
                 Object element = li.next();
                 if (element != null) {
                     out.writeObject(element);
-                    System.out.println(element);
                 }
             }
 
@@ -352,7 +345,7 @@ class GenerateId {
             this.newId = prefix + String.format("%04d", count);
         }
     }
-    
+
     public GenerateId(ArrayList<Object> arrayList) {
         this.arrayList = arrayList;
 

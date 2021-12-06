@@ -29,19 +29,7 @@ public class Stock implements Serializable {
         this.VacCentre = VacCentre;
     }
 
-    public Stock(int Id, Vaccine VacType, int Quantity, int PendingQuantity, int Dose, VaccineCentre VacCentre) {
-        this.VacType = VacType;
-        this.Quantity = Quantity;
-        this.PendingQuantity = PendingQuantity;
-        this.Dose = Dose;
-        this.VacCentre = VacCentre;
-        this.Id = Id;
-    }
-
-    public Stock(int Id) {
-        //TODO:: Read from file then input the object
-
-    }
+ 
 
     public boolean FindStock() {
 
@@ -79,20 +67,12 @@ public class Stock implements Serializable {
         return PendingQuantity;
     }
 
-    public void setVacType(Vaccine VacType) {
-        this.VacType = VacType;
-    }
-
-    public void setQuantity(int Quantity) {
+    private void setQuantity(int Quantity) {
         this.Quantity = Quantity;
     }
 
-    public void setPendingQuantity(int PendingQuantity) {
+    private void setPendingQuantity(int PendingQuantity) {
         this.PendingQuantity = PendingQuantity;
-    }
-
-    public void setVacCentre(VaccineCentre VacCentre) {
-        this.VacCentre = VacCentre;
     }
 
     public void GenerateId() {
@@ -111,7 +91,6 @@ public class Stock implements Serializable {
         if (!FileOperation.SerializeObject(General.stockAuditFileName, sa)) {
             success = false;
         }
-        System.out.println("Actual : " + success);
 
         return success;
     }
@@ -142,7 +121,6 @@ public class Stock implements Serializable {
 
         success = FileOperation.SerializeObject(General.pendingStockAuditFileName, sa);
 
-        System.out.println("Pending : " + success);
         return success;
     }
 
@@ -155,9 +133,11 @@ public class Stock implements Serializable {
             StockAudit sa = new PendingStock(this, 0 - i, currentUser, auditRemarks);
 
             if (!FileOperation.SerializeObject(General.pendingStockAuditFileName, sa)) {
+                System.out.println("Serialize prob");
                 success = false;
             }
         } else {
+            System.out.println("Qty short");
             success = false;
         }
 

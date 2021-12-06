@@ -1038,7 +1038,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             }
 
             String IcPassport = "";
-            if (a.Ppl.getClass().equals(Citizen.class)) {
+            if (a.Ppl.getIsCitizen()) {
                 Citizen c = (Citizen) a.Ppl;
                 IcPassport = c.getIcNo() + " (" + General.NationalityCitizen + ")";
             } else {
@@ -1051,7 +1051,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
                 a.getCode(),
                 a.Ppl.getFullName() + " (" + a.Ppl.Username + ")",
                 IcPassport,
-                a.Vacc.getName() + " (" + a.Vacc.getVacCode() + ")",
+                a.Vacc.GetCodeName(),
                 a.getStatus()
             };
 
@@ -1092,8 +1092,7 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
 
         calTaDob.setCalendar(data.getRegisterDate().getCal());
 
-        if (data.Ppl.getClass().equals(Citizen.class
-        )) {
+        if (data.Ppl.getIsCitizen()) {
             Citizen c = (Citizen) data.Ppl;
             txtTaIC.setText(c.getIcNo());
             txtTaNat.setText(General.NationalityCitizen);

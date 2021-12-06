@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author Mocha
  */
 public class VaccineCentre implements Serializable {
-    
+
     private String VacCode;
     private String Name;
     protected Address VacAddress;
@@ -31,8 +31,8 @@ public class VaccineCentre implements Serializable {
         this.VacAddress = VacAddress;
         this.VacCode = this.GenerateCode();
     }
-    
-    public VaccineCentre(String VacCode){
+
+    public VaccineCentre(String VacCode) {
         FileOperation fo = new FileOperation();
     }
 
@@ -55,12 +55,12 @@ public class VaccineCentre implements Serializable {
     public void setVacAddress(Address VacAddress) {
         this.VacAddress = VacAddress;
     }
-    
-    public String GetCodeName(){
-        return Name + " (" + this.VacCode + ")";
+
+    public String GetCodeName() {
+        return VacCode + " - " + Name;
     }
-    
-    public void CreateStockOfAllVaccine(){
+
+    public void CreateStockOfAllVaccine() {
         //todo
     }
 
@@ -68,15 +68,15 @@ public class VaccineCentre implements Serializable {
     public String toString() {
         return VacCode + "\t" + Name + "\t" + VacAddress;
     }
-    
+
     private String GenerateCode() {
-        
+
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.vaccineCentreFileName);
 
         GenerateId genId = new GenerateId(allObj, General.PrefixVaccineCentre);
 
         return genId.returnId();
-        
-    }  
-   
+
+    }
+
 }

@@ -80,6 +80,11 @@ public class Login extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -169,22 +174,18 @@ public class Login extends javax.swing.JFrame {
         
         FileOperation fo = new FileOperation(username, General.userFileName);
         fo.ReadFile();
-        System.out.println(fo.getReadResult());
 
 //        ArrayList<Object> allUsers = FileOperation.DeserializeObject(General.userFileName);
 //        Hashtable<String, Object> allUsersHt = FileOperation.ConvertToHashTable(allUsers);
         if (fo.getReadResult() != null) {
             Object ob = fo.getReadResult();
             
-            System.out.println(ob.toString());
             Class objClass = ob.getClass();
-            System.out.println(objClass);
             User user = null;
             
             if (objClass.equals(Citizen.class)) {
                 //People - Citizen
                 Citizen u = (Citizen) ob;
-                System.out.println(u);
                 if (u.LoginVerification(password)) {
                     LoadingPage lp = new LoadingPage();
                     lp.setCurrentUserCitizen(u);
@@ -292,6 +293,13 @@ public class Login extends javax.swing.JFrame {
         reg.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnLoginActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
 
     /**
      * @param args the command line arguments
