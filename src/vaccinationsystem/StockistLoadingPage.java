@@ -150,6 +150,10 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         for (Object x : htStock.values()) {
             Stock a = (Stock) x;
+            
+            if(!a.VacCentre.getVacCode().equals(currentUser.VacCentre.getVacCode())){
+                continue;
+            }
 
             Object[] dtmObj = new Object[]{
                 ++i,

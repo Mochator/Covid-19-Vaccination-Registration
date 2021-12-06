@@ -123,38 +123,70 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
     }
 
-    private void InitComboData() {
-        //---Profile Tab---
-        //Init Gender ComboBox
-        General.GenderString().forEach(d -> cboAdPGender.addItem(d));
-
-        //---Vaccination Appointment---
+    private void InitVacCombo() {
+        
         //Init Vaccine Types (VM)
+        cboMaVac.removeAllItems();
         for (Object x : htVac.values()) {
             Vaccine v = (Vaccine) x;
             cboMaVac.addItem(v.getVacCode() + " - " + v.getName());
         }
-
-        //Init Nationality (V)
-        General.Nationalities().forEach(d -> cboVSearchNat.addItem(d));
-
+        
         //Init Vaccine Types (V)
+        cboVSearchVac.removeAllItems();
+        cboVSearchVac.insertItemAt("All Vaccine", 0);
         for (Object x : htVac.values()) {
             Vaccine v = (Vaccine) x;
             cboVSearchVac.addItem(v.getVacCode() + " - " + v.getName());
         }
 
         //Init Vaccine Centre (V)
+        cboVSearchVacCentre.removeAllItems();
+        cboVSearchVacCentre.insertItemAt("All Vaccine Centre", 0);
         for (Object x : htVacCentre.values()) {
             VaccineCentre v = (VaccineCentre) x;
             cboVSearchVacCentre.addItem(v.getVacCode() + " - " + v.getName());
         }
 
         //Init Vaccine Types (RA)
+        cboRaVac.removeAllItems();
         for (Object x : htVac.values()) {
             Vaccine v = (Vaccine) x;
             cboRaVac.addItem(v.getVacCode() + " - " + v.getName());
         }
+
+        cboSVacCentre.removeAllItems();
+        cboSVacCentre.insertItemAt("Select", 0);
+        for (Object x : htVacCentre.values()) {
+            VaccineCentre v = (VaccineCentre) x;
+            cboSVacCentre.addItem(v.getVacCode() + " - " + v.getName());
+        }
+
+        cboMCSearchVacCentre.removeAllItems();
+        cboMCSearchVacCentre.insertItemAt("All Vac. Centre", 0);
+        for (Object x : htVacCentre.values()) {
+            VaccineCentre v = (VaccineCentre) x;
+            cboMCSearchVacCentre.addItem(v.getVacCode() + " - " + v.getName());
+        }
+
+        cboComVacCentre.removeAllItems();
+        cboComVacCentre.insertItemAt("Select", 0);
+        for (Object x : htVacCentre.values()) {
+            VaccineCentre v = (VaccineCentre) x;
+            cboComVacCentre.addItem(v.getVacCode() + " - " + v.getName());
+        }
+    }
+
+    private void InitComboData() {
+        //---Profile Tab---
+        //Init Gender ComboBox
+        General.GenderString().forEach(d -> cboAdPGender.addItem(d));
+
+        //---Vaccination Appointment---
+        
+
+        //Init Nationality (V)
+        General.Nationalities().forEach(d -> cboVSearchNat.addItem(d));
 
         //---Vaccine Centre Management---
         General.MalaysiaStates().forEach(d -> cboCMStateSearch.addItem(d));
@@ -164,30 +196,16 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         //---Committee Management---
         //New Committee
         General.PersonnelRoles().forEach(d -> cboSRole.addItem(d));
-        for (Object x : htVacCentre.values()) {
-            VaccineCentre v = (VaccineCentre) x;
-            cboSVacCentre.addItem(v.getVacCode() + " - " + v.getName());
-        }
 
         //View all Committees
         General.PersonnelRoles().forEach(d -> cboMCSearchRole.addItem(d));
-        for (Object x : htVacCentre.values()) {
-            VaccineCentre v = (VaccineCentre) x;
-            cboMCSearchVacCentre.addItem(v.getVacCode() + " - " + v.getName());
-        }
         for (PersonnelStatus x : PersonnelStatus.values()) {
             cboMCSearchStatus.addItem(String.valueOf(x));
         }
-
         General.PersonnelRoles().forEach(d -> cboComRole.addItem(d));
-        for (Object x : htVacCentre.values()) {
-            VaccineCentre v = (VaccineCentre) x;
-            cboComVacCentre.addItem(v.getVacCode() + " - " + v.getName());
-        }
         for (PersonnelStatus x : PersonnelStatus.values()) {
             cboComStatus.addItem(String.valueOf(x));
         }
-
         //---People Management---
         General.MalaysiaStates().forEach(d -> cboPpSearchState.addItem(d));
         for (VaccinationStatus x : VaccinationStatus.values()) {
@@ -195,6 +213,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         }
         General.MalaysiaStates().forEach(d -> cboPpAddState.addItem(d));
 
+        InitVacCombo();
     }
 
     private void PopulateUserData() {
@@ -665,6 +684,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         btnSClear = new javax.swing.JButton();
         txtSPass = new javax.swing.JPasswordField();
         txtSCfmPass = new javax.swing.JPasswordField();
+        jScrollPane10 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblMC = new javax.swing.JTable();
@@ -1777,7 +1797,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        cboSVacCentre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         cboSVacCentre.setEnabled(false);
 
         jLabel127.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
@@ -1994,7 +2013,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(txtSEmail)
                             .addComponent(txtSPass)
                             .addComponent(txtSCfmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2079,7 +2098,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        cboMCSearchVacCentre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Vac. Centres" }));
         cboMCSearchVacCentre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboMCSearchVacCentreActionPerformed(evt);
@@ -2237,8 +2255,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         rbComFemale.setText("Female");
 
         pnlComVacCentre.setBackground(new java.awt.Color(204, 153, 0));
-
-        cboComVacCentre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         javax.swing.GroupLayout pnlComVacCentreLayout = new javax.swing.GroupLayout(pnlComVacCentre);
         pnlComVacCentre.setLayout(pnlComVacCentreLayout);
@@ -2429,10 +2445,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(cboMCSearchStatus))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(432, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Manage Committee", jPanel3);
+        jScrollPane10.setViewportView(jPanel3);
+
+        jTabbedPane2.addTab("Manage Committee", jScrollPane10);
 
         jTabbedPane1.addTab("Committee Management", jTabbedPane2);
 
@@ -3597,7 +3615,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        cboVSearchVac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Vaccine" }));
         cboVSearchVac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboVSearchVacActionPerformed(evt);
@@ -3611,7 +3628,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        cboVSearchVacCentre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Vaccine Centre" }));
         cboVSearchVacCentre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboVSearchVacCentreActionPerformed(evt);
@@ -3627,7 +3643,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1084, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(txtVSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -3637,12 +3653,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cboVSearchNat, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboVSearchVac, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboVSearchVac, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboVSearchVacCentre, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboVSearchStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30715, Short.MAX_VALUE))
+                .addContainerGap(30756, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3651,14 +3667,14 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnVSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVSearch)
-                    .addComponent(cboVSearchStatus)
-                    .addComponent(cboVSearchVacCentre)
                     .addComponent(calVSearchVacDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboVSearchNat)
-                    .addComponent(cboVSearchVac))
+                    .addComponent(cboVSearchVac)
+                    .addComponent(cboVSearchStatus)
+                    .addComponent(cboVSearchVacCentre))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(717, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("View Appointment", jPanel12);
@@ -4273,19 +4289,17 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel108))
                     .addComponent(calRaVacDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlApprovedAppointment5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlApprovedAppointment5Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel110))
-                    .addGroup(pnlApprovedAppointment5Layout.createSequentialGroup()
-                        .addGroup(pnlApprovedAppointment5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cboRaVac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel109))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboRaVacCentre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlApprovedAppointment5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboRaVac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109))
+                .addGap(18, 18, 18)
+                .addGroup(pnlApprovedAppointment5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboRaVacCentre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel110))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRaVacAdd2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(pnlApprovedAppointment5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRaSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRaCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -4368,9 +4382,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -4419,6 +4431,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             General.AlertMsgInfo("New vaccine centre created!", "Success");
             CncClear();
             InitGlobalData();
+            InitComboData();
             InitTableRecords();
         } else {
             General.AlertMsgError("Vaccine centre was not created. Please try again later!", "Error");
@@ -4505,6 +4518,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             General.AlertMsgInfo("New vaccine created!", "Success");
             AnvClear();
             InitGlobalData();
+            InitComboData();
             InitTableRecords();
         } else {
             General.AlertMsgError("Vaccine was not created. Please try again later!", "Error");
@@ -4985,7 +4999,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 //
 //                }
 //            }
-
             app.setStatus(AppointmentStatus.Cancelled);
 
             if (fo.ModifyRecord(app)) {
@@ -5076,7 +5089,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 //
 //                    }
 //                }
-
                 General.AlertMsgInfo("Appointment Updated!", "Success");
 
                 //Update appointment hashtable
@@ -6328,6 +6340,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;

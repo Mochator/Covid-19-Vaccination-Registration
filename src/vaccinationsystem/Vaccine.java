@@ -67,10 +67,6 @@ public class Vaccine implements Serializable {
         this.Interval = Interval;
     }
 
-    public void CreateStockForAllVaccineCentre() {
-        //todo
-    }
-
     
 
     @Override

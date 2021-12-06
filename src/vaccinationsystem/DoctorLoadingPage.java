@@ -1029,6 +1029,10 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             if (!(a.getStatus() == AppointmentStatus.Accepted)) {
                 continue;
             }
+            
+            if(!a.Location.getVacCode().equals(currentUser.VacCentre.getVacCode())){
+                continue;
+            }
 
             MyDateTime today = new MyDateTime();
             MyDateTime tomorrow = today;

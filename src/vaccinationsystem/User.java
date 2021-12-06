@@ -16,7 +16,6 @@ import java.util.Scanner;
  * @author Mocha
  */
 public abstract class User implements Serializable {
-
     private String First_Name;
     private String Last_Name;
     private char Gender;
@@ -24,14 +23,10 @@ public abstract class User implements Serializable {
     private String Email;
     private String Password;
     private String Contact;
-
     protected String Username;
     private String UserRole;
-
     public User() {
-    }
-
-    ;
+    };
 
     public User(String First_Name, String Last_Name, char Gender, MyDateTime Dob, String Email, String Password, String Contact) {
         this.First_Name = First_Name;
@@ -141,7 +136,6 @@ class People extends User {
         super.setUserRole(UserRole);
     }
 
-
     public VaccinationStatus getVacStatus() {
         return VacStatus;
     }
@@ -157,7 +151,6 @@ class People extends User {
     protected boolean getIsCitizen(){
         return this.isCitizen;
     }
-
 
     protected String GenerateUsername() {
         ArrayList<Object> allObj = FileOperation.DeserializeObject(General.userFileName);

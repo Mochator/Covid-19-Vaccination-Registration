@@ -20,12 +20,6 @@ public class VaccineCentre implements Serializable {
     private String Name;
     protected Address VacAddress;
 
-    public VaccineCentre(String VacCode, String Name, Address VacAddress) {
-        this.VacCode = VacCode;
-        this.Name = Name;
-        this.VacAddress = VacAddress;
-    }
-
     public VaccineCentre(String Name, Address VacAddress) {
         this.Name = Name;
         this.VacAddress = VacAddress;

@@ -1437,8 +1437,10 @@ public class LoadingPage extends javax.swing.JFrame {
             g2d.dispose();
 
             // Save as JPG
-            File file = new File("Certs\\" + currentUser.Username + "Vaccination_Certificate.jpg");
+            String home = System.getProperty("user.home");
+            File file = new File(home+"/Downloads/" + currentUser.Username + "Vaccination_Certificate.jpg"); 
             ImageIO.write(bufferedImage, "jpg", file);
+            General.AlertMsgInfo("Certificate is generated and downloaded in your PC Download folder.", "Generate Success!");
         } catch (Exception ex) {
 
         }
