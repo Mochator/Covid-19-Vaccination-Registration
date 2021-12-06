@@ -1243,12 +1243,12 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
 
         if (s.FindStock()) {
             if (!s.MinusQty(dose, currentUser, "Vaccination - " + data.getCode())) {
-                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                General.AlertMsgError("Not enough stock please inform stockist to add stock!", "Error");
                 return;
             }
 
             if (!s.MinusPendingQty(dose, currentUser, "Vaccination - " + data.getCode())) {
-                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                General.AlertMsgError("Not enough stock, please inform stockist to add stock!", "Error");
                 return;
             }
 

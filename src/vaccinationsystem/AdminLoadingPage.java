@@ -869,7 +869,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Panel");
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -5118,6 +5117,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         txtMaRemarks.setText(data.getRemarks());
 
         //Popoulate VacCentre combobox
+        cboMaVacCentre.removeAllItems();
         for (Object x : htVacCentre.values()) {
             VaccineCentre v = (VaccineCentre) x;
 
@@ -5179,8 +5179,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         if (General.AlertQuestionYesNo("Do you want to save your changes?", "Save Confirmation") == 1) {
             return;
         }
-        
-        if(!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
@@ -5265,8 +5265,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 return;
             }
         }
-        
-        if(!txtSEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtSEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
@@ -5471,8 +5471,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
-        
-        if(!txtComEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtComEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
@@ -5857,8 +5857,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
-        
-        if(!txtPpEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+
+        if (!txtPpEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
             General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
