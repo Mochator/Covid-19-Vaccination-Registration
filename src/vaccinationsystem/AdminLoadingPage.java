@@ -830,6 +830,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jLabel149 = new javax.swing.JLabel();
         jLabel150 = new javax.swing.JLabel();
         cboComStatus = new javax.swing.JComboBox<>();
+<<<<<<< Updated upstream
         jScrollPane8 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
@@ -858,6 +859,176 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jLabel99 = new javax.swing.JLabel();
         lblPwNoMatch = new javax.swing.JLabel();
         jLabel151 = new javax.swing.JLabel();
+=======
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblVM = new javax.swing.JTable();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        txtAnvDose = new javax.swing.JTextField();
+        txtAnvName = new javax.swing.JTextField();
+        btnAnvAdd = new javax.swing.JButton();
+        jLabel97 = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        txtAnvInterval = new javax.swing.JTextField();
+        txtVMSearch = new javax.swing.JTextField();
+        btnVMSearch = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblCM = new javax.swing.JTable();
+        txtCMSearch = new javax.swing.JTextField();
+        btnCMSearch = new javax.swing.JButton();
+        cboCMStateSearch = new javax.swing.JComboBox<>();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        txtCncStreet = new javax.swing.JTextField();
+        txtCncNo = new javax.swing.JTextField();
+        txtCncName = new javax.swing.JTextField();
+        btnCncAdd = new javax.swing.JButton();
+        jLabel120 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        jLabel122 = new javax.swing.JLabel();
+        txtCncPost = new javax.swing.JTextField();
+        txtCncCity = new javax.swing.JTextField();
+        jLabel123 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        cboCncState = new javax.swing.JComboBox<>();
+        jLabel124 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel134 = new javax.swing.JLabel();
+        jLabel141 = new javax.swing.JLabel();
+        jLabel142 = new javax.swing.JLabel();
+        txtCncStreet1 = new javax.swing.JTextField();
+        txtCncNo1 = new javax.swing.JTextField();
+        txtCncName1 = new javax.swing.JTextField();
+        btnCncAdd1 = new javax.swing.JButton();
+        jLabel143 = new javax.swing.JLabel();
+        jLabel144 = new javax.swing.JLabel();
+        jLabel145 = new javax.swing.JLabel();
+        txtCncPost1 = new javax.swing.JTextField();
+        txtCncCity1 = new javax.swing.JTextField();
+        jLabel146 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        cboCncState1 = new javax.swing.JComboBox<>();
+        jLabel147 = new javax.swing.JLabel();
+        txtCncCode = new javax.swing.JTextField();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel18 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMA = new javax.swing.JTable();
+        pnlApprovedAppointment = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        calMaVacDate = new com.toedter.calendar.JDateChooser();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        txtMaRemarks = new javax.swing.JTextField();
+        btnMaSubmit = new javax.swing.JButton();
+        jLabel65 = new javax.swing.JLabel();
+        cboMaVac = new javax.swing.JComboBox<>();
+        cboMaVacCentre = new javax.swing.JComboBox<>();
+        txtMaVacAdd = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtMaAppCode = new javax.swing.JTextField();
+        txtMaIC = new javax.swing.JTextField();
+        txtMaFullname = new javax.swing.JTextField();
+        txtMaUsername = new javax.swing.JTextField();
+        btnMaApprove = new javax.swing.JButton();
+        btnMaDecline = new javax.swing.JButton();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        txtMaGender = new javax.swing.JTextField();
+        jLabel86 = new javax.swing.JLabel();
+        txtMaNat = new javax.swing.JTextField();
+        calMaDob = new com.toedter.calendar.JDateChooser();
+        jLabel89 = new javax.swing.JLabel();
+        txtMaAddress = new javax.swing.JTextField();
+        txtMaSearch = new javax.swing.JTextField();
+        btnMASearch = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        txtVSearch = new javax.swing.JTextField();
+        btnVSearch = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblV = new javax.swing.JTable();
+        cboVSearchNat = new javax.swing.JComboBox<>();
+        cboVSearchVac = new javax.swing.JComboBox<>();
+        cboVSearchStatus = new javax.swing.JComboBox<>();
+        cboVSearchVacCentre = new javax.swing.JComboBox<>();
+        calVSearchVacDate = new com.toedter.calendar.JDateChooser();
+        jPanel20 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblRA = new javax.swing.JTable();
+        txtRaSearch = new javax.swing.JTextField();
+        btnRASearch = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        txtRaAppCode = new javax.swing.JTextField();
+        txtRaIC = new javax.swing.JTextField();
+        txtRaFullname = new javax.swing.JTextField();
+        txtRaUsername = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        txtRaGender = new javax.swing.JTextField();
+        jLabel90 = new javax.swing.JLabel();
+        txtRaNat = new javax.swing.JTextField();
+        calRaDob = new com.toedter.calendar.JDateChooser();
+        jLabel91 = new javax.swing.JLabel();
+        txtRaAddress = new javax.swing.JTextField();
+        jLabel92 = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        pnlApprovedAppointment2 = new javax.swing.JPanel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        calMaVacDate2 = new com.toedter.calendar.JDateChooser();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        txtMaRemarks2 = new javax.swing.JTextField();
+        btnMaSubmit3 = new javax.swing.JButton();
+        jLabel76 = new javax.swing.JLabel();
+        cboMaVac2 = new javax.swing.JComboBox<>();
+        cboMaVacCentre2 = new javax.swing.JComboBox<>();
+        txtMaVacAdd2 = new javax.swing.JTextField();
+        pnlApprovedAppointment4 = new javax.swing.JPanel();
+        jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        calRaVacDate = new com.toedter.calendar.JDateChooser();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        txtRaRemarks = new javax.swing.JTextField();
+        jLabel106 = new javax.swing.JLabel();
+        txtRaVacAdd = new javax.swing.JTextField();
+        txtRaVac = new javax.swing.JTextField();
+        txtRaVacCentre = new javax.swing.JTextField();
+        txtRaReason = new javax.swing.JTextField();
+        jLabel112 = new javax.swing.JLabel();
+        pnlApprovedAppointment5 = new javax.swing.JPanel();
+        btnRaSubmit = new javax.swing.JButton();
+        jLabel111 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel110 = new javax.swing.JLabel();
+        txtRaRemarks2 = new javax.swing.JTextField();
+        calRaVacDate2 = new com.toedter.calendar.JDateChooser();
+        cboRaVac = new javax.swing.JComboBox<>();
+        cboRaVacCentre = new javax.swing.JComboBox<>();
+        txtRaVacAdd2 = new javax.swing.JTextField();
+        btnRaCancel = new javax.swing.JButton();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Panel");
@@ -3296,6 +3467,183 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jTabbedPane4.addTab("Centre Management", jPanel14);
 
         jScrollPane2.setViewportView(jTabbedPane4);
+<<<<<<< Updated upstream
+=======
+
+        jTabbedPane1.addTab("Vaccine & Centre Management", jScrollPane2);
+
+        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jTabbedPane5.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane5.setOpaque(true);
+
+        jPanel18.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel18.setPreferredSize(new java.awt.Dimension(1221, 900));
+
+        tblMA.setBackground(new java.awt.Color(255, 255, 255));
+        tblMA.setForeground(new java.awt.Color(0, 0, 0));
+        tblMA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Code", "Registrant", "IC / Passport", "Reg. Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblMA.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblMA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMAMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblMA);
+
+        pnlApprovedAppointment.setBackground(new java.awt.Color(255, 204, 51));
+        pnlApprovedAppointment.setEnabled(false);
+
+        jLabel63.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel63.setText("Vaccination Centre:");
+
+        jLabel61.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel61.setText("Vaccination Date:");
+
+        calMaVacDate.setBackground(new java.awt.Color(255, 255, 255));
+        calMaVacDate.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel62.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel62.setText("Vaccine:");
+
+        jLabel60.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel60.setText("Remarks:");
+
+        txtMaRemarks.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaRemarks.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtMaRemarks.setForeground(new java.awt.Color(0, 0, 0));
+        txtMaRemarks.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtMaRemarks.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtMaRemarks.setOpaque(true);
+        txtMaRemarks.setSelectionColor(new java.awt.Color(255, 255, 51));
+
+        btnMaSubmit.setBackground(new java.awt.Color(102, 255, 102));
+        btnMaSubmit.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btnMaSubmit.setForeground(new java.awt.Color(0, 0, 0));
+        btnMaSubmit.setText("Submit");
+        btnMaSubmit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMaSubmit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMaSubmit.setOpaque(true);
+        btnMaSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaSubmitActionPerformed(evt);
+            }
+        });
+
+        jLabel65.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 30)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel65.setText("Appointment Schedule");
+
+        cboMaVacCentre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMaVacCentreActionPerformed(evt);
+            }
+        });
+
+        txtMaVacAdd.setEditable(false);
+        txtMaVacAdd.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaVacAdd.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
+        txtMaVacAdd.setForeground(new java.awt.Color(0, 0, 0));
+        txtMaVacAdd.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtMaVacAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtMaVacAdd.setEnabled(false);
+        txtMaVacAdd.setOpaque(true);
+        txtMaVacAdd.setSelectionColor(new java.awt.Color(255, 255, 51));
+
+        javax.swing.GroupLayout pnlApprovedAppointmentLayout = new javax.swing.GroupLayout(pnlApprovedAppointment);
+        pnlApprovedAppointment.setLayout(pnlApprovedAppointmentLayout);
+        pnlApprovedAppointmentLayout.setHorizontalGroup(
+            pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlApprovedAppointmentLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnMaSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlApprovedAppointmentLayout.createSequentialGroup()
+                            .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cboMaVac, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(calMaVacDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                                .addComponent(cboMaVacCentre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtMaVacAdd, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtMaRemarks, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        pnlApprovedAppointmentLayout.setVerticalGroup(
+            pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlApprovedAppointmentLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel65)
+                .addGap(26, 26, 26)
+                .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel60)
+                    .addComponent(txtMaRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel61)
+                    .addComponent(calMaVacDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel62)
+                    .addComponent(cboMaVac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlApprovedAppointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel63)
+                    .addComponent(cboMaVacCentre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMaVacAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMaSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
+
+        jLabel10.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Username:");
+
+        jLabel11.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Full Name:");
+
+        jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("IC/Passport:");
+>>>>>>> Stashed changes
 
         jTabbedPane1.addTab("Vaccine & Centre Management", jScrollPane2);
 
@@ -3454,6 +3802,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     .addComponent(jLabel130)
                     .addComponent(txtSContact, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+<<<<<<< Updated upstream
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel128)
                     .addComponent(cboSRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3463,6 +3812,84 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     .addComponent(cboSVacCentre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+=======
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtMaIC, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaNat, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMaApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMaDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        txtMaSearch.setBackground(new java.awt.Color(255, 255, 255));
+        txtMaSearch.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        txtMaSearch.setForeground(new java.awt.Color(0, 0, 0));
+        txtMaSearch.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtMaSearch.setSelectionColor(new java.awt.Color(255, 255, 51));
+        txtMaSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaSearchActionPerformed(evt);
+            }
+        });
+
+        btnMASearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vaccinationsystem/search.png"))); // NOI18N
+        btnMASearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMASearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMASearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMASearchMouseClicked(evt);
+            }
+        });
+        btnMASearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMASearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(txtMaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(32074, Short.MAX_VALUE))))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnMASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(632, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Schedule Appointment", jPanel18);
+
+        jPanel12.setBackground(new java.awt.Color(51, 51, 51));
+>>>>>>> Stashed changes
 
         jSplitPane3.setLeftComponent(jPanel5);
 
@@ -6287,7 +6714,6 @@ public class AdminLoadingPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
