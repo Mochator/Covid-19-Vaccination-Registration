@@ -5179,6 +5179,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         if (General.AlertQuestionYesNo("Do you want to save your changes?", "Save Confirmation") == 1) {
             return;
         }
+        
+        if(!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
+            return;
+        }
 
         //Check field filled
         if (txtAdPNo.getText().isBlank() || txtPEmail.getText().isBlank()) {
@@ -5259,6 +5264,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 General.AlertMsgError("All fields must be filled!", "Error");
                 return;
             }
+        }
+        
+        if(!txtSEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
+            return;
         }
 
         if (!String.valueOf(txtSPass.getPassword()).equals(String.valueOf(txtSCfmPass.getPassword()))) {
@@ -5459,6 +5469,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 || txtComContact.getText().isBlank() || txtComEmail.getText().isBlank()
                 || calComDob.getCalendar() == null) {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
+            return;
+        }
+        
+        if(!txtComEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
 
@@ -5840,6 +5855,11 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 || txtPpAddCity.getText().isBlank() || txtPpAddPost.getText().isBlank()
                 || cboPpAddState.getSelectedIndex() == -1) {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
+            return;
+        }
+        
+        if(!txtPpEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
             return;
         }
 

@@ -1332,6 +1332,11 @@ public class DoctorLoadingPage extends javax.swing.JFrame {
             General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
             return;
         }
+        
+        if(!txtPEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
+            return;
+        }
 
         //Check Pw Any Changes
         if (txtPNewPw.getPassword().length != 0) {

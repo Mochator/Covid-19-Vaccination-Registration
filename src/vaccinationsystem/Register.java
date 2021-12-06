@@ -503,9 +503,9 @@ public class Register extends javax.swing.JFrame {
         String AlphaOne = txtIC.getText();
 
         if (!Pattern.matches("^[0-9]+$", AlphaOne)) {
-            txtNation.setText(General.NationalityCitizen);
-        } else if (Pattern.matches("^[0-9]+$", AlphaOne)) { //Add input length validation at resgister button to validate whether this length of ic is valid or no.
             txtNation.setText(General.NationalityNonCitizen);
+        } else if (Pattern.matches("^[0-9]+$", AlphaOne)) { //Add input length validation at resgister button to validate whether this length of ic is valid or no.
+            txtNation.setText(General.NationalityCitizen);
         }
     }//GEN-LAST:event_txtICKeyPressed
 
@@ -528,6 +528,11 @@ public class Register extends javax.swing.JFrame {
         if (General.AlertQuestionYesNo("Do you want to save your changes?", "Save Confirmation") == 1) {
             return;
         }
+        
+        if(!txtEmail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+            General.AlertMsgError("Email format invalid.", "Profile Create Failed!");
+            return;
+        }
 
         //Check field filled
         if (txtName.getText().isBlank() || txtName1.getText().isBlank()
@@ -536,7 +541,7 @@ public class Register extends javax.swing.JFrame {
                 || txtAddNo.getText().isBlank() || txtAddStreet.getText().isBlank()
                 || txtAddCity.getText().isBlank() || txtAddPost.getText().isBlank()
                 || cboState.getSelectedIndex() == -1 || cboGender.getSelectedIndex() == -1) {
-            General.AlertMsgError("All details have to be filled.", "Profile Update Failed!");
+            General.AlertMsgError("All details have to be filled.", "Profile Create Failed!");
             return;
         }
 
