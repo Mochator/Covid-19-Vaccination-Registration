@@ -34,8 +34,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" pref="1204" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +68,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" pref="1280" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -76,7 +77,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel2" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jTabbedPane1" min="-2" pref="1141" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -103,7 +104,7 @@
                   </Group>
                   <Component id="jPanel16" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                       <Component id="btnLogout" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
@@ -164,7 +165,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblWbUsername" max="32767" attributes="0"/>
-                      <Component id="lblVSName2" pref="209" max="32767" attributes="0"/>
+                      <Component id="lblVSName2" max="32767" attributes="0"/>
                       <Component id="lblVSName3" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
@@ -379,7 +380,7 @@
                                   <Component id="btnAdPInfoEdit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="btnAdPSave" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="787" max="32767" attributes="0"/>
+                              <EmptySpace pref="838" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -854,14 +855,14 @@
                                   <Component id="jSplitPane4" pref="891" max="32767" attributes="0"/>
                                   <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="28374" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="28393" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                       <Component id="cboPpSearchStatus" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
@@ -871,10 +872,10 @@
                                   <Component id="txtPpSearch" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" pref="302" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane5" min="-2" pref="240" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="jSplitPane4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="621" max="32767" attributes="0"/>
+                              <EmptySpace pref="741" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -889,8 +890,11 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tblPp">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                              <Color blue="0" green="0" red="0" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="11" rowCount="0">
@@ -1176,7 +1180,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboPpAddState" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1715,6 +1719,12 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Committee Management">
@@ -2094,7 +2104,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                                  <EmptySpace pref="327" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2257,6 +2267,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel3">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="33" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Manage Committee">
@@ -2308,7 +2323,7 @@
                                       <Component id="jScrollPane12" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="685" max="32767" attributes="0"/>
+                              <EmptySpace pref="736" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2323,6 +2338,12 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tblMC">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="0" green="0" red="0" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="8" rowCount="0">
                                 <Column editable="false" title="No." type="java.lang.Object"/>
@@ -3109,8 +3130,11 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblVM">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="5" rowCount="0">
@@ -3432,7 +3456,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel23" alignment="0" pref="1421" max="32767" attributes="0"/>
+                              <Component id="jPanel23" alignment="0" min="-2" pref="1447" max="-2" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -3461,21 +3485,21 @@
                                               <Component id="cboCMStateSearch" min="-2" pref="124" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                                              <EmptySpace pref="27" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="jSplitPane2" pref="906" max="32767" attributes="0"/>
                                                   <Component id="jScrollPane7" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="4691" max="32767" attributes="0"/>
+                                      <EmptySpace pref="4690" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="btnCMSearch" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                                           <Component id="txtCMSearch" alignment="0" max="32767" attributes="0"/>
@@ -3485,7 +3509,7 @@
                                       <Component id="jScrollPane7" min="-2" pref="265" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSplitPane2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="598" max="32767" attributes="0"/>
+                                      <EmptySpace pref="642" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3500,8 +3524,11 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblCM">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="8" rowCount="0">
@@ -3740,9 +3767,9 @@
                                                   <Component id="jLabel123" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="cboCncState" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="btnCncAdd" min="-2" pref="35" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -4434,7 +4461,7 @@
                                       </Group>
                                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="525" max="32767" attributes="0"/>
+                                  <EmptySpace pref="576" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4449,8 +4476,11 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="tblMA">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="0">
@@ -5287,8 +5317,11 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="tblV">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="12" rowCount="0">
@@ -5475,7 +5508,7 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="btnRASearch" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                                       <Component id="txtRaSearch" alignment="0" max="32767" attributes="0"/>
@@ -5486,16 +5519,16 @@
                                           <Component id="jSeparator2" min="-2" pref="11" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jPanel19" max="32767" attributes="0"/>
                                               <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
                                           <Component id="jSplitPane1" min="-2" pref="380" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="599" max="32767" attributes="0"/>
+                                  <EmptySpace pref="690" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -5510,8 +5543,11 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="tblRA">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="0">
@@ -6226,21 +6262,14 @@
                                                       </Group>
                                                       <Component id="jLabel112" min="-2" pref="161" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                              <Component id="txtRaVacAdd" max="32767" attributes="0"/>
-                                                              <Component id="txtRaVacCentre" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="txtRaVac" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="calRaVacDate" alignment="0" pref="263" max="32767" attributes="0"/>
-                                                              <Component id="txtRaRemarks" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txtRaReason" min="-2" pref="245" max="-2" attributes="0"/>
-                                                      </Group>
+                                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="txtRaVacAdd" max="32767" attributes="0"/>
+                                                      <Component id="txtRaVacCentre" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtRaVac" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="calRaVacDate" alignment="0" pref="263" max="32767" attributes="0"/>
+                                                      <Component id="txtRaRemarks" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtRaReason" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>

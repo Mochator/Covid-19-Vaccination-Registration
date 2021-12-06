@@ -60,7 +60,6 @@ public class Login extends javax.swing.JFrame {
         txtUsername.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(0, 0, 0));
         txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsername.setText("PP0001");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -81,7 +80,6 @@ public class Login extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPass.setText("123123");
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {

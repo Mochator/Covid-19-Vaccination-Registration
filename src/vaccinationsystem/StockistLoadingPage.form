@@ -55,14 +55,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="1095" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-              <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" alignment="0" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -150,7 +151,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblWbUsername2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblWbUsername" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblVSName6" alignment="0" max="32767" attributes="0"/>
                       <Component id="lblVSName7" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -161,7 +162,7 @@
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="lblVSName7" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lblWbUsername2" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="lblWbUsername" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace pref="88" max="32767" attributes="0"/>
                           <Component id="lblVSName6" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -170,7 +171,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblWbUsername2">
+                <Component class="javax.swing.JLabel" name="lblWbUsername">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Berlin Sans FB Demi" size="20" style="1"/>
@@ -916,8 +917,11 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="tblMs">
                               <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="0">
@@ -1545,7 +1549,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1553,7 +1557,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="556" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="547" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1572,7 +1576,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane4" min="-2" pref="1084" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane4" min="-2" pref="988" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="txtSfSearch" min="-2" pref="235" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -1585,7 +1589,7 @@
                                               <Component id="calSfSearch" min="-2" pref="184" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                                      <EmptySpace pref="43" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1602,7 +1606,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="jScrollPane4" min="-2" pref="651" max="-2" attributes="0"/>
-                                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                                      <EmptySpace pref="24" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1652,8 +1656,11 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblSf">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="7" rowCount="0">
@@ -1764,7 +1771,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1772,7 +1779,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="556" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="544" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1791,8 +1798,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane5" alignment="0" min="-2" pref="1084" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jScrollPane5" min="-2" pref="984" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
                                               <Component id="txtSfSearch1" min="-2" pref="235" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnSfSearch1" min="-2" pref="45" max="-2" attributes="0"/>
@@ -1804,7 +1811,7 @@
                                               <Component id="calSfSearch1" min="-2" pref="184" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1821,7 +1828,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" min="-2" pref="651" max="-2" attributes="0"/>
-                                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                                      <EmptySpace pref="27" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1874,8 +1881,11 @@
                               <SubComponents>
                                 <Component class="javax.swing.JTable" name="tblSf1">
                                   <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                                      <Color blue="0" green="0" red="0" type="rgb"/>
                                     </Property>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="7" rowCount="0">

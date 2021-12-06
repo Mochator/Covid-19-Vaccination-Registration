@@ -915,7 +915,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblWbUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblVSName2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+            .addComponent(lblVSName2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblVSName3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
@@ -940,7 +940,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -1266,7 +1266,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdPInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdPSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addContainerGap(838, Short.MAX_VALUE))
         );
 
         jScrollPane8.setViewportView(jPanel4);
@@ -1275,7 +1275,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(51, 51, 51));
 
-        tblPp.setForeground(new java.awt.Color(204, 204, 204));
+        tblPp.setBackground(new java.awt.Color(255, 255, 255));
+        tblPp.setForeground(new java.awt.Color(0, 0, 0));
         tblPp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1582,7 +1583,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     .addComponent(txtPpAddCity))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboPpAddState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addContainerGap())
         );
 
         jSplitPane4.setLeftComponent(jPanel8);
@@ -1720,12 +1721,12 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addComponent(cboPpSearchState, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSplitPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 891, Short.MAX_VALUE)
                     .addComponent(jScrollPane5))
-                .addGap(0, 28374, Short.MAX_VALUE))
+                .addGap(0, 28393, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboPpSearchStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1733,15 +1734,18 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                     .addComponent(btnPpSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPpSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSplitPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(621, Short.MAX_VALUE))
+                .addContainerGap(741, Short.MAX_VALUE))
         );
 
         jScrollPane9.setViewportView(jPanel9);
 
         jTabbedPane1.addTab("People Management", jScrollPane9);
+
+        jTabbedPane2.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane2.setOpaque(true);
 
         jPanel5.setBackground(new java.awt.Color(255, 102, 102));
         jPanel5.setMinimumSize(new java.awt.Dimension(500, 100));
@@ -1985,7 +1989,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(txtSEmail)
                             .addComponent(txtSPass)
                             .addComponent(txtSCfmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2014,6 +2018,10 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Create New Committee", jSplitPane3);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        tblMC.setBackground(new java.awt.Color(255, 255, 255));
+        tblMC.setForeground(new java.awt.Color(0, 0, 0));
         tblMC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2416,7 +2424,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(cboMCSearchStatus))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(685, Short.MAX_VALUE))
+                .addContainerGap(736, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Manage Committee", jPanel3);
@@ -2431,7 +2439,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel21.setBackground(new java.awt.Color(51, 51, 51));
         jPanel21.setPreferredSize(new java.awt.Dimension(1163, 1038));
 
-        tblVM.setForeground(new java.awt.Color(204, 204, 204));
+        tblVM.setBackground(new java.awt.Color(255, 255, 255));
+        tblVM.setForeground(new java.awt.Color(0, 0, 0));
         tblVM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2650,7 +2659,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel23.setBackground(new java.awt.Color(51, 51, 51));
         jPanel23.setPreferredSize(new java.awt.Dimension(1163, 1038));
 
-        tblCM.setForeground(new java.awt.Color(204, 204, 204));
+        tblCM.setBackground(new java.awt.Color(255, 255, 255));
+        tblCM.setForeground(new java.awt.Color(0, 0, 0));
         tblCM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2870,9 +2880,9 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel123)
                     .addComponent(cboCncState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(btnCncAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(66, 66, 66))
         );
 
         jSplitPane2.setLeftComponent(jPanel24);
@@ -3071,16 +3081,16 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cboCMStateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addContainerGap(26, Short.MAX_VALUE)
+                        .addContainerGap(27, Short.MAX_VALUE)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
                             .addComponent(jScrollPane7))))
-                .addContainerGap(4691, Short.MAX_VALUE))
+                .addContainerGap(4690, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCMSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCMSearch)
@@ -3089,7 +3099,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(598, Short.MAX_VALUE))
+                .addContainerGap(642, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -3102,7 +3112,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1421, Short.MAX_VALUE)
+            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 1447, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jTabbedPane4.addTab("Centre Management", jPanel14);
@@ -3120,7 +3130,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(51, 51, 51));
         jPanel18.setPreferredSize(new java.awt.Dimension(1221, 900));
 
-        tblMA.setForeground(new java.awt.Color(204, 204, 204));
+        tblMA.setBackground(new java.awt.Color(255, 255, 255));
+        tblMA.setForeground(new java.awt.Color(0, 0, 0));
         tblMA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3538,7 +3549,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlApprovedAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
-                .addContainerGap(525, Short.MAX_VALUE))
+                .addContainerGap(576, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Schedule Appointment", jPanel18);
@@ -3561,7 +3572,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        tblV.setForeground(new java.awt.Color(204, 204, 204));
+        tblV.setBackground(new java.awt.Color(255, 255, 255));
+        tblV.setForeground(new java.awt.Color(0, 0, 0));
         tblV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3656,7 +3668,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(51, 51, 51));
 
-        tblRA.setForeground(new java.awt.Color(204, 204, 204));
+        tblRA.setBackground(new java.awt.Color(255, 255, 255));
+        tblRA.setForeground(new java.awt.Color(0, 0, 0));
         tblRA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -4099,18 +4112,14 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                                 .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                                 .addComponent(jLabel105, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlApprovedAppointment4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlApprovedAppointment4Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addGroup(pnlApprovedAppointment4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtRaVacAdd)
-                                    .addComponent(txtRaVacCentre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRaVac, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(calRaVacDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                                    .addComponent(txtRaRemarks, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlApprovedAppointment4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRaReason, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(38, 38, 38)
+                        .addGroup(pnlApprovedAppointment4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtRaVacAdd)
+                            .addComponent(txtRaVacCentre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRaVac, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(calRaVacDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtRaRemarks, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRaReason)))))
         );
         pnlApprovedAppointment4Layout.setVerticalGroup(
             pnlApprovedAppointment4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4315,7 +4324,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRaSearch))
@@ -4324,13 +4333,13 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                         .addGap(370, 370, 370)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(599, Short.MAX_VALUE))
+                .addContainerGap(690, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Reschedule Appointment", jPanel20);
@@ -4346,13 +4355,14 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -4361,8 +4371,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
