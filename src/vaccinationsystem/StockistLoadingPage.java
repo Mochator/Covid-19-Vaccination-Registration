@@ -114,6 +114,24 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             Vaccine v = (Vaccine) x;
             cboMsSearchVac.addItem(v.getVacCode() + " - " + v.getName());
         }
+        
+        //Search Stock Flow
+        cboSfSearchVac.removeAllItems();
+        cboSfSearchVac.insertItemAt("All Vaccine", 0);
+        for (Object x : htVac.values()) {
+            Vaccine v = (Vaccine) x;
+            cboSfSearchVac.addItem(v.getVacCode() + " - " + v.getName());
+        }
+        cboSfSearchVac.setSelectedIndex(0);
+
+        //Search Stock Flow
+        cboSfSearchVac1.removeAllItems();
+        cboSfSearchVac1.insertItemAt("All Vaccine", 0);
+        for (Object x : htVac.values()) {
+            Vaccine v = (Vaccine) x;
+            cboSfSearchVac1.addItem(v.getVacCode() + " - " + v.getName());
+        }
+        cboSfSearchVac1.setSelectedIndex(0);
 
     }
 
@@ -831,7 +849,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("New");
 
-        txtMsNewAs.setBackground(new java.awt.Color(204, 204, 204));
+        txtMsNewAs.setBackground(new java.awt.Color(255, 255, 255));
         txtMsNewAs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsNewAs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsNewAs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -846,8 +864,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             }
         });
 
-        txtMsRemarks.setEditable(false);
-        txtMsRemarks.setBackground(new java.awt.Color(204, 204, 204));
+        txtMsRemarks.setBackground(new java.awt.Color(255, 255, 255));
         txtMsRemarks.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsRemarks.setForeground(new java.awt.Color(0, 0, 0));
         txtMsRemarks.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -867,7 +884,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         txtMsCurrentPs.setEnabled(false);
         txtMsCurrentPs.setSelectionColor(new java.awt.Color(255, 255, 51));
 
-        txtMsNewPs.setBackground(new java.awt.Color(204, 204, 204));
+        txtMsNewPs.setBackground(new java.awt.Color(255, 255, 255));
         txtMsNewPs.setFont(new java.awt.Font("Berlin Sans FB", 0, 12)); // NOI18N
         txtMsNewPs.setForeground(new java.awt.Color(0, 0, 0));
         txtMsNewPs.setHorizontalAlignment(javax.swing.JTextField.CENTER);

@@ -139,6 +139,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             Vaccine v = (Vaccine) x;
             cboVSearchVac.addItem(v.getVacCode() + " - " + v.getName());
         }
+        cboVSearchVac.setSelectedIndex(0);
 
         //Init Vaccine Centre (V)
         cboVSearchVacCentre.removeAllItems();
@@ -147,6 +148,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             VaccineCentre v = (VaccineCentre) x;
             cboVSearchVacCentre.addItem(v.getVacCode() + " - " + v.getName());
         }
+        cboVSearchVacCentre.setSelectedIndex(0);
 
         //Init Vaccine Types (RA)
         cboRaVac.removeAllItems();
@@ -161,6 +163,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             VaccineCentre v = (VaccineCentre) x;
             cboSVacCentre.addItem(v.getVacCode() + " - " + v.getName());
         }
+        cboSVacCentre.setSelectedIndex(0);
 
         cboMCSearchVacCentre.removeAllItems();
         cboMCSearchVacCentre.insertItemAt("All Vac. Centre", 0);
@@ -168,6 +171,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             VaccineCentre v = (VaccineCentre) x;
             cboMCSearchVacCentre.addItem(v.getVacCode() + " - " + v.getName());
         }
+        cboMCSearchVacCentre.setSelectedIndex(0);
 
         cboComVacCentre.removeAllItems();
         cboComVacCentre.insertItemAt("Select", 0);
@@ -175,6 +179,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             VaccineCentre v = (VaccineCentre) x;
             cboComVacCentre.addItem(v.getVacCode() + " - " + v.getName());
         }
+        cboComVacCentre.setSelectedIndex(0);
     }
 
     private void InitComboData() {
@@ -2013,7 +2018,7 @@ public class AdminLoadingPage extends javax.swing.JFrame {
                             .addComponent(txtSEmail)
                             .addComponent(txtSPass)
                             .addComponent(txtSCfmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4366,7 +4371,8 @@ public class AdminLoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4378,7 +4384,9 @@ public class AdminLoadingPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

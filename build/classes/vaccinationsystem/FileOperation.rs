@@ -1,2 +1,0 @@
-vaccinationsystem.FileOperation
-vaccinationsystem.GenerateId
