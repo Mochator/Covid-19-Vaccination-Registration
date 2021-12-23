@@ -147,7 +147,6 @@ public class General {
                 ArrayList<Object> al = FileOperation.DeserializeObject(General.appointmentFileName);
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 MyDateTime mdt = new MyDateTime();
-                System.out.println("run");
                 for (Object x : al) {
                     Appointment app = (Appointment) x;
                     System.out.println(app.getCode());
@@ -156,8 +155,6 @@ public class General {
                     }
 
                     if (app.VaccinationDate.getDate().before(mdt.getDate()) && app.getStatus().equals(AppointmentStatus.Approved)) {
-                        System.out.println(app.getCode());
-                        System.out.println(app.getCode() + "-2");
                         Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
                         if (s.FindStock()) {
                             if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
