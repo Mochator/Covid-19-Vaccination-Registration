@@ -147,43 +147,43 @@ public class General {
                 ArrayList<Object> al = FileOperation.DeserializeObject(General.appointmentFileName);
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 MyDateTime mdt = new MyDateTime();
-
+                System.out.println("run");
                 for (Object x : al) {
                     Appointment app = (Appointment) x;
-
+                    System.out.println(app.getCode());
                     if (app.VaccinationDate == null) {
                         continue;
                     }
 
-                    if (app.VaccinationDate.getDate().before(mdt.getDate()) && (app.getStatus() != AppointmentStatus.Completed || app.getStatus() != AppointmentStatus.Declined || app.getStatus() != AppointmentStatus.Cancelled)) {
-
-                        if (app.getStatus().equals(AppointmentStatus.Approved)) {
-                            Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
-                            if (s.FindStock()) {
-
-                                if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
-                                    General.AlertMsgError("Something went wrong, please try again later!", "Error");
-                                    return;
-                                }
-
-                            } else {
-                                s.GenerateId();
-                                s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode());
-                                FileOperation.SerializeObject(General.stockFileName, s);
+                    if (app.VaccinationDate.getDate().before(mdt.getDate()) && app.getStatus().equals(AppointmentStatus.Approved)) {
+                        System.out.println(app.getCode());
+                        System.out.println(app.getCode() + "-2");
+                        Stock s = new Stock(app.Vacc, app.CheckDoseFromAppointment(), app.Location);
+                        if (s.FindStock()) {
+                            if (s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode())) {
+                                General.AlertMsgError("Something went wrong, please try again later!", "Error");
+                                return;
                             }
+
+                        } else {
+                            s.GenerateId();
+                            s.MinusPendingQty(1, null, "Decline Vaccination - " + app.getCode());
+                            FileOperation.SerializeObject(General.stockFileName, s);
                         }
+
                         app.setStatus(AppointmentStatus.Cancelled);
                         FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
                         fo.ReadFile();
                         fo.ModifyRecord(app);
+
                     }
                 }
             }
         };
-        long delay = 1000L;
-
+        
         Timer timer = new Timer("Timer");
-        timer.schedule(task, delay);
+        long delay = 1000L;
+        timer.schedule(task, 0, delay);
     }
 
 }
