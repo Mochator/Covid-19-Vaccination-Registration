@@ -172,7 +172,6 @@ public class General {
                                 FileOperation.SerializeObject(General.stockFileName, s);
                             }
                         }
-
                         app.setStatus(AppointmentStatus.Cancelled);
                         FileOperation fo = new FileOperation(app.getCode(), General.appointmentFileName);
                         fo.ReadFile();
@@ -185,7 +184,6 @@ public class General {
 
         Timer timer = new Timer("Timer");
         timer.schedule(task, delay);
-
     }
 
 }
