@@ -114,7 +114,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             Vaccine v = (Vaccine) x;
             cboMsSearchVac.addItem(v.getVacCode() + " - " + v.getName());
         }
-        
+
         //Search Stock Flow
         cboSfSearchVac.removeAllItems();
         cboSfSearchVac.insertItemAt("All Vaccine", 0);
@@ -168,8 +168,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         for (Object x : htStock.values()) {
             Stock a = (Stock) x;
-            
-            if(!a.VacCentre.getVacCode().equals(currentUser.VacCentre.getVacCode())){
+
+            if (!a.VacCentre.getVacCode().equals(currentUser.VacCentre.getVacCode())) {
                 continue;
             }
 
@@ -753,7 +753,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdPInfoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdPSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(647, Short.MAX_VALUE))
+                .addContainerGap(653, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel4);
@@ -1133,7 +1133,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Vaccine Management", jPanel18);
@@ -1244,7 +1244,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 547, Short.MAX_VALUE))
+                .addGap(0, 561, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Stock Audit", jPanel3);
@@ -1360,7 +1360,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 544, Short.MAX_VALUE))
+                .addGap(0, 558, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Pending Stock Audit", jPanel5);
@@ -1514,7 +1514,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         dtm.setRowCount(0);
 
         for (Object x : htPendingStockAudit.values()) {
-            ActualStock a = (ActualStock) x;
+            PendingStock a = (PendingStock) x;
 
             if (!a.getVacStock().VacCentre.getVacCode().equals(currentUser.VacCentre.getVacCode())) {
                 continue;
@@ -1906,6 +1906,8 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         //Retrive dose
         if (cboMsSearchVac.getSelectedIndex() > 0) {
             int i = 1;
+            cboMsSearchDose.removeAllItems();
+            cboMsSearchDose.addItem("All Dose");
             while (i <= vac.getDoseCount()) {
                 cboMsSearchDose.addItem(String.valueOf(i));
                 i++;
@@ -1941,19 +1943,20 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         MyDateTime mdt = calSfSearch.getCalendar() == null ? null : new MyDateTime(calSfSearch.getCalendar());
 
-        //Dose
-        cboMsSearchDose.setEnabled(false);
-        cboMsSearchDose.removeAllItems();
-        cboMsSearchDose.addItem("Select");
-
-        if (cboMsSearchVac.getSelectedIndex() > 0) {
-
+        //Retrive dose
+        if (cboSfSearchVac.getSelectedIndex() > 0) {
             int i = 1;
+            cboSfSearchDose.removeAllItems();
+            cboSfSearchDose.addItem("All Dose");
             while (i <= vac.getDoseCount()) {
-                cboMsSearchDose.addItem(String.valueOf(i));
+                cboSfSearchDose.addItem(String.valueOf(i));
                 i++;
             }
-            cboMsSearchDose.setEnabled(true);
+            cboSfSearchDose.setEnabled(true);
+        } else {
+            cboSfSearchDose.setEnabled(false);
+            cboSfSearchDose.removeAllItems();
+            cboSfSearchDose.addItem("All Dose");
         }
 
         SfSearch(search, vac, dose, mdt);
@@ -1968,6 +1971,22 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         MyDateTime mdt = calSfSearch.getCalendar() == null ? null : new MyDateTime(calSfSearch.getCalendar());
 
+        //Retrive dose
+        if (cboSfSearchVac.getSelectedIndex() > 0) {
+            int i = 1;
+            cboSfSearchDose.removeAllItems();
+            cboSfSearchDose.addItem("All Dose");
+            while (i <= vac.getDoseCount()) {
+                cboSfSearchDose.addItem(String.valueOf(i));
+                i++;
+            }
+            cboSfSearchDose.setEnabled(true);
+        } else {
+            cboSfSearchDose.setEnabled(false);
+            cboSfSearchDose.removeAllItems();
+            cboSfSearchDose.addItem("All Dose");
+        }
+
         SfSearch(search, vac, dose, mdt);
     }//GEN-LAST:event_calSfSearchMouseReleased
 
@@ -1979,6 +1998,22 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         int dose = cboSfSearchDose1.getSelectedIndex() > 0 ? Integer.parseInt(String.valueOf(cboSfSearchDose1.getSelectedItem())) : 0;
 
         MyDateTime mdt = calSfSearch1.getCalendar() == null ? null : new MyDateTime(calSfSearch1.getCalendar());
+
+        //Retrive dose
+        if (cboSfSearchVac1.getSelectedIndex() > 0) {
+            int i = 1;
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
+            while (i <= vac.getDoseCount()) {
+                cboSfSearchDose1.addItem(String.valueOf(i));
+                i++;
+            }
+            cboSfSearchDose1.setEnabled(true);
+        } else {
+            cboSfSearchDose1.setEnabled(false);
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
+        }
 
         SfSearch1(search, vac, dose, mdt);
     }//GEN-LAST:event_btnSfSearch1ActionPerformed
@@ -1992,6 +2027,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         MyDateTime mdt = calSfSearch1.getCalendar() == null ? null : new MyDateTime(calSfSearch1.getCalendar());
 
+
         SfSearch1(search, vac, dose, mdt);
     }//GEN-LAST:event_cboSfSearchDose1ActionPerformed
 
@@ -2004,19 +2040,20 @@ public class StockistLoadingPage extends javax.swing.JFrame {
 
         MyDateTime mdt = calSfSearch1.getCalendar() == null ? null : new MyDateTime(calSfSearch1.getCalendar());
 
-        //Dose
-        cboMsSearchDose.setEnabled(false);
-        cboMsSearchDose.removeAllItems();
-        cboMsSearchDose.addItem("Select");
-
-        if (cboMsSearchVac.getSelectedIndex() > 0) {
-
+        //Retrive dose
+        if (cboSfSearchVac1.getSelectedIndex() > 0) {
             int i = 1;
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
             while (i <= vac.getDoseCount()) {
-                cboMsSearchDose.addItem(String.valueOf(i));
+                cboSfSearchDose1.addItem(String.valueOf(i));
                 i++;
             }
-            cboMsSearchDose.setEnabled(true);
+            cboSfSearchDose1.setEnabled(true);
+        } else {
+            cboSfSearchDose1.setEnabled(false);
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
         }
 
         SfSearch(search, vac, dose, mdt);
@@ -2030,6 +2067,22 @@ public class StockistLoadingPage extends javax.swing.JFrame {
         int dose = cboSfSearchDose1.getSelectedIndex() > 0 ? Integer.parseInt(String.valueOf(cboSfSearchDose1.getSelectedItem())) : 0;
 
         MyDateTime mdt = calSfSearch1.getCalendar() == null ? null : new MyDateTime(calSfSearch1.getCalendar());
+
+        //Retrive dose
+        if (cboSfSearchDose1.getSelectedIndex() > 0) {
+            int i = 1;
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
+            while (i <= vac.getDoseCount()) {
+                cboSfSearchDose1.addItem(String.valueOf(i));
+                i++;
+            }
+            cboSfSearchDose1.setEnabled(true);
+        } else {
+            cboSfSearchDose1.setEnabled(false);
+            cboSfSearchDose1.removeAllItems();
+            cboSfSearchDose1.addItem("All Dose");
+        }
 
         SfSearch1(search, vac, dose, mdt);
     }//GEN-LAST:event_calSfSearch1MouseReleased
