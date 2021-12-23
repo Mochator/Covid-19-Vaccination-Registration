@@ -149,7 +149,6 @@ public class General {
                 MyDateTime mdt = new MyDateTime();
                 for (Object x : al) {
                     Appointment app = (Appointment) x;
-                    System.out.println(app.getCode());
                     if (app.VaccinationDate == null) {
                         continue;
                     }
