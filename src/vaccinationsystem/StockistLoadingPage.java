@@ -2056,7 +2056,7 @@ public class StockistLoadingPage extends javax.swing.JFrame {
             cboSfSearchDose1.addItem("All Dose");
         }
 
-        SfSearch(search, vac, dose, mdt);
+        SfSearch1(search, vac, dose, mdt);
     }//GEN-LAST:event_cboSfSearchVac1ActionPerformed
 
     private void calSfSearch1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calSfSearch1MouseReleased
