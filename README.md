@@ -31,6 +31,7 @@ Covid-19 Vaccination Registration Java-based System
       <li>Mark Patient as Vaccinated</li>
       <li>Today's Patient Overview</li>
       <li>Vaccinated Patient Overview</li>
+    </ul>
   </li>
   <li>People
     <ul>
@@ -38,6 +39,7 @@ Covid-19 Vaccination Registration Java-based System
       <li>Vaccination Program Enrollment</li>
       <li>Vaccination Appointment Confirmation & Overview</li>
       <li>Generate Fully-Vaccinated Certificate</li>
+    </ul>
   </li>
   <li>General Functions
     <ul>
